@@ -1,0 +1,491 @@
+@import url("reset.css");
+@import url("base.css");
+@import url("layout.css");
+@import url("module.css");
+
+/* Index */
+/* 1) DEFAULT Header & Footer */
+/* 2) Common Module / Element */
+/* 3) Page Specific Module/ Element */
+
+/* --------------- DEFAULT Header & Footer ------------------*/
+.wrapper {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  color: white;
+  background-color: black;
+  text-align: center;
+  padding: 8px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header > * + * {
+  margin-top: 8px;
+}
+
+.header-navigation {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.header-navigation > *:last-child {
+  margin-left: auto;
+}
+
+.header-username-text {
+  width: 148px;
+  max-height: 48px;
+  text-align: right;
+  overflow: hidden;
+  display: none;
+}
+
+@media screen and (min-width: 480px) {
+  .header-username-text {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .header-username-text {
+    display: none;
+  }
+  .header-navigation > *:last-child {
+    margin-left: auto;
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .header > * + * {
+    margin-top: 0;
+    margin-left: 8px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header-username-text {
+    display: block;
+  }
+}
+
+.welcome-header {
+  padding: 8px;
+  /* position: sticky;
+  top: 0; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  box-sizing: border-box;
+  z-index: 100; /* guarantees that the header is always on top of the main content */
+}
+
+.welcome-logo-icon {
+  width: 48px;
+  height: 48px;
+  margin-right: 8px;
+  display: none;
+}
+@media screen and (min-width: 368px) {
+  .welcome-logo-icon {
+    display: block;
+  }
+}
+@media screen and (min-width: 400px) {
+  .welcome-logo-icon,
+  .welcome-logo {
+    margin-right: auto;
+  }
+}
+@media screen and (min-width: 576px) {
+  .welcome-logo-icon {
+    height: 64px;
+    width: 64px;
+  }
+  .welcome-logo {
+    height: 48px;
+  }
+}
+@media screen and (min-width: 752px) {
+  .welcome-logo-icon {
+    height: 80px;
+    width: 80px;
+  }
+  .welcome-logo {
+    height: 64px;
+  }
+}
+
+.footer {
+  color: white;
+  background-color: black;
+  padding: 8px;
+}
+
+.footer-logo {
+  width: 48px;
+  height: 48px;
+  margin-right: 8px;
+  display: none;
+}
+
+@media screen and (min-width: 368px) {
+  .footer-logo {
+    display: block;
+  }
+}
+
+.footer-main {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* box-sizing: border-box; */
+  width: 100%;
+}
+
+.footer-main > * {
+  border-left: 3px solid var(--primary-color);
+  padding: 0 8px;
+  min-width: 50%;
+  box-sizing: border-box;
+  min-height: 150px;
+}
+
+.footer-main > *:first-child {
+  width: 100%;
+}
+
+@media screen and (min-width: 1078px) {
+  .footer-main > * {
+    min-width: 0;
+  }
+  .footer-main > *:first-child {
+    width: auto;
+  }
+}
+/* --------------- END DEFAULT Header & Footer ------------------*/
+
+/* -------------------------------------------------------------- 2) Common Module ----------------------------------------------------------------- */
+.navigation-horizontal, .navigation-vertical {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navigation-horizontal {
+  display: flex;
+  /* justify-content: space-around; */
+}
+
+.container, .welcome-container {
+  padding: 29px;
+  border: solid 3px black;
+  box-sizing: border-box;
+  background-color: white;
+  color: black;
+}
+
+.welcome-container {
+  background-color: white;
+  opacity: 0.9;
+}
+
+.container-footer,
+.container-footer-right {
+  margin-top: 16px;
+}
+.container-footer-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.welcome-container-footer {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.welcome-container-footer > * + * {
+  margin-top: 16px;
+}
+@media screen and (min-width: 568px) {
+  .welcome-container-footer {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .welcome-container-footer > * + * {
+    margin-top: 0;
+  }
+}
+
+.profile-picture {
+  border-radius: 50%;
+  width: 256px;
+  height: 256px;
+  /* background-color: black; */
+}
+
+/* -------------------- Form & Label & Form-Control & Input -------------------*/
+.form-control {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  display: inline-block;
+  border: none;
+  background: #F1F1F1;
+}
+
+.form-group + .form-group {
+  margin-top: 16px;
+}
+.label {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.label + .form-control {
+  margin-top: 12px;
+}
+.form-control:focus {
+  background-color: #DDDDDD;
+  outline: none;
+}
+
+/* -------------------- END Form & Label & Form-Control & Input -------------------*/
+
+/* -------------------- Button -----------------*/
+.btn, .nav-btn, .link-btn,
+.round-icon-btn, .btn-green,
+.btn-welcome {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  border: none;
+  /* letter-spacing: 0.05rem; */
+  cursor: pointer;
+  opacity: 0.9;
+  border-radius: 32px;
+  font-size: 1rem;
+  font-family: var(--primary-font);
+  text-align: center;
+  /* display: inline-block; */
+  box-sizing: border-box;
+  min-width: 120px;
+}
+
+.btn:hover, .nav-btn:hover, .link-btn:hover,
+.round-icon-btn:hover, .btn-green:hover,
+.btn-welcome:hover {
+  opacity: 1.0;
+}
+
+.btn-welcome {
+  font-family: sans-serif;
+  font-size: 1.75rem;
+  padding: 16px;
+  width: 244px;
+}
+
+.nav-btn {
+  background-color: transparent;
+  /* padding: 16px; */
+  /* padding: 0; */
+  min-width: 120px;
+  /* min-width: 0; */
+}
+.nav-btn:hover {
+  color: var(--primary-color);
+}
+
+.round-icon-btn {
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+  min-width: 0;
+}
+
+.link-btn {
+  text-decoration: none;
+}
+
+.btn-green {
+  background-color: var(--green-color);
+}
+
+/* -------------------- END Button -----------------*/
+
+/* ----------------------- Text & Paragraph -----------------------*/
+.text-center {
+  text-align: center;
+}
+.text-itallic {
+  font-style: italic;
+}
+.paragraph {
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.welcome-header-text {
+  text-align: center;
+  font-family: cursive;
+}
+.paragraph-welcome {
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+}
+@media screen and (min-width: 704px) {
+  .welcome-header-text {
+    font-size: 2.5rem;
+  }
+  .paragraph-welcome {
+    font-size: 1.35rem;
+    line-height: 1.35rem;
+  }
+}
+@media screen and (min-width: 832px) {
+  .welcome-header-text {
+    font-size: 3rem;
+  }
+  .paragraph-welcome {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+/* ----------------------- END Text & Paragraph -----------------------*/
+
+/* ------------------------ Dropdown ------------------------------- */
+/* Dropdown Button */
+/* .dropbtn { */
+  /* background-color: #4CAF50; */
+  /* color: white; */
+  /* padding: 16px; */
+  /* font-size: 16px; */
+  /* border: none; */
+/* } */
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: -8px;
+  background-color: rgba(0, 0, 0, 0.5);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  /* z-index: 1; */
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover > .dropdown-content {
+  display: block;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  /* color: var(--primary-color); */
+  background-color: var(--primary-color);
+}
+/* ------------------------ END Dropdown ------------------------------- */
+
+/* ----------------------------------------------------------- 3) Page Specific ---------------------------------------------------------------------------------- */
+
+/* ---------------------------- Welcome Page -------------------------------*/
+.welcome-box {
+  margin: auto;
+  max-width: 832px;
+}
+@media screen and (min-width: 832px) {
+  .welcome-box {
+    margin: 96px auto;
+  }
+}
+/* ---------------------------- END Welcome Page -------------------------*/
+
+/* ----------------------------- Login Page ----------------------------*/
+.login-box  {
+  margin: auto;
+  max-width: 640px;
+}
+@media screen and (min-width: 768px) {
+  .login-box {
+    margin: 96px auto;
+  }
+}
+
+/* ----------------------------- END Login Page ----------------------------*/
+
+/* -------------------------- Register Page -----------------------*/
+.register-box {
+  margin: auto;
+  max-width: 640px;
+}
+@media screen and (min-width: 768px) {
+  .register-box {
+    margin: 96px auto;
+  }
+}
+/* -------------------------- END Register Page -----------------------*/
+
+/* -------------------------- Change Password -----------------------*/
+.change-password-box {
+  margin: auto;
+  max-width: 640px;
+}
+@media screen and (min-width: 768px) {
+  .change-password-box {
+    margin: 96px auto;
+  }
+}
+/* -------------------------- END Change Password -----------------------*/
+
+/* ---------------------------- View & Edit Profile ---------------------*/
+.user-profile-box {
+  margin: auto;
+  max-width: 480px;
+}
+.upload-profile-picture-btn {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  height: 64px;
+  width: 64px;
+  font-size: 1.75rem;
+}
+.user-profile-form {
+  margin-top: 16px;
+}
+@media screen and (min-width: 892px) {
+  .user-profile-form {
+    margin-top: 0;
+    margin-left: 32px;
+  }
+  .user-profile-box {
+    max-width: 892px;
+    margin: 96px auto;
+  }
+}
+/* --------------------------- END View & Edit Profile -----------------------*/
