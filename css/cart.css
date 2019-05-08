@@ -1,0 +1,114 @@
+/*-----------------------table----------------------------*/
+table,td,th{
+	border: 1px solid black;
+	padding:5px;
+}
+
+td{
+	white-space:normal;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+
+thead th{
+	border-bottom:2px solid black;
+	font-weight:bold;
+	font-size:1.1rem;
+}
+
+
+tbody tr,th,td{
+	border-top:1px solid black;
+	border-bottom:2px dashed grey;	
+}
+
+tfoot tr,th,td{
+	border-top:none;
+	border-bottom:none;
+}
+
+.font-bigger{
+	font-size:1.3rem;
+}
+
+/*-------------------------------Cart Component-----------------------------------*/
+
+.center-align{
+	text-align:center;
+}
+
+.right-align{
+	text-align:right;
+}
+
+#header-cart{
+	display:flex;
+}
+
+.cart{
+	border: 1px solid black;
+	width:25%;
+	padding:8px;
+	margin:8px;
+	position:absolute;
+	right:0px;
+}
+
+.fa-shopping-cart{
+	font-size:1.5rem;
+	height:25px;
+	padding-top:5px;
+	padding-right:3px;
+}
+
+.fa-angle-right{
+	font-size:1.0rem;
+	height:20px;
+	width:20px;
+	
+}
+
+#order{
+	max-width:460px;
+	white-space:normal;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	
+}
+#order th,tr,td{
+	
+	border-right:none;
+	border-left:none;
+
+}
+
+#order tr td:nth-child(2){
+	width:20%;
+}
+#order tr td:last-child{
+	width:20%;
+}
+
+#price-total tr td{
+	border:none;
+	border-right: 1px solid;
+}
+
+.order-item-section tr:last-child{
+	border-bottom:1px solid black;
+}
+
+.price-display{
+	text-align:right;
+	font-weight:bold;
+	
+}
+
+.remarks{
+	display:flex;
+}
+
+.promo{
+	display:flex;
+}
+
