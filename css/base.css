@@ -43,7 +43,7 @@ h6 {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  padding: 8px 0;
+  margin: 8px 0;
 }
 
 p {}
@@ -63,4 +63,14 @@ hr {
   /* border: 1px solid #F1F1F1; */
   border: 1px solid var(--primary-color);
   margin-bottom: 24px;
+}
+
+*:focus {
+  /* outline: solid; */
+  /* outline-width: 2px; */
+  /* outline: thin;
+  outline-style: dashed;
+  outline-color: red; */
+  /* outline-color: red; */
+  /* outline-width: thin; */
 }

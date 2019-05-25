@@ -1,0 +1,1138 @@
+/* Index */
+/* 1) DEFAULT Header & Footer */
+/* 2) Common Module / Element */
+/* 3) Page Specific Module/ Element */
+
+/* --------------- DEFAULT Header & Footer ------------------*/
+.wrapper {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  color: white;
+  background-color: black;
+  text-align: center;
+  padding: 8px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header > * + * {
+  margin-top: 8px;
+}
+
+.header-navigation {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.header-navigation > *:last-child {
+  margin-left: auto;
+}
+
+.header-username-text {
+  width: 148px;
+  max-height: 48px;
+  text-align: right;
+  overflow: hidden;
+  display: none;
+}
+
+@media screen and (min-width: 480px) {
+  .header-username-text {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .header-username-text {
+    display: none;
+  }
+  .header-navigation > *:last-child {
+    margin-left: auto;
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .header > * + * {
+    margin-top: 0;
+    margin-left: 8px;
+  }
+}
+
+@media screen and (min-width: 793px) {
+  .header-username-text {
+    display: block;
+  }
+}
+
+.welcome-header {
+  padding: 8px;
+  /* position: sticky;
+  top: 0; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  box-sizing: border-box;
+  z-index: 100; /* guarantees that the header is always on top of the main content */
+}
+
+.welcome-logo-icon {
+  width: 48px;
+  height: 48px;
+  margin-right: 8px;
+  display: none;
+}
+@media screen and (min-width: 388px) {
+  .welcome-logo-icon {
+    display: block;
+  }
+}
+@media screen and (min-width: 400px) {
+  .welcome-logo-icon,
+  .welcome-logo {
+    margin-right: auto;
+  }
+}
+@media screen and (min-width: 576px) {
+  .welcome-logo-icon {
+    height: 64px;
+    width: 64px;
+  }
+  .welcome-logo {
+    height: 48px;
+  }
+}
+@media screen and (min-width: 752px) {
+  .welcome-logo-icon {
+    height: 80px;
+    width: 80px;
+  }
+  .welcome-logo {
+    height: 64px;
+  }
+}
+
+.footer {
+  color: white;
+  background-color: black;
+  padding: 8px;
+  position: relative;
+  z-index: 98;
+}
+
+.footer-logo {
+  width: 48px;
+  height: 48px;
+  margin-right: 8px;
+  display: none;
+}
+
+@media screen and (min-width: 388px) {
+  .footer-logo {
+    display: block;
+  }
+}
+
+.footer-main {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* box-sizing: border-box; */
+  width: 100%;
+}
+
+.footer-main > * {
+  border-left: 3px solid var(--primary-color);
+  padding: 0 8px;
+  /* min-width: 50%; */
+  box-sizing: border-box;
+  min-height: 150px;
+}
+
+/* .footer-main > *:first-child {
+  width: 100%;
+} */
+
+@media screen and (min-width: 774px) {
+  .footer-main {
+    justify-content: flex-start;
+  }
+}
+
+@media screen and (min-width: 1071px) {
+  .footer-main {
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 1078px) {
+  /* .footer-main > * {
+    min-width: 0;
+  }
+  .footer-main > *:first-child {
+    width: auto;
+  } */
+}
+/* --------------- END DEFAULT Header & Footer ------------------*/
+
+/* -------------------------------------------------------------- 2) Common Module ----------------------------------------------------------------- */
+.navigation-horizontal, .navigation-vertical {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navigation-horizontal {
+  display: flex;
+  /* justify-content: space-around; */
+}
+
+.container, .welcome-container {
+  padding: 29px;
+  border: solid 3px black;
+  box-sizing: border-box;
+  background-color: white;
+  color: black;
+}
+
+.welcome-container {
+  background-color: white;
+  opacity: 0.9;
+}
+
+.container-footer,
+.container-footer-right {
+  margin-top: 16px;
+}
+.container-footer-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.welcome-container-footer {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.welcome-container-footer > * + * {
+  margin-top: 16px;
+}
+@media screen and (min-width: 568px) {
+  .welcome-container-footer {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .welcome-container-footer > * + * {
+    margin-top: 0;
+  }
+}
+
+.profile-picture {
+  border-radius: 50%;
+  width: 256px;
+  height: 256px;
+  /* background-color: black; */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  /* background-image: none; */
+  background-color: white;
+}
+
+:root {
+  --card-shadow: 0 4px 8px 0 rgba(0,0,0,0.25);
+  --card-shadow-float: 0 8px 16px 0 rgba(0,0,0,0.5);
+}
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  transition: transform 250ms ease-in-out;
+  box-shadow: var(--card-shadow-float);
+}
+
+/* .card + .card {
+  margin-top: 16px;
+} */
+
+/* -------------------- Form & Label & Form-Control & Input -------------------*/
+.form-control {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  display: inline-block;
+  border: none;
+  background: #F1F1F1;
+}
+
+.form-group + .form-group {
+  margin-top: 16px;
+}
+.label {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.label + .form-control {
+  margin-top: 12px;
+}
+.form-control:focus {
+  background-color: #DDDDDD;
+  outline: none;
+}
+
+/* -------------------- END Form & Label & Form-Control & Input -------------------*/
+
+/* -------------------- Button -----------------*/
+.btn, .nav-btn, .link-btn,
+.round-icon-btn, .square-icon-btn,
+.btn-rect, .btn-green, .btn-welcome,
+.btn-order-delete {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  border: none;
+  /* letter-spacing: 0.05rem; */
+  cursor: pointer;
+  opacity: 0.9;
+  border-radius: 32px;
+  font-size: 1rem;
+  font-family: var(--primary-font);
+  text-align: center;
+  /* display: inline-block; */
+  box-sizing: border-box;
+  min-width: 120px;
+}
+
+.btn:hover, .nav-btn:hover, .link-btn:hover,
+.round-icon-btn:hover, .square-icon-btn:hover,
+.btn-rect:hover, .btn-green:hover, .btn-welcome:hover,
+.btn-order-delete:hover {
+  opacity: 1.0;
+}
+
+.btn-welcome {
+  font-family: sans-serif;
+  font-size: 1.75rem;
+  padding: 16px;
+  width: 244px;
+}
+
+.btn-rect {
+  min-width: auto;
+  border-radius: 0;
+}
+
+.nav-btn {
+  background-color: transparent;
+}
+.nav-btn:hover {
+  color: var(--primary-color);
+}
+
+.round-icon-btn {
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+  min-width: auto;
+}
+
+.square-icon-btn {
+  border-radius: 0;
+  height: 48px;
+  width: 48px;
+  min-width: auto;
+}
+
+.link-btn {
+  text-decoration: none;
+}
+
+.btn-green {
+  background-color: var(--green-color);
+}
+
+/* -------------------- END Button -----------------*/
+
+/* ----------------------- Text & Paragraph -----------------------*/
+.text-center {
+  text-align: center;
+}
+.text-itallic {
+  font-style: italic;
+}
+.paragraph {
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.welcome-header-text {
+  text-align: center;
+  font-family: cursive;
+}
+.paragraph-welcome {
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+}
+@media screen and (min-width: 704px) {
+  .welcome-header-text {
+    font-size: 2.5rem;
+  }
+  .paragraph-welcome {
+    font-size: 1.35rem;
+    line-height: 1.35rem;
+  }
+}
+@media screen and (min-width: 832px) {
+  .welcome-header-text {
+    font-size: 3rem;
+  }
+  .paragraph-welcome {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+/* ----------------------- END Text & Paragraph -----------------------*/
+
+/* ------------------------ Dropdown ------------------------------- */
+/* Dropdown Button */
+/* .dropbtn { */
+  /* background-color: #4CAF50; */
+  /* color: white; */
+  /* padding: 16px; */
+  /* font-size: 16px; */
+  /* border: none; */
+/* } */
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: -8px;
+  background-color: rgba(0, 0, 0, 0.5);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  /* z-index: 1; */
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover > .dropdown-content {
+  display: block;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  /* color: var(--primary-color); */
+  background-color: var(--primary-color);
+}
+/* ------------------------ END Dropdown ------------------------------- */
+
+/* ----------------------------------------------------------- 3) Page Specific ---------------------------------------------------------------------------------- */
+
+/* ---------------------------- Welcome Page -------------------------------*/
+.welcome-box {
+  margin: auto;
+  max-width: 832px;
+}
+@media screen and (min-width: 832px) {
+  .welcome-box {
+    margin: 96px auto;
+  }
+}
+/* ---------------------------- END Welcome Page -------------------------*/
+
+/* ----------------------------- Login Page ----------------------------*/
+.login-box  {
+  margin: auto;
+  max-width: 640px;
+}
+@media screen and (min-width: 768px) {
+  .login-box {
+    margin: 96px auto;
+  }
+}
+
+/* ----------------------------- END Login Page ----------------------------*/
+
+/* -------------------------- Register Page -----------------------*/
+.register-box {
+  margin: auto;
+  max-width: 640px;
+}
+@media screen and (min-width: 768px) {
+  .register-box {
+    margin: 96px auto;
+  }
+}
+/* -------------------------- END Register Page -----------------------*/
+
+/* -------------------------- Change Password -----------------------*/
+.change-password-box {
+  margin: auto;
+  max-width: 640px;
+}
+@media screen and (min-width: 768px) {
+  .change-password-box {
+    margin: 96px auto;
+  }
+}
+/* -------------------------- END Change Password -----------------------*/
+
+/* ---------------------------- View & Edit Profile ---------------------*/
+.user-profile-box {
+  margin: auto;
+  max-width: 480px;
+}
+.upload-profile-picture-btn {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  height: 64px;
+  width: 64px;
+  font-size: 1.75rem;
+}
+.user-profile-form {
+  margin-top: 16px;
+}
+@media screen and (min-width: 892px) {
+  .user-profile-form {
+    margin-top: 0;
+    margin-left: 32px;
+  }
+  .user-profile-box {
+    max-width: 892px;
+    margin: 96px auto;
+  }
+}
+/* --------------------------- END View & Edit Profile -----------------------*/
+
+/* -------------------------------- Sidebar -----------------------*/
+:root {
+  --sidebar-width: 176px;
+}
+
+.sidebar {
+  position: fixed;
+  color: white;
+  overflow-y: auto;
+  max-height: calc(100vh - 105px); /* header height at 320 width resolution */
+  z-index: 99;
+  width: 0;
+}
+
+.sidebar-header {
+  position: relative;
+  right: var(--sidebar-width);
+  width: var(--sidebar-width);
+  height: 48px;
+  background-color: var(--primary-color);
+  display: flex;
+  /* justify-content: center; */
+  padding-left: 48px;
+	align-items: center;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  box-sizing: border-box;
+}
+
+.sidebar-btn {
+  position: fixed;
+  z-index: 99;
+}
+
+.sidebar-content {
+  position: relative;
+  right: var(--sidebar-width);
+  background-color: var(--primary-color);
+  padding-top: 48px;
+}
+
+.sidebar-content a {
+  height: 48px;
+  width: var(--sidebar-width);
+  display: flex;
+  justify-content: center;
+	align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  box-sizing: border-box;
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar-content a:hover {
+  font-weight: bold;
+  font-size: 1.5rem;
+  background-color: red;
+}
+
+.sidebar:hover {
+  width: auto;
+}
+
+.sidebar:hover > .sidebar-header {
+  position: fixed;
+  right: auto;
+  z-index: 98;
+  left: calc(-1 * var(--sidebar-width));
+  transform: translateX(var(--sidebar-width));
+  transition: transform 250ms ease-in-out;
+}
+
+.sidebar:hover > .sidebar-btn {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  box-sizing: border-box;
+}
+
+.sidebar:hover > .sidebar-content {
+  transform: translateX(var(--sidebar-width));
+  transition: transform 250ms ease-in-out;
+}
+/* -------------------------------- END Sidebar -----------------------*/
+
+/* ------------------------- Home & Order Box ------------------------ */
+.box-main {
+  padding: 48px 16px 0 16px;
+  background-color: rgba(255,255,255,0.4);
+  min-height: calc(100vh - 105px - 544px);
+  box-sizing: border-box;
+}
+@media screen and (min-width: 546px) {
+  .box-main {
+    min-height: calc(100vh - 105px - 396px);
+  }
+}
+@media screen and (min-width: 640px) {
+  .box-main {
+    min-height: calc(100vh - 64px - 396px);
+  }
+}
+@media screen and (min-width: 1054px) {
+  .box-main {
+    min-height: calc(100vh - 64px - 246px);
+  }
+}
+
+.box-list {
+  padding: 16px 0;
+}
+
+.box-list-title > * {
+  background-color: bisque;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.box-list-title::before {
+  margin-top: -160px;
+  padding-top: 160px;
+  content: "";
+  display: block;
+}
+
+.box {
+  background-color: cornsilk;
+  margin-top: 8px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.box-picture {
+  width: 80px;
+  height: 80px;
+  float: left;
+}
+
+.box-detail {
+  margin-left: 88px;
+  min-height: 80px;
+  font-size: 1rem;
+}
+
+.box-title {
+  /* font-size: 18px; */
+  font-size: 1.2rem;
+  word-wrap: break-word;
+}
+
+.box-info {
+  margin-right: 16px;
+  margin-top: 4px;
+  display: inline-block;
+  font-size: 1rem;
+}
+.box-info:last-child {
+  margin-right: 0;
+}
+
+.rating-star {
+  margin-right: 4px;
+  font-size: 0.75rem;
+}
+
+.box-description {
+  height: 80px;
+  margin-top: 8px;
+  /* font-size: 14px; */
+  font-size: 0.9rem;
+  overflow: hidden;
+}
+/* ------------------------- END Home & Order Box ------------------------ */
+
+/* --------------- Home Page (Sidebar & Box)------------- */
+/* Sidebar */
+@media screen and (min-width: 548px) {
+  /* 320px + 52px + 176px */
+  #js-home-sidebar {
+    width: auto;
+    z-index: 98;
+    background-color: var(--primary-color);
+    height: 100%;
+    max-height: none;
+  }
+  #js-home-sidebar > .sidebar-header {
+    position: fixed;
+    right: auto;
+    z-index: 98;
+    left: calc(-1 * var(--sidebar-width));
+    transform: translateX(var(--sidebar-width));
+    transition: transform 250ms ease-in-out;
+  }
+  #js-home-sidebar > .sidebar-btn {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    box-sizing: border-box;
+    cursor: auto;
+    opacity: 1.0;
+  }
+  #js-home-sidebar > .sidebar-content {
+    background-color: none;
+    height: auto;
+    transform: translateX(var(--sidebar-width));
+    transition: transform 250ms ease-in-out;
+  }
+  .rest-box.box-main {
+    margin-left: var(--sidebar-width);
+  }
+}
+
+/* Box */
+@media screen and (min-width: 548px) {
+  .rest-box.box-main {
+    padding: 0 24px;
+  }
+}
+@media screen and (min-width: 768px){
+  .rest-box .box-content {
+    display: flex;
+    flex-direction: column;
+  }
+  .rest-box .box-detail {
+    min-height: auto;
+    margin-left: 0;
+  }
+  .rest-box .box {
+    min-height: 128px;
+  }
+  .rest-box .box-picture {
+    width: 128px;
+    height: 128px;
+    margin-right: 8px;
+  }
+  .rest-box .box-title {
+    font-size: 1.5rem;
+  }
+  .rest-box .box-info {
+    font-size: 1.1rem;
+  }
+  .rest-box .box-description {
+    font-size: 1rem;
+  }
+}
+@media screen and (min-width: 548px) {
+  .rest-box .box-list-title::before {
+    margin-top: -120px;
+    padding-top: 120px;
+  }
+}
+@media screen and (min-width: 640px) {
+  .rest-box .box-list-title::before {
+    margin-top: -80px;
+    padding-top: 80px;
+  }
+}
+/* ---------------------- END Home Page ------------------- */
+
+/* ---------------------- Order Page (Sidebar & Box & Cart) ---------------------- */
+/* Sidebar */
+@media screen and (min-width: 820px) {
+  #js-sidebar {
+    width: auto;
+    z-index: 98;
+    background-color: var(--primary-color);
+    height: 100%;
+    max-height: none;
+  }
+  #js-sidebar > .sidebar-header {
+    position: fixed;
+    right: auto;
+    z-index: 98;
+    left: calc(-1 * var(--sidebar-width));
+    transform: translateX(var(--sidebar-width));
+    transition: transform 250ms ease-in-out;
+  }
+  #js-sidebar > .sidebar-btn {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    box-sizing: border-box;
+    cursor: auto;
+    opacity: 1.0;
+  }
+  #js-sidebar > .sidebar-content {
+    background-color: none;
+    height: auto;
+    transform: translateX(var(--sidebar-width));
+    transition: transform 250ms ease-in-out;
+  }
+  .food-box.box-main {
+    margin-left: var(--sidebar-width);
+  }
+}
+
+/* Box */
+@media screen and (min-width: 820px) {
+  .food-box.box-main {
+    padding: 0 24px;
+  }
+}
+@media screen and (min-width: 1024px){
+  .food-box .box-content {
+    display: flex;
+    flex-direction: column;
+  }
+  .food-box .box-detail {
+    min-height: auto;
+    margin-left: 0;
+  }
+  .food-box .box {
+    min-height: 128px;
+  }
+  .food-box .box-picture {
+    width: 128px;
+    height: 128px;
+    margin-right: 8px;
+  }
+  .food-box .box-title {
+    font-size: 1.5rem;
+  }
+  .food-box .box-info {
+    font-size: 1.1rem;
+  }
+  .food-box .box-description {
+    font-size: 1rem;
+  }
+}
+@media screen and (min-width: 640px) {
+  .food-box .box-list-title::before {
+    margin-top: -120px;
+    padding-top: 120px;
+  }
+}
+@media screen and (min-width: 820px) {
+  .food-box .box-list-title::before {
+    margin-top: -80px;
+    padding-top: 80px;
+  }
+}
+
+/* Cart */
+:root {
+  --cart-width: 272px;
+  --cart-width-negative: -272px;
+}
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --cart-width: 336px;
+    --cart-width-negative: -336px;
+  }
+}
+
+.cart {
+	position: fixed;
+	right: 0;
+  color: white;
+  z-index: 99;
+  width: 0;
+}
+
+.cart-header {
+	position: relative;
+	right: var(--cart-width-negative);
+  width: var(--cart-width);
+  height: 48px;
+	background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.cart-btn {
+	position: fixed;
+	right: 0;
+	z-index: 99;
+}
+
+.cart-content{
+  overflow-y: auto;
+  max-height: calc(100vh - 105px - 48px);
+  border: 2px solid var(--primary-color);
+  border-top: none;
+  box-sizing: border-box;
+  position: relative;
+  right: var(--cart-width-negative);
+  background-color: white;
+  color: black;
+}
+
+.cart:hover {
+  width: auto;
+}
+
+.cart:hover > .cart-header {
+	transform: translateX(var(--cart-width-negative));
+  transition: transform 250ms ease-in-out;
+}
+
+.cart:hover > .cart-content {
+	padding: 0 8px;
+	padding-bottom: 8px;
+	width: var(--cart-width);
+	transform: translateX(var(--cart-width-negative));
+  transition: transform 250ms ease-in-out;
+}
+
+@media screen and (min-width: 640px) {
+	.cart:hover > .cart-content {
+		max-height: calc(100vh - 64px - 48px);
+	}
+}
+
+@media screen and (min-width: 644px) {
+  /* 320px + 52px + 272px */
+  .cart {
+    width: auto;
+    z-index: 98;
+  }
+	.cart-header {
+		transform: translateX(var(--cart-width-negative));
+    transition: transform 250ms ease-in-out;
+	}
+  .cart-btn {
+    cursor: auto;
+    opacity: 1.0;
+  }
+  .cart-content {
+    height: calc(100vh - 64px - 48px);
+    max-height: none;
+		padding: 0 8px;
+		padding-bottom: 8px;
+    position: fixed;
+    width: var(--cart-width);
+    transform: translateX(var(--cart-width-negative));
+    transition: transform 250ms ease-in-out;
+  }
+  .food-box.box-main {
+    margin-right: var(--cart-width);
+  }
+}
+
+.cart-order-table {
+  font-size: 0.8rem;
+  border-collapse: separate;
+}
+@media screen and (min-width: 768px) {
+  .cart-order-table {
+    font-size: 0.9rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .cart-order-table {
+    font-size: 1rem;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .cart-order-table {
+    font-size: 1.25rem;
+  }
+}
+
+.cart-order-header > th {
+  z-index: 98;
+  position: sticky;
+  top: 0;
+  padding: 8px 0px;
+  border-bottom: 2px solid black;
+  vertical-align: middle; /* vertically center in table */
+  font-weight: bold;
+  background-color: white;
+}
+.cart-order-header > th:first-child  {
+  text-align: left;
+}
+.cart-order-header > th:nth-child(3)  {
+  text-align: right;
+}
+.cart-order-header > th:nth-child(2) {
+  width: 10%;
+}
+.cart-order-header > th:nth-child(3) {
+  width: 25%;
+}
+
+.cart-order-header > th:nth-child(2),
+.cart-order-item > td:nth-child(2) {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.cart-order-header > th:nth-child(3),
+.cart-order-item > td:nth-child(3) {
+  padding-right: 8px;
+}
+
+.cart-order-item > td {
+  padding-top: 8px;
+  padding-bottom: 4px;
+}
+.cart-order-item > td:nth-child(2) {
+  text-align: center;
+  position: relative;
+}
+.cart-order-item > td:nth-child(3) {
+  text-align: right;
+}
+.cart-order-item > td:last-child {
+  padding: 0;
+}
+
+.cart-order:hover {
+  /* background-color: #EEEEEE; */
+}
+
+.quantity-control {
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  display: none;
+}
+.cart-order:hover .quantity-control {
+  display: inline-block;
+}
+
+.quantity-control:first-child {
+  left: 0;
+}
+.quantity-control:first-child:hover {
+  color: orange;
+  cursor: pointer;
+}
+.quantity-control:last-child {
+  right: 0;
+}
+.quantity-control:last-child:hover {
+  color: var(--green-color);
+  cursor: pointer;
+}
+
+.btn-order-delete {
+  background-color: transparent;
+  color: black;
+  min-width: auto;
+  padding: 4px;
+  border-radius: 0;
+}
+.btn-order-delete:hover {
+  color: red;
+  cursor: pointer;
+}
+
+
+.cart-order-remark > td {
+  font-size: 0.9em;
+  padding-bottom: 8px;
+  border-bottom: 1px solid black;
+  color: grey;
+}
+
+.cart-order-remark:last-child > td {
+  border-bottom: 2px solid black;
+}
+
+.cart-order-footer > td {
+  padding-top: 8px;
+}
+
+.cart-order-footer:first-child > td {
+  padding-top: 16px;
+}
+
+.cart-order-footer > td:last-child {
+  text-align: right;
+}
+
+.cart-order-footer:first-child > td {
+  font-weight: bold;
+  font-size: 1.15em;
+}
+
+.cart-order-footer:last-child > td {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.cart-promo {
+  display: flex;
+  margin-top: 16px;
+}
+
+.cart-checkout-btn-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+/* ---------------------- END Order Page ---------------------- */
