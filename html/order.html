@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/master.css" type="text/css">
+    <link href="../css/master.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="../js/master.js"></script>
     <title>Food XPress</title>
   </head>
   <body>
-    <div class="wrapper">
+  	<div class="wrapper">
       <header class="header">
         <div>
           <img src="../images/logo.png" alt="Logo">
@@ -48,20 +48,20 @@
           </div>
         </div>
       </header>
-      <main>
-        <aside class="sidebar" id="js-home-sidebar">
+  	  <main class="main">
+        <aside class="sidebar" id="js-sidebar">
           <button type="button" class="sidebar-btn square-icon-btn">
             <i class="fas fa-bars"></i>
           </button>
           <span class="sidebar-header">
-            CANTEEN
+            CATEGORY
           </span>
           <ul class="sidebar-content">
-            <li><a href="#B1-GF">B1 # GF</a></li>
-            <li><a href="#D6-GF">D6 # GF</a></li>
-            <li><a href="#">D6 # 1F</a></li>
-            <li><a href="#">D6 # 2F</a></li>
-            <li><a href="#">LY3 # 1F</a></li>
+            <li><a href="#category-burger">Burger</a></li>
+            <li><a href="#category-beverage">Beverage</a></li>
+            <li><a href="#">Noodle</a></li>
+            <li><a href="#">Rice</a></li>
+            <li><a href="#">Pizza</a></li>
             <!-- <li>LY3 # 1F</li>
             <li>LY3 # 1F</li>
             <li>LY3 # 1F</li>
@@ -70,29 +70,160 @@
             <li>LY3 # 1F</li>
             <li>LY3 # 1F</li>
             <li>LY3 # 1F</li> -->
-            <li><a href="#">LY3 # 2F</a></li>
+            <li><a href="#">Dessert</a></li>
           </ul>
         </aside>
-        <main class="rest-box box-main">
+        <aside class="cart">
+          <button type="button" class="cart-btn square-icon-btn">
+            <i class="fas fa-shopping-cart"></i>
+          </button>
+          <div class="cart-header">
+            <div>MY CART</div>
+          </div>
+          <div class="cart-content" id="js-cart-content">
+            <table class="cart-order-table">
+              <thead>
+                <tr class="cart-order-header">
+        					<th>FOOD</th>
+        					<th>QTY</th>
+        					<th>RM</th>
+                  <th></th>
+                </tr>
+              </thead>
+        			<tbody class="cart-order">
+        				<tr class="cart-order-item">
+        					<td>
+                    Duck rice
+        					</td>
+        					<td>
+                    <button class="quantity-control"><i class="fas fa-minus-circle"></i></button>
+                    99
+                    <button class="quantity-control"><i class="fas fa-plus-circle"></i></button>
+                  </td>
+        					<td>999.99</td>
+                  <td>
+                    <button type="button" class="btn-order-delete">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </td>
+        				</tr>
+                <tr class="cart-order-remark">
+                  <td colspan="3">
+                    <i class="fas fa-angle-right"></i>
+                    <span>
+                      Remarks: This is some text. This is some text. This is some text.
+                      This is some text. This is some text. This is some text.
+                      This is some text. This is some text. This is some text.
+                      This is some text. This is some text. This is some text.
+                    </span>
+                  </td>
+                  <td></td>
+                </tr>
+              </tbody>
+              <tbody class="cart-order">
+        				<tr class="cart-order-item">
+        					<td>
+                    Socceroos The Lot
+        					</td>
+        					<td>
+                    <button class="quantity-control"><i class="fas fa-minus-circle"></i></button>
+                    99
+                    <button class="quantity-control"><i class="fas fa-plus-circle"></i></button>
+                  </td>
+        					<td>999.99</td>
+                  <td>
+                    <button type="button" class="btn-order-delete">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </td>
+        				</tr>
+                <tr class="cart-order-remark">
+                  <td colspan="3">
+                    <!-- <i class="fas fa-angle-right"></i>
+                    <span>
+                      Remarks: This is some text. This is some text. This is some text.
+                      This is some text. This is some text. This is some text.
+                      This is some text. This is some text. This is some text.
+                      This is some text. This is some text. This is some text.
+                    </span> -->
+                  </td>
+                  <td></td>
+                </tr>
+              </tbody>
+              <tbody class="cart-order">
+        				<tr class="cart-order-item">
+        					<td>
+                    Roasted chicken
+        					</td>
+        					<td>
+                    <button class="quantity-control"><i class="fas fa-minus-circle"></i></button>
+                    1
+                    <button class="quantity-control"><i class="fas fa-plus-circle"></i></button>
+                  </td>
+        					<td>7.00</td>
+                  <td>
+                    <button type="button" class="btn-order-delete">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </td>
+        				</tr>
+                <tr class="cart-order-remark">
+                  <td colspan="3">
+                    <i class="fas fa-angle-right"></i>
+                    <span>Remarks: More spicy plsss</span>
+                  </td>
+                  <td></td>
+                </tr>
+        			</tbody>
+        			<tfoot>
+        				<tr class="cart-order-footer">
+        					<td>SUBTOTAL</td>
+        					<td colspan="2">99999.99</td>
+        				</tr>
+        				<tr class="cart-order-footer">
+        					<td>Delivery Fee</td>
+        					<td colspan="2">14.00</td>
+        				</tr>
+        				<!-- <tr class="cart-order-footer">
+        					<td>SERVICE TAX</td>
+        					<td colspan="2">14.00</td>
+        				</tr> -->
+        				<tr class="cart-order-footer">
+        					<td>Discount</td>
+        					<td colspan="2">(999999.99)</td>
+        				</tr>
+    				    <tr class="cart-order-footer">
+    					     <td>TOTAL</td>
+    					     <td colspan="2">9999.99</td>
+    				    </tr>
+      			   </tfoot>
+      		  </table>
+            <div class="cart-promo">
+              <input class="form-control" type="text" placeholder="Promo Code">
+              <button type="button" class="btn-rect">APPLY</button>
+            </div>
+            <div class="cart-checkout-btn-container">
+              <button type="button" class="btn">CHECKOUT</button>
+            </div>
+          </div>
+  		  </aside>
+        <main class="food-box box-main">
           <div class="box-list">
-            <div class="box-list-title" id="B1-GF">
-              <h5>B1 # Ground Floor</h5>
+            <div class="box-list-title" id="category-burger">
+              <h5>Burger</h5>
             </div>
            <div class="card box">
              <div class="box-picture">
-               <img src="../images/kfc.png" class="box-picture">
+               <img src="../images/burger.jpg" class="box-picture">
              </div>
              <div class="box-content">
                <div class="box-detail">
-                 <div class="box-title">Kabaabish</div>
+                 <div class="box-title">La Roja Imperial</div>
                  <div class="">
-                   <span class="box-info">
-                     <i class="far fa-clock"></i>
-                     11.00pm - 12.00am
-                   </span>
+                   <span class="box-info">RM 16.00</span>
                    <span class="box-info">
                      <i class="fas fa-hourglass-half"></i>
-                     1h 20min
+                     10min
                    </span>
                    <span class="box-info">
                      <span class="rating-star">
@@ -118,19 +249,16 @@
            </div>
            <div class="card box">
              <div class="box-picture">
-               <img src="../images/kfc.png" class="box-picture">
+               <img src="../images/burger.jpg" class="box-picture">
              </div>
              <div class="box-content">
                <div class="box-detail">
-                 <div class="box-title">Kentucky Fried Chicken</div>
+                 <div class="box-title">Samba Dancing</div>
                  <div class="">
-                   <span class="box-info">
-                     <i class="far fa-clock"></i>
-                     11.00pm - 12.00am
-                   </span>
+                   <span class="box-info">RM 416.00</span>
                    <span class="box-info">
                      <i class="fas fa-hourglass-half"></i>
-                     1h 20min
+                     1h 10min
                    </span>
                    <span class="box-info">
                      <span class="rating-star">
@@ -147,30 +275,27 @@
            </div>
           </div>
 	    		<div class="box-list">
-            <div class="box-list-title" id="D6-GF">
-              <h5>D6 # Ground Floor</h5>
+            <div class="box-list-title" id="category-beverage">
+              <h5>Beverage</h5>
             </div>
 		    	 	<div class="card box">
 		    	 		<span class="box-picture">
-		    	 			<img src="../images/kfc.png" class="box-picture">
+		    	 			<img src="../images/burger.jpg" class="box-picture">
 		    	 		</span>
 		    	 		<div class="box-content">
 		    	 			<div class="box-detail">
-		    	 				<div class="box-title">Kami Cemerlang</div>
+		    	 				<div class="box-title">Green Tea</div>
                   <div class="">
-                    <span class="box-info">
-                      <i class="far fa-clock"></i>
-                      11.00pm - 12.00am
-                    </span>
+                    <span class="box-info">RM 1.06</span>
                     <span class="box-info">
                       <i class="fas fa-hourglass-half"></i>
-                      1h 20min
+                      10min
                     </span>
                     <span class="box-info">
                       <span class="rating-star">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
                       </span>
-                      3.1
+                      4.7
                     </span>
                   </div>
 		    	 			</div>
@@ -181,19 +306,16 @@
 		    	 	</div>
 		    	 	<div class="card box">
 		    	 		<div class="box-picture">
-		    	 			<img src="../images/kfc.png" class="box-picture">
+		    	 			<img src="../images/burger.jpg" class="box-picture">
 		    	 		</div>
 		    	 		<div class="box-content">
 		    	 			<div class="box-detail">
-		    	 				<div class="box-title">Big City Small Chef</div>
+		    	 				<div class="box-title">Orange Juice</div>
 			    	 			<div class="">
-                    <span class="box-info">
-                      <i class="far fa-clock"></i>
-                      11.00pm - 12.00am
-                    </span>
+                    <span class="box-info">RM 5.99</span>
                     <span class="box-info">
                       <i class="fas fa-hourglass-half"></i>
-                      1h 20min
+                      10min
                     </span>
                     <span class="box-info">
                       <span class="rating-star">
