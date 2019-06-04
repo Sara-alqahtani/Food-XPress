@@ -1136,3 +1136,295 @@ body {
 }
 
 /* ---------------------- END Order Page ---------------------- */
+/* ---------------------- START Order List Page --------------- */
+.box-order-main {
+  padding: 48px 16px 0 16px;
+  background-color: rgba(255,255,255);
+  min-height: calc(100vh - 105px - 544px);
+  box-sizing: border-box;
+}
+
+@media screen and (min-width: 1024px) {
+  .box-order-main {
+    min-height: calc(100vh - 64px - 246px);
+  }
+}
+.orderlist-box  {
+  margin: 10px;
+  padding:30px 20px;
+  max-width: 800px;
+  min-height: 100px;
+  background-color: white;
+  border: solid 3px black;
+}
+@media screen and (min-width: 320px) {
+  .orderlist-box {
+    margin: auto;
+  }
+@media screen and (min-width: 768px) {
+  .orderlist-box {
+    margin: 96px auto;
+  }
+}
+
+.order-list-title{
+  padding: 8px;
+  border-radius: 8px;
+}
+.orderlist-box-detail {
+  margin: auto;
+  padding:5px;
+  font-size: 1.2rem;
+}
+
+.orderlist-box-text{
+  margin:10px;
+}
+.orderlist-box-title{
+  width:110px;
+  padding:5px;
+}
+
+.order-status-chart{
+    height:100px;
+    width:100px;
+    margin:10px 20px;
+    float:right;
+
+}
+@media screen and (min-width: 320px) {
+  .order-status-chart {
+    float: none;
+    margin:10px auto;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .order-status-chart {
+    float:right;
+    margin:10px;
+  }
+}
+
+@media screen and (min-width:320px) {
+  .orderlist-box-info {
+    padding:5px;
+  }
+}
+
+/*Cicrle pie*/
+.rect-auto,
+.c100.p51 .slice,
+.c100.p52 .slice,
+.c100.p53 .slice,
+.c100.p54 .slice,
+.c100.p55 .slice,
+.c100.p56 .slice,
+.c100.p57 .slice,
+.c100.p58 .slice,
+.c100.p59 .slice,
+.c100.p60 .slice,
+.c100.p61 .slice,
+.c100.p62 .slice,
+.c100.p63 .slice,
+.c100.p64 .slice,
+.c100.p65 .slice,
+.c100.p66 .slice,
+.c100.p67 .slice,
+.c100.p68 .slice,
+.c100.p69 .slice,
+.c100.p70 .slice,
+.c100.p71 .slice,
+.c100.p72 .slice,
+.c100.p73 .slice,
+.c100.p74 .slice,
+.c100.p75 .slice,
+.c100.p76 .slice,
+.c100.p77 .slice,
+.c100.p78 .slice,
+.c100.p79 .slice,
+.c100.p80 .slice,
+.c100.p81 .slice,
+.c100.p82 .slice,
+.c100.p83 .slice,
+.c100.p84 .slice,
+.c100.p85 .slice,
+.c100.p86 .slice,
+.c100.p87 .slice,
+.c100.p88 .slice,
+.c100.p89 .slice,
+.c100.p90 .slice,
+.c100.p91 .slice,
+.c100.p92 .slice,
+.c100.p93 .slice,
+.c100.p94 .slice,
+.c100.p95 .slice,
+.c100.p96 .slice,
+.c100.p97 .slice,
+.c100.p98 .slice,
+.c100.p99 .slice,
+.c100.p100 .slice {
+  clip: rect(auto, auto, auto, auto);
+}
+.pie,
+.c100 .bar,
+.c100.p51 .fill,
+.c100.p75 .fill,
+.c100.p100 .fill {
+  position: absolute;
+  border: 0.08em solid #307bbb;
+  width: 0.84em;
+  height: 0.84em;
+  clip: rect(0em, 0.5em, 1em, 0em);
+  border-radius: 50%;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+.pie-fill,
+.c100.p75 .bar:after,
+.c100.p75 .fill,
+.c100.p100 .bar:after,
+.c100.p100 .fill {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.c100 {
+  position: relative;
+  font-size: 100px;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  float: left;
+  margin: 0 0.1em 0.1em 0;
+  background-color: #cccccc;
+}
+.c100 *,
+.c100 *:before,
+.c100 *:after {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+.c100.center {
+  float: none;
+  margin: 0 auto;
+}
+
+.c100 > span {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 5em;
+  line-height: 5em;
+  font-size: 0.2em;
+  color: #cccccc;
+  display: block;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -webkit-transition-timing-function: ease-out;
+  -moz-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.c100:after {
+  position: absolute;
+  top: 0.08em;
+  left: 0.08em;
+  display: block;
+  content: " ";
+  border-radius: 50%;
+  background-color: #f5f5f5;
+  width: 0.84em;
+  height: 0.84em;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+}
+.c100 .slice {
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  clip: rect(0em, 1em, 1em, 0.5em);
+}
+
+.c100.p25 .bar {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.c100.p50 .bar {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c100.p75 .bar {
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+
+.c100.p100 .bar {
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+.c100:hover {
+  cursor: default;
+}
+
+.c100:hover:after {
+  top: 0.04em;
+  left: 0.04em;
+  width: 0.92em;
+  height: 0.92em;
+}
+
+.c100.green .bar,
+.c100.green .fill {
+  border-color: #4db53c;
+}
+.c100.green:hover > span {
+  color: #4db53c;
+}
+
+.c100.green:hover > span {
+  color: black;
+}
+
+
+/* ---------------------- END Order List Page --------------- */
