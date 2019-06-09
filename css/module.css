@@ -1428,3 +1428,229 @@ body {
 
 
 /* ---------------------- END Order List Page --------------- */
+
+/* ----------------------- Status Page ------------------------- */
+.invoice-main {
+  margin: 0 auto;
+  max-width: 1080px;
+}
+
+@media screen and (min-width: 1080px) {
+  .invoice-main {
+    margin: 64px auto;
+  }
+}
+
+@media screen and (min-width: 480px){
+  .invoice-header .form-group {
+    display: flex;
+    align-items: center;
+  }
+  .invoice-header .label {
+    min-width: 160px;
+  }
+  .invoice-header .form-control {
+    margin: 0;
+  }
+}
+
+.invoice-status {
+  display: flex;
+}
+
+.order-status {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  color: white;
+}
+
+.order-status + .order-status {
+  margin-left: 16px;
+}
+
+.order-status-content {
+  position: absolute;
+  top: 0;
+  margin: 16.5px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.order-status-text {
+  display: none;
+}
+
+@media screen and (min-width: 640px) {
+  .order-status-text {
+    display: inline;
+  }
+}
+
+.parallelogram, .parallelogram2 {
+  /* width: 50px; */
+	height: 25px;
+	background-color: var(--green-color);
+}
+.parallelogram {
+  transform: skew(40deg);
+}
+.parallelogram2 {
+	transform: skew(-40deg);
+}
+/* ------------------------- END Status Page -------------------------------- */
+
+/* ------------------------- Review Page -------------------------------- */
+.review-star {
+  margin-top: 8px;
+  font-size: 1.4rem;
+  width: 100%;
+  float: right;
+  display: inline-block;
+}
+
+@media screen and (min-width: 521px) {
+  .review-star {
+    width: auto;
+    margin-top: 0;
+  }
+}
+
+@keyframes a {
+    0% {
+        transform: scale(1)
+    }
+    99% {
+        transform: scale(4);
+        opacity: 0
+    }
+    to {
+        transform: scale(1);
+        opacity: 0
+    }
+}
+
+.starability-grow {
+    display: block;
+    position: relative;
+    width: 150px;
+    min-height: 30px;
+    padding: 0;
+    border: none
+}
+
+.starability-grow>input[id] {
+    position: absolute;
+    margin-right: -100%;
+    opacity: 0
+}
+
+.starability-grow>input[id]:checked~label,
+.starability-grow>input[id]:focus~label,
+.starability-grow>input[id]:hover~label {
+    background-position: 0 -30px
+}
+
+.starability-grow>input:focus+label {
+    outline: 1px dotted #999
+}
+
+.starability-grow>label {
+    position: relative;
+    display: inline-block;
+    float: right;
+    width: 30px;
+    height: 30px;
+    color: transparent;
+    cursor: pointer;
+    background-image: url(../images/star-icon.png);
+    background-repeat: no-repeat
+}
+
+@media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi),screen and (-webkit-min-device-pixel-ratio:2) {
+    .starability-grow>label {
+        background-image:url(../images/star-icon@2x.png);
+        background-size: 30px auto
+    }
+}
+
+.starability-grow>label:before {
+    display: none;
+    position: absolute;
+    content: ' ';
+    width: 30px;
+    height: 30px;
+    background-image: url(../images/star-icon.png);
+    background-repeat: no-repeat;
+    bottom: 0
+}
+
+@media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi),screen and (-webkit-min-device-pixel-ratio:2) {
+    .starability-grow>label:before {
+        background-image:url(../images/star-icon@2x.png);
+        background-size: 30px auto
+    }
+}
+
+.starability-grow>input[id]:checked+label:before {
+    display: block;
+    animation-duration: 1s;
+    animation-name: a;
+    animation-fill-mode: forwards
+}
+
+
+.review-text {
+  margin-top: 8px;
+  width: 100%;
+  min-height: 64px;
+  resize: none;
+  box-sizing: border-box;
+  border: none;
+  /* border: 1px solid black; */
+}
+
+.review-main {
+  margin: 0 auto;
+  max-width: 1080px;
+}
+
+.review-main .box {
+  cursor: auto;
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  background-color: moccasin;
+}
+
+.review-main .box + .box {
+  margin-top: 16px;
+}
+
+@media screen and (min-width: 584px) {
+  .review-main .box-picture {
+    width: 128px;
+    height: 128px;
+    margin-right: 8px;
+  }
+  .review-main .box-content {
+    display: flex;
+    flex-direction: column;
+  }
+  .review-main .box-detail {
+    min-height: auto;
+    margin-left: 0;
+  }
+  .review-main .box {
+    min-height: 128px;
+  }
+  .review-main .box-title {
+    font-size: 1.5rem;
+  }
+  .review-main .box-info {
+    font-size: 1.1rem;
+  }
+  .review-main .box-description {
+    font-size: 1rem;
+  }
+}
+/* ---------------------------- END Review Page -------------------------- */

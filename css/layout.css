@@ -24,6 +24,9 @@
 .l-col-group-sm > * + * {
   margin-top: 8px;
 }
+.l-col-group-md > * + * {
+  margin-top: 16px;
+}
 .l-row-group-sm > * + * {
   margin-left: 8px;
 }

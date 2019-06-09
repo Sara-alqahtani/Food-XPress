@@ -88,27 +88,11 @@ window.addEventListener("resize",
   true
 );
 
-function scrollToTargetAdjusted(){
-    var element = document.getElementById('B1#GF');
-    var headerOffset = document.getElementsByClassName('header').offsetHeight;
-    var elementPosition = element.offsetTop;
-    var offsetPosition = elementPosition - headerOffset;
-
-    window.scrollTo({
-         top: offsetPosition,
-         behavior: "smooth"
-    });
-}
-
 window.addEventListener("click",
   function() {
-    // scrollToTargetAdjusted();
-    // console.log("hello");
     // console.log(event);
-    // document.getElementById('D6#GF')
-    //   .scrollIntoView({
-    //   behavior: 'smooth'
-    // });
+    // console.log(this);
+    // console.log('hello');
   },
   true
 );
