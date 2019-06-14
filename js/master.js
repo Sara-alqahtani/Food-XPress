@@ -88,11 +88,48 @@ window.addEventListener("resize",
   true
 );
 
+function scrollToTargetAdjusted(){
+    var element = document.getElementById('B1#GF');
+    var headerOffset = document.getElementsByClassName('header').offsetHeight;
+    var elementPosition = element.offsetTop;
+    var offsetPosition = elementPosition - headerOffset;
+
+    window.scrollTo({
+         top: offsetPosition,
+         behavior: "smooth"
+    });
+}
+
+var foodButton = document.getElementById("foodPop");
+var modal = document.getElementById("js-foodPopUp");
+var span = document.getElementById("js-close");
+
 window.addEventListener("click",
   function() {
+    // scrollToTargetAdjusted();
+    // console.log("hello");
     // console.log(event);
-    // console.log(this);
-    // console.log('hello');
+    // document.getElementById('D6#GF')
+    //   .scrollIntoView({
+    //   behavior: 'smooth'
+    // });
+    if (event.target == modal) {
+    modal.style.display = "none";
+  }
+
   },
   true
 );
+
+
+foodButton.onclick = function() {
+  modal.style.display = "flex";
+  console.log("Checkcheck");
+}
+
+span.onclick = function() {
+  var modal = document.getElementById("js-foodPopUp");
+  modal.style.display = "none";
+  console.log("POP success");
+}
+
