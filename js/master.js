@@ -100,6 +100,10 @@ function scrollToTargetAdjusted(){
     });
 }
 
+var foodButton = document.getElementById("foodPop");
+var modal = document.getElementById("js-foodPopUp");
+var span = document.getElementById("js-close");
+
 window.addEventListener("click",
   function() {
     // scrollToTargetAdjusted();
@@ -109,6 +113,23 @@ window.addEventListener("click",
     //   .scrollIntoView({
     //   behavior: 'smooth'
     // });
+    if (event.target == modal) {
+    modal.style.display = "none";
+  }
+
   },
   true
 );
+
+
+foodButton.onclick = function() {
+  modal.style.display = "flex";
+  console.log("Checkcheck");
+}
+
+span.onclick = function() {
+  var modal = document.getElementById("js-foodPopUp");
+  modal.style.display = "none";
+  console.log("POP success");
+}
+

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link href="../css/master.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="../js/master.js"></script>
+    <!-- <script type="text/javascript" src="../js/master.js"></script> -->
     <title>Food XPress</title>
   </head>
   <body>
@@ -212,7 +212,7 @@
             <div class="box-list-title" id="category-burger">
               <h5>Burger</h5>
             </div>
-           <div class="card box">
+           <div id="foodPop" class="card box"  >
              <div class="box-picture">
                <img src="../images/burger.jpg" class="box-picture">
              </div>
@@ -274,17 +274,17 @@
              </div>
            </div>
           </div>
-	    		<div class="box-list">
+          <div class="box-list">
             <div class="box-list-title" id="category-beverage">
               <h5>Beverage</h5>
             </div>
-		    	 	<div class="card box">
-		    	 		<span class="box-picture">
-		    	 			<img src="../images/burger.jpg" class="box-picture">
-		    	 		</span>
-		    	 		<div class="box-content">
-		    	 			<div class="box-detail">
-		    	 				<div class="box-title">Green Tea</div>
+            <div class="card box">
+              <span class="box-picture">
+                <img src="../images/burger.jpg" class="box-picture">
+              </span>
+              <div class="box-content">
+                <div class="box-detail">
+                  <div class="box-title">Green Tea</div>
                   <div class="">
                     <span class="box-info">RM 1.06</span>
                     <span class="box-info">
@@ -298,20 +298,20 @@
                       4.7
                     </span>
                   </div>
-		    	 			</div>
-		    	 			<div class="box-description">
-		    	 				Here is some word.Here is some word.
-		    	 			</div>
-		    	 		</div>
-		    	 	</div>
-		    	 	<div class="card box">
-		    	 		<div class="box-picture">
-		    	 			<img src="../images/burger.jpg" class="box-picture">
-		    	 		</div>
-		    	 		<div class="box-content">
-		    	 			<div class="box-detail">
-		    	 				<div class="box-title">Orange Juice</div>
-			    	 			<div class="">
+                </div>
+                <div class="box-description">
+                  Here is some word.Here is some word.
+                </div>
+              </div>
+            </div>
+            <div class="card box">
+              <div class="box-picture">
+                <img src="../images/burger.jpg" class="box-picture">
+              </div>
+              <div class="box-content">
+                <div class="box-detail">
+                  <div class="box-title">Orange Juice</div>
+                  <div class="">
                     <span class="box-info">RM 5.99</span>
                     <span class="box-info">
                       <i class="fas fa-hourglass-half"></i>
@@ -325,13 +325,56 @@
                     </span>
                   </div>
                 </div>
-		    	 			<div class="box-description">
-		    	 				Here is some word.Here is some word.Here is some word.Here is some word.Here is some word.Here is some word.Here is some word.
-		    	 			</div>
-		    	 		</div>
-		    	 	</div>
-		    	 </div>
-	    	</main>
+                <div class="box-description">
+                  Here is some word.Here is some word.Here is some word.Here is some word.Here is some word.Here is some word.Here is some word.
+                </div>
+              </div>
+            </div>
+           </div>
+        </main>
+
+        <div id="js-foodPopUp" class="popUp">
+          <div class="popBox">
+            <div class="card box popCard">
+             <div class="box-picture">
+               <img src="../images/burger.jpg" class="box-picture">
+             </div>
+             <div id="js-close" class="close">
+               &times;
+             </div>
+             <div class="box-content">
+               <div class="box-detail">
+                 <div class="box-title">Samba Dancing</div>
+                 <div class="">
+                   <span class="box-info">RM 416.00</span>
+                   <span class="box-info">
+                     <i class="fas fa-hourglass-half"></i>
+                     1h 10min
+                   </span>
+                   <span class="box-info">
+                     <span class="rating-star">
+                       <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
+                     </span>
+                     3.1
+                   </span>
+                 </div>
+               </div>
+               <div class="box-description">
+                 Here is some word.Here is some word.Here is some word.Here is some word.Here is some word.Here is some word.Here is some word.
+               </div>
+               <div class="remarks-text">
+                  Remark:<br><br>
+                 <textarea class="text-area" rows="3" >
+                   Here is some word.Here is some word.Here is some word.Here is some word.Here is some word.Here is some word.Here is some word.Here is some word.Here is some word.Here is some word.Here is some word.Here is some word.Here is some word.Here is some word.
+                 </textarea>
+               </div>
+               <div class="add-button">
+                 <button class="btn">Add</button>
+               </div>
+             </div>
+           </div>
+          </div>
+        </div>
       </main>
       <footer class="footer l-col-group-sm">
         <header class="l-vertical-center">
@@ -377,5 +420,6 @@
         </footer>
       </footer>
     </div>
+    <script type="text/javascript" src="../js/master.js"></script>
   </body>
 </html>

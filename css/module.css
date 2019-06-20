@@ -1136,3 +1136,596 @@ body {
 }
 
 /* ---------------------- END Order Page ---------------------- */
+/* ---------------------- START Order List Page --------------- */
+.box-order-main {
+  padding: 48px 16px 0 16px;
+  background-color: rgba(255,255,255);
+  min-height: calc(100vh - 105px - 544px);
+  box-sizing: border-box;
+}
+
+@media screen and (min-width: 1024px) {
+  .box-order-main {
+    min-height: calc(100vh - 64px - 246px);
+  }
+}
+.orderlist-box  {
+  margin: 10px;
+  padding:30px 20px;
+  max-width: 800px;
+  min-height: 100px;
+  background-color: white;
+  border: solid 3px black;
+}
+@media screen and (min-width: 320px) {
+  .orderlist-box {
+    margin: auto;
+  }
+@media screen and (min-width: 768px) {
+  .orderlist-box {
+    margin: 96px auto;
+  }
+}
+
+.order-list-title{
+  padding: 8px;
+  border-radius: 8px;
+}
+.orderlist-box-detail {
+  margin: auto;
+  padding:5px;
+  font-size: 1.2rem;
+}
+
+.orderlist-box-text{
+  margin:10px;
+}
+.orderlist-box-title{
+  width:110px;
+  padding:5px;
+}
+
+.order-status-chart{
+    height:100px;
+    width:100px;
+    margin:10px 20px;
+    float:right;
+
+}
+@media screen and (min-width: 320px) {
+  .order-status-chart {
+    float: none;
+    margin:10px auto;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .order-status-chart {
+    float:right;
+    margin:10px;
+  }
+}
+
+@media screen and (min-width:320px) {
+  .orderlist-box-info {
+    padding:5px;
+  }
+}
+
+/*Cicrle pie*/
+.rect-auto,
+.c100.p51 .slice,
+.c100.p52 .slice,
+.c100.p53 .slice,
+.c100.p54 .slice,
+.c100.p55 .slice,
+.c100.p56 .slice,
+.c100.p57 .slice,
+.c100.p58 .slice,
+.c100.p59 .slice,
+.c100.p60 .slice,
+.c100.p61 .slice,
+.c100.p62 .slice,
+.c100.p63 .slice,
+.c100.p64 .slice,
+.c100.p65 .slice,
+.c100.p66 .slice,
+.c100.p67 .slice,
+.c100.p68 .slice,
+.c100.p69 .slice,
+.c100.p70 .slice,
+.c100.p71 .slice,
+.c100.p72 .slice,
+.c100.p73 .slice,
+.c100.p74 .slice,
+.c100.p75 .slice,
+.c100.p76 .slice,
+.c100.p77 .slice,
+.c100.p78 .slice,
+.c100.p79 .slice,
+.c100.p80 .slice,
+.c100.p81 .slice,
+.c100.p82 .slice,
+.c100.p83 .slice,
+.c100.p84 .slice,
+.c100.p85 .slice,
+.c100.p86 .slice,
+.c100.p87 .slice,
+.c100.p88 .slice,
+.c100.p89 .slice,
+.c100.p90 .slice,
+.c100.p91 .slice,
+.c100.p92 .slice,
+.c100.p93 .slice,
+.c100.p94 .slice,
+.c100.p95 .slice,
+.c100.p96 .slice,
+.c100.p97 .slice,
+.c100.p98 .slice,
+.c100.p99 .slice,
+.c100.p100 .slice {
+  clip: rect(auto, auto, auto, auto);
+}
+.pie,
+.c100 .bar,
+.c100.p51 .fill,
+.c100.p75 .fill,
+.c100.p100 .fill {
+  position: absolute;
+  border: 0.08em solid #307bbb;
+  width: 0.84em;
+  height: 0.84em;
+  clip: rect(0em, 0.5em, 1em, 0em);
+  border-radius: 50%;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+.pie-fill,
+.c100.p75 .bar:after,
+.c100.p75 .fill,
+.c100.p100 .bar:after,
+.c100.p100 .fill {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.c100 {
+  position: relative;
+  font-size: 100px;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  float: left;
+  margin: 0 0.1em 0.1em 0;
+  background-color: #cccccc;
+}
+.c100 *,
+.c100 *:before,
+.c100 *:after {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+.c100.center {
+  float: none;
+  margin: 0 auto;
+}
+
+.c100 > span {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 5em;
+  line-height: 5em;
+  font-size: 0.2em;
+  color: #cccccc;
+  display: block;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -webkit-transition-timing-function: ease-out;
+  -moz-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.c100:after {
+  position: absolute;
+  top: 0.08em;
+  left: 0.08em;
+  display: block;
+  content: " ";
+  border-radius: 50%;
+  background-color: #f5f5f5;
+  width: 0.84em;
+  height: 0.84em;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+}
+.c100 .slice {
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  clip: rect(0em, 1em, 1em, 0.5em);
+}
+
+.c100.p25 .bar {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.c100.p50 .bar {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c100.p75 .bar {
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+
+.c100.p100 .bar {
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+.c100:hover {
+  cursor: default;
+}
+
+.c100:hover:after {
+  top: 0.04em;
+  left: 0.04em;
+  width: 0.92em;
+  height: 0.92em;
+}
+
+.c100.green .bar,
+.c100.green .fill {
+  border-color: #4db53c;
+}
+.c100.green:hover > span {
+  color: #4db53c;
+}
+
+.c100.green:hover > span {
+  color: black;
+}
+
+
+/* ---------------------- END Order List Page --------------- */
+
+/* ----------------------- Status Page ------------------------- */
+.invoice-main {
+  margin: 0 auto;
+  max-width: 1080px;
+}
+
+@media screen and (min-width: 1080px) {
+  .invoice-main {
+    margin: 64px auto;
+  }
+}
+
+@media screen and (min-width: 480px){
+  .invoice-header .form-group {
+    display: flex;
+    align-items: center;
+  }
+  .invoice-header .label {
+    min-width: 160px;
+  }
+  .invoice-header .form-control {
+    margin: 0;
+  }
+}
+
+.invoice-status {
+  display: flex;
+}
+
+.order-status {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  color: white;
+}
+
+.order-status + .order-status {
+  margin-left: 16px;
+}
+
+.order-status-content {
+  position: absolute;
+  top: 0;
+  margin: 16.5px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.order-status-text {
+  display: none;
+}
+
+@media screen and (min-width: 640px) {
+  .order-status-text {
+    display: inline;
+  }
+}
+
+.parallelogram, .parallelogram2 {
+  /* width: 50px; */
+	height: 25px;
+	background-color: var(--green-color);
+}
+.parallelogram {
+  transform: skew(40deg);
+}
+.parallelogram2 {
+	transform: skew(-40deg);
+}
+/* ------------------------- END Status Page -------------------------------- */
+
+/* ------------------------- Review Page -------------------------------- */
+.review-star {
+  margin-top: 8px;
+  font-size: 1.4rem;
+  width: 100%;
+  float: right;
+  display: inline-block;
+}
+
+@media screen and (min-width: 521px) {
+  .review-star {
+    width: auto;
+    margin-top: 0;
+  }
+}
+
+@keyframes a {
+    0% {
+        transform: scale(1)
+    }
+    99% {
+        transform: scale(4);
+        opacity: 0
+    }
+    to {
+        transform: scale(1);
+        opacity: 0
+    }
+}
+
+.starability-grow {
+    display: block;
+    position: relative;
+    width: 150px;
+    min-height: 30px;
+    padding: 0;
+    border: none
+}
+
+.starability-grow>input[id] {
+    position: absolute;
+    margin-right: -100%;
+    opacity: 0
+}
+
+.starability-grow>input[id]:checked~label,
+.starability-grow>input[id]:focus~label,
+.starability-grow>input[id]:hover~label {
+    background-position: 0 -30px
+}
+
+.starability-grow>input:focus+label {
+    outline: 1px dotted #999
+}
+
+.starability-grow>label {
+    position: relative;
+    display: inline-block;
+    float: right;
+    width: 30px;
+    height: 30px;
+    color: transparent;
+    cursor: pointer;
+    background-image: url(../images/star-icon.png);
+    background-repeat: no-repeat
+}
+
+@media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi),screen and (-webkit-min-device-pixel-ratio:2) {
+    .starability-grow>label {
+        background-image:url(../images/star-icon@2x.png);
+        background-size: 30px auto
+    }
+}
+
+.starability-grow>label:before {
+    display: none;
+    position: absolute;
+    content: ' ';
+    width: 30px;
+    height: 30px;
+    background-image: url(../images/star-icon.png);
+    background-repeat: no-repeat;
+    bottom: 0
+}
+
+@media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi),screen and (-webkit-min-device-pixel-ratio:2) {
+    .starability-grow>label:before {
+        background-image:url(../images/star-icon@2x.png);
+        background-size: 30px auto
+    }
+}
+
+.starability-grow>input[id]:checked+label:before {
+    display: block;
+    animation-duration: 1s;
+    animation-name: a;
+    animation-fill-mode: forwards
+}
+
+
+.review-text {
+  margin-top: 8px;
+  width: 100%;
+  min-height: 64px;
+  resize: none;
+  box-sizing: border-box;
+  border: none;
+  /* border: 1px solid black; */
+}
+
+.review-main {
+  margin: 0 auto;
+  max-width: 1080px;
+}
+
+.review-main .box {
+  cursor: auto;
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  background-color: moccasin;
+}
+
+.review-main .box + .box {
+  margin-top: 16px;
+}
+
+@media screen and (min-width: 584px) {
+  .review-main .box-picture {
+    width: 128px;
+    height: 128px;
+    margin-right: 8px;
+  }
+  .review-main .box-content {
+    display: flex;
+    flex-direction: column;
+  }
+  .review-main .box-detail {
+    min-height: auto;
+    margin-left: 0;
+  }
+  .review-main .box {
+    min-height: 128px;
+  }
+  .review-main .box-title {
+    font-size: 1.5rem;
+  }
+  .review-main .box-info {
+    font-size: 1.1rem;
+  }
+  .review-main .box-description {
+    font-size: 1rem;
+  }
+}
+/* ---------------------------- END Review Page -------------------------- */
+
+/* ---------------------------pop out box ----------------------------------*/
+.popBox {
+  margin: 12px 10px 56px 10px;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+}
+
+.popUp {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 100; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  justify-content: center;
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.popCard {
+  height: 350px;
+}
+
+@media screen and (min-width: 450px){
+  .popBox {
+    width: 425px;
+    /*height: 350px;
+    display: flex;
+    justify-content: center;*/
+  }
+}
+
+@media screen and (min-width: 820px){
+  .popBox {
+    width: 532px;
+  }
+}
+
+@media screen and (min-width: 1240px){
+  .popBox {
+    width: 632px;
+  }
+}
+
+
+.text-area {
+  width: 97%;
+}
+
+.add-button{
+  float: right;
+  margin-top: 15px;
+}
+
+/*----------------------------------END pop out box -------------------------------*/
