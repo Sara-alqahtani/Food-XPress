@@ -1,5 +1,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="foodxpress.*" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -16,8 +17,9 @@
         Repository repository = new Repository(provider);
         System.out.println("Repository: " + repository);
 
-        int shopId = 4;
-        int orderId = 1;
+
+        int orderId = Integer.valueOf(request.getParameter("order_id")) ;
+        int shopId = Integer.valueOf(request.getParameter("shop_id")) ;
         Order order = repository.getOrderInfo(shopId, orderId);
         ArrayList<OrderItem> orderItems = repository.getAllOrderItemsInOrder(shopId, orderId);
     %>

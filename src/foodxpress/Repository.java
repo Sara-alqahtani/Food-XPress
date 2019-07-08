@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.servlet.http.*;
 
 public class Repository {
     private SQLProvider provider;
@@ -37,6 +38,7 @@ public class Repository {
     }
 
     public User login(String username, String password) {
+
         String sql = "SELECT * FROM users WHERE username='" +
                 username + "' AND password='" +
                 password + "';";
@@ -71,6 +73,45 @@ public class Repository {
             e.printStackTrace();
         }
         return shops;
+    }
+
+    public ArrayList<Order> getAllOrdersofUsers(String username){
+
+        String sql="SELECT orders.*,shops.name as shop_name\n" +
+                "FROM orders,shops\n" +
+                "WHERE username= '"+ username+ "' AND orders.shop_id = shops.id"+ " \n" +
+                "Order by order_datetime DESC;";
+        System.out.println(sql);
+        ArrayList<Order> orderlist = new ArrayList<>();
+
+        try {
+            Statement stm = provider.connection.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                orderlist.add(new Order(rs));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return orderlist;
+    }
+
+    public Shop getShopName (int shopId,int orderId){
+        String sql= " SELECT name,shops.id,orders.id FROM shops,orders\n" +
+                "WHERE shops.id='"+shopId+"' AND orders.id= '"+ orderId +"' AND shops.id= orders.shop_id;";
+        System.out.println(sql);
+        Shop shopname = null;
+        try {
+            Statement stm = provider.connection.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            if (rs.next()) {
+                shopname = new Shop(rs);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return shopname;
     }
 
     public Order getOrderInfo(int shopId, int orderId) {

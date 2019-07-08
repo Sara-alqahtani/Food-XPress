@@ -60,8 +60,16 @@
         <url-pattern>/home</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>OrderStatus</servlet-name>
-        <jsp-file>/order-status.jsp</jsp-file>
+        <servlet-name>OrderList</servlet-name>
+        <jsp-file>/orderList.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderList</servlet-name>
+        <url-pattern>/order-list</url-pattern>
+    </servlet-mapping>
+    <servlet>
+    <servlet-name>OrderStatus</servlet-name>
+    <jsp-file>/order-status.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>OrderStatus</servlet-name>

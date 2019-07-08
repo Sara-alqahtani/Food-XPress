@@ -17,7 +17,7 @@ public class Order {
     public double total;
     public OrderStatus status;
 
-    Order(ResultSet rs) {
+    public Order(ResultSet rs) {
         try {
             id = rs.getInt("id");
             shop_id = rs.getInt("shop_id");

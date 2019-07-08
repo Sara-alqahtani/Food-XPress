@@ -20,10 +20,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="order-status">
+                    <a href="order-list">
                         <button type="button" class="nav-btn">
                             <i class="fas fa-clipboard-list"></i>
-                            <span>STATUS</span>
+                            <span>ORDER</span>
                         </button>
                     </a>
                 </li>

@@ -56,7 +56,9 @@ button:hover {}
 
 form {}
 
-a {}
+a {
+  text-decoration: none;
+}
 a:hover {}
 
 hr {
