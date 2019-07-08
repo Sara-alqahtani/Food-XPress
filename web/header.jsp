@@ -3,16 +3,15 @@
 <%
     User user = (User) session.getAttribute("user");
 %>
-<!DOCTYPE html>
 <header class="header">
     <div>
-        <img src="images/logo.png" alt="Logo">
+        <img src="<%=request.getContextPath()%>/images/logo.png" alt="Logo">
     </div>
     <div class="header-navigation">
         <nav>
             <ul class="navigation-horizontal">
                 <li>
-                    <a href="home">
+                    <a href="<%=request.getContextPath()%>/home">
                         <button type="button" class="nav-btn">
                             <i class="fas fa-home"></i>
                             <span>HOME</span>
@@ -20,7 +19,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="order-status">
+                    <a href="<%=request.getContextPath()%>/order-status">
                         <button type="button" class="nav-btn">
                             <i class="fas fa-clipboard-list"></i>
                             <span>STATUS</span>

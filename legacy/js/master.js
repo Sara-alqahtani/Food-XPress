@@ -5,7 +5,6 @@ function checkOffset() {
   var cartContent = document.getElementById('js-cart-content');
   var footer = document.getElementsByClassName('footer')[0];
 
-  // home sidebar
   if (homeSidebar) {
     if (window.innerWidth >= 548) {
       if (homeSidebar.offsetTop
@@ -22,8 +21,6 @@ function checkOffset() {
     }
   }
 
-
-  // sidebar
   if (sidebar) {
     if (window.innerWidth >= 820) {
       if (sidebar.offsetTop
@@ -40,7 +37,6 @@ function checkOffset() {
     }
   }
 
-  // cartContent
   if (cartContent) {
     var cartBtn = document.getElementsByClassName('cart-btn')[0];
     if (window.innerWidth >= 644) {
@@ -60,18 +56,46 @@ function checkOffset() {
   }
 }
 
-// window.onload = function() {
-//   checkOffset();
-// };
-// window.onscroll = function() {
-//   checkOffset();
-// };
-// window.onresize = function() {
-//   checkOffset();
-// };
 window.addEventListener("load",
   function() {
     checkOffset();
+    var foodButtons = document.getElementsByClassName("js-food-pop-up-btn");
+  	var foodPopUp = document.getElementById("js-food-pop-up");
+  	var closeButton = document.getElementById("js-food-pop-up-close-btn");
+    var title = foodPopUp.getElementsByClassName("box-title")[0];
+    var price = foodPopUp.getElementsByClassName("box-info")[0];
+    var time = foodPopUp.getElementsByClassName("box-info")[1];
+    var rating = foodPopUp.getElementsByClassName("box-info")[2];
+    var description = foodPopUp.getElementsByClassName("box-description")[0];
+    var remark = foodPopUp.getElementsByClassName("review-text-area")[0];
+
+    if (foodButtons) {
+      for (var i = 0; i < foodButtons.length; i++) {
+        foodButtons[i].onclick = function() {
+          title.innerHTML = this.getElementsByClassName("box-title")[0].innerHTML;
+          price.innerHTML = this.getElementsByClassName("box-info")[0].innerHTML;
+          time.innerHTML = this.getElementsByClassName("box-info")[1].innerHTML;
+          rating.innerHTML = this.getElementsByClassName("box-info")[2].innerHTML;
+          description.innerHTML = this.getElementsByClassName("box-description")[0].innerHTML;
+          remark.value = "";
+          foodPopUp.style.display = "flex";
+        }
+      }
+    }
+
+  	if (closeButton) {
+  		closeButton.onclick = function() {
+  		  foodPopUp.style.display = "none";
+  		}
+  	}
+  	
+  	if (foodPopUp) {
+  		foodPopUp.onclick = function() {
+  			if (event.target == foodPopUp) {
+  		    	foodPopUp.style.display = "none";
+  		  	}
+  		}
+  	}
   },
   true
 );
@@ -87,49 +111,4 @@ window.addEventListener("resize",
   },
   true
 );
-
-function scrollToTargetAdjusted(){
-    var element = document.getElementById('B1#GF');
-    var headerOffset = document.getElementsByClassName('header').offsetHeight;
-    var elementPosition = element.offsetTop;
-    var offsetPosition = elementPosition - headerOffset;
-
-    window.scrollTo({
-         top: offsetPosition,
-         behavior: "smooth"
-    });
-}
-
-var foodButton = document.getElementById("foodPop");
-var modal = document.getElementById("js-foodPopUp");
-var span = document.getElementById("js-close");
-
-window.addEventListener("click",
-  function() {
-    // scrollToTargetAdjusted();
-    // console.log("hello");
-    // console.log(event);
-    // document.getElementById('D6#GF')
-    //   .scrollIntoView({
-    //   behavior: 'smooth'
-    // });
-    if (event.target == modal) {
-    modal.style.display = "none";
-  }
-
-  },
-  true
-);
-
-
-foodButton.onclick = function() {
-  modal.style.display = "flex";
-  console.log("Checkcheck");
-}
-
-span.onclick = function() {
-  var modal = document.getElementById("js-foodPopUp");
-  modal.style.display = "none";
-  console.log("POP success");
-}
 

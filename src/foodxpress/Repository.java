@@ -4,6 +4,7 @@ import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExceptio
 import com.sun.org.apache.xpath.internal.operations.Or;
 
 import javax.swing.plaf.nimbus.State;
+import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -71,6 +72,45 @@ public class Repository {
             e.printStackTrace();
         }
         return shops;
+    }
+
+    public ArrayList<String> getAllCategoriesInShop(int shopId) {
+        String sql = "SELECT name " +
+                "FROM category " +
+                "WHERE shop_id=" +
+                shopId + " ORDER BY name ASC;";
+        System.out.println(sql);
+        ArrayList<String> categories = new ArrayList<>();
+        try {
+            Statement stm = provider.connection.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                categories.add(rs.getString("name"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return categories;
+    }
+
+    public ArrayList<Food> getAllFoodsInShop(int shopId) {
+        String sql = "SELECT id, name, category, shop_id, price, prepare_time, image, description, " +
+                "(rate_sum/rate_count) AS rating " +
+                "FROM foods " +
+                "WHERE shop_id=" +
+                shopId + " ORDER BY category ASC;";
+        System.out.println(sql);
+        ArrayList<Food> foods = new ArrayList<>();
+        try {
+            Statement stm = provider.connection.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                foods.add(new Food(rs));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return foods;
     }
 
     public Order getOrderInfo(int shopId, int orderId) {
