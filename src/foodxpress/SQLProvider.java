@@ -7,8 +7,8 @@ import java.sql.SQLException;
 public class SQLProvider {
     static final String JDBC_CLASS_NAME = "com.mysql.jdbc.Driver";
     static final String DB_URL = "jdbc:mysql://localhost:3306/foodxpress";
-    static final String USERNAME = "root";
-    static final String PASSWORD = "qwerty";
+    static final String USERNAME = Credential.USERNAME;
+    static final String PASSWORD = Credential.PASSWORD;
 
     Connection connection;
 
@@ -27,9 +27,5 @@ public class SQLProvider {
             System.out.println("Error getting connection: " + ex.getMessage());
             System.exit(-1);
         }
-//        catch (Exception ex) {
-//            System.out.println("Error: " + ex.getMessage());
-//            System.exit(-1);
-//        }
     }
 }

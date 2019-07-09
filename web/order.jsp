@@ -1,37 +1,33 @@
-<%@ page import="foodxpress.SQLProvider" %>
-<%@ page import="foodxpress.Repository" %>
-<%@ page import="foodxpress.Food" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="foodxpress.Utils" %>
+<%@ page import="foodxpress.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    SQLProvider provider = new SQLProvider();
+    Repository repository = new Repository(provider);
+
+    int shopId;
+    try {
+        shopId = Integer.parseInt(request.getParameter("shop_id"));
+    } catch (NumberFormatException e) {
+        e.printStackTrace();
+        response.sendRedirect("home");
+        return;
+    }
+    Shop shop = repository.getShopInfo(shopId);
+    ArrayList<String> categories = repository.getAllCategoriesInShop(shopId);
+    ArrayList<Food> foods = repository.getAllFoodsInShop(shopId);
+%>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
     <%@ include file="meta.jsp" %>
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/master.js" defer></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/js/test.js" defer></script>
-    <title>Food XPress</title>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/cart.js" defer></script>
+    <title><%=shop.name%> | Food Xpress</title>
 </head>
 <body>
 <div class="wrapper">
     <jsp:include page="header.jsp"/>
-    <%
-        SQLProvider provider = new SQLProvider();
-        Repository repository = new Repository(provider);
-
-        int shopId = Integer.parseInt(request.getParameter("shop_id"));
-
-        ArrayList<String> categories = repository.getAllCategoriesInShop(shopId);
-        ArrayList<Food> foods = repository.getAllFoodsInShop(shopId);
-
-        for (String category : categories) {
-            System.out.println(category);
-        }
-
-        for (Food food : foods) {
-            System.out.println(food.name);
-        }
-    %>
     <main class="main">
         <aside class="sidebar" id="js-sidebar">
             <button type="button" class="sidebar-btn square-icon-btn">
@@ -70,14 +66,14 @@
                     <tbody class="cart-order">
                     <tr class="cart-order-item">
                         <td>
-                            Duck rice
+                            Food Name
                         </td>
                         <td>
                             <button class="quantity-control"><i class="fas fa-minus-circle"></i></button>
-                            99
+                            0
                             <button class="quantity-control"><i class="fas fa-plus-circle"></i></button>
                         </td>
-                        <td>999.99</td>
+                        <td>0.00</td>
                         <td>
                             <button type="button" class="btn-order-delete">
                                 <i class="fas fa-trash-alt"></i>
@@ -87,67 +83,7 @@
                     <tr class="cart-order-remark">
                         <td colspan="3">
                             <i class="fas fa-angle-right"></i>
-                            <span>
-                      Remarks: This is some text. This is some text. This is some text.
-                      This is some text. This is some text. This is some text.
-                      This is some text. This is some text. This is some text.
-                      This is some text. This is some text. This is some text.
-                    </span>
-                        </td>
-                        <td></td>
-                    </tr>
-                    </tbody>
-                    <tbody class="cart-order">
-                    <tr class="cart-order-item">
-                        <td>
-                            Socceroos The Lot
-                        </td>
-                        <td>
-                            <button class="quantity-control"><i class="fas fa-minus-circle"></i></button>
-                            99
-                            <button class="quantity-control"><i class="fas fa-plus-circle"></i></button>
-                        </td>
-                        <td>999.99</td>
-                        <td>
-                            <button type="button" class="btn-order-delete">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="cart-order-remark">
-                        <td colspan="3">
-                            <!-- <i class="fas fa-angle-right"></i>
-                            <span>
-                              Remarks: This is some text. This is some text. This is some text.
-                              This is some text. This is some text. This is some text.
-                              This is some text. This is some text. This is some text.
-                              This is some text. This is some text. This is some text.
-                            </span> -->
-                        </td>
-                        <td></td>
-                    </tr>
-                    </tbody>
-                    <tbody class="cart-order">
-                    <tr class="cart-order-item">
-                        <td>
-                            Roasted chicken
-                        </td>
-                        <td>
-                            <button class="quantity-control"><i class="fas fa-minus-circle"></i></button>
-                            1
-                            <button class="quantity-control"><i class="fas fa-plus-circle"></i></button>
-                        </td>
-                        <td>7.00</td>
-                        <td>
-                            <button type="button" class="btn-order-delete">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="cart-order-remark">
-                        <td colspan="3">
-                            <i class="fas fa-angle-right"></i>
-                            <span>Remarks: More spicy plsss</span>
+                            <span>Remark</span>
                         </td>
                         <td></td>
                     </tr>
@@ -155,23 +91,19 @@
                     <tfoot id="js-cart-order-table-footer">
                     <tr class="cart-order-footer">
                         <td>SUBTOTAL</td>
-                        <td colspan="2" id="js-cart-subtotal">99999.99</td>
+                        <td colspan="2" id="js-cart-subtotal">0.00</td>
                     </tr>
                     <tr class="cart-order-footer">
                         <td>Delivery Fee</td>
-                        <td colspan="2" id="js-cart-delivery_fee">14.00</td>
+                        <td colspan="2" id="js-cart-delivery_fee"><%=Utils.toTwoDecimalPlaces(shop.delivery_fee)%></td>
                     </tr>
-                    <!-- <tr class="cart-order-footer">
-                        <td>SERVICE TAX</td>
-                        <td colspan="2">14.00</td>
-                    </tr> -->
                     <tr class="cart-order-footer">
                         <td>Discount</td>
-                        <td colspan="2" id="js-cart-discount">(999999.99)</td>
+                        <td colspan="2" id="js-cart-discount">(0.00)</td>
                     </tr>
                     <tr class="cart-order-footer">
                         <td>TOTAL</td>
-                        <td colspan="2" id="js-cart-total">9999.99</td>
+                        <td colspan="2" id="js-cart-total"><%=Utils.toTwoDecimalPlaces(shop.delivery_fee)%></td>
                     </tr>
                     </tfoot>
                 </table>
@@ -180,13 +112,13 @@
                     <button type="button" class="btn-rect">APPLY</button>
                 </div>
                 <div class="cart-checkout-btn-container">
-                    <button type="button" class="btn">CHECKOUT</button>
+                    <button type="button" class="btn" id="js-checkout-btn">CHECKOUT</button>
                 </div>
             </div>
         </aside>
         <main class="food-box box-main">
             <div class="box-main-title">
-                D1 # Bonda Cafe
+                <%=shop.name%>
             </div>
             <%
                 String previousCategory;
@@ -275,7 +207,7 @@
                 </div>
                 <div class="box-content">
                     <div class="box-detail">
-                        <div class="box-title">Food name</div>
+                        <div class="box-title">Food Name</div>
                         <div class="">
                             <span class="box-info">RM 0.00</span>
                             <span class="box-info">

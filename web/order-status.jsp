@@ -1,5 +1,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="foodxpress.*" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -12,12 +13,18 @@
     <jsp:include page="header.jsp"/>
     <%
         SQLProvider provider = new SQLProvider();
-        System.out.println("SQLProvider: " + provider);
         Repository repository = new Repository(provider);
-        System.out.println("Repository: " + repository);
 
-        int shopId = 4;
-        int orderId = 1;
+        int orderId;
+        int shopId;
+        try {
+            orderId = Integer.parseInt(request.getParameter("order_id")) ;
+            shopId = Integer.parseInt(request.getParameter("shop_id")) ;
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            response.sendRedirect("order-list");
+            return;
+        }
         Order order = repository.getOrderInfo(shopId, orderId);
         ArrayList<OrderItem> orderItems = repository.getAllOrderItemsInOrder(shopId, orderId);
     %>
@@ -51,8 +58,8 @@
                 </div>
                 <div class="invoice-header">
                     <div class="form-group">
-                        <label class="label">Order Number:</label>
-                        <input type="text" class="form-control" value="#<%=order.id%>" disabled>
+                        <label class="label">Order No.:</label>
+                        <input type="text" class="form-control" value="<%=order.shop_name%> #<%=order.id%>" disabled>
                     </div>
                     <div class="form-group">
                         <label class="label">Order Time:</label>

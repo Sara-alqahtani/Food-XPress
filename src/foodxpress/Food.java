@@ -14,6 +14,12 @@ public class Food {
     public String description;
     public double rating;
 
+    public Food(int id, String name, double price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+
     public Food(ResultSet rs) {
         try {
             id = rs.getInt("id");

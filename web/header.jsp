@@ -5,13 +5,13 @@
 %>
 <header class="header">
     <div>
-        <img src="<%=request.getContextPath()%>/images/logo.png" alt="Logo">
+        <img src="images/logo.png" alt="Logo">
     </div>
     <div class="header-navigation">
         <nav>
             <ul class="navigation-horizontal">
                 <li>
-                    <a href="<%=request.getContextPath()%>/home">
+                    <a href="home">
                         <button type="button" class="nav-btn">
                             <i class="fas fa-home"></i>
                             <span>HOME</span>
@@ -19,10 +19,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<%=request.getContextPath()%>/order-status">
+                    <a href="order-list">
                         <button type="button" class="nav-btn">
                             <i class="fas fa-clipboard-list"></i>
-                            <span>STATUS</span>
+                            <span>ORDER</span>
                         </button>
                     </a>
                 </li>

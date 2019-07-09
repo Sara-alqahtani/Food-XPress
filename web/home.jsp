@@ -6,7 +6,7 @@
 <head>
     <%@ include file="meta.jsp" %>
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/master.js" defer></script>
-    <title>Food XPress</title>
+    <title>All Shops | Food Xpress</title>
 </head>
 <body>
 <div class="wrapper">
