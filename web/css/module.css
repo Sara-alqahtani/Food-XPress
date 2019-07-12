@@ -195,7 +195,8 @@
   /* justify-content: space-around; */
 }
 
-.container, .welcome-container {
+.container, .welcome-container,
+.container-borderless {
   padding: 29px;
   border: solid 3px black;
   box-sizing: border-box;
@@ -206,6 +207,11 @@
 .welcome-container {
   background-color: white;
   opacity: 0.9;
+}
+
+.container-borderless {
+    padding: 32px;
+    border: none;
 }
 
 .container-footer,
@@ -241,6 +247,12 @@
   width: 256px;
   height: 256px;
   /* background-color: black; */
+}
+
+.profile-picture-sm {
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
 }
 
 html {
@@ -1523,7 +1535,7 @@ body {
 }
 
 @media screen and (min-width: 640px) {
-  .order-status-text {
+  .invoice-main .order-status-text {
     display: inline;
   }
 }
@@ -1775,4 +1787,62 @@ body {
   max-width: 48px;
 }
 
-/*----------------------------------END Pop-up box -------------------------------
+/*----------------------------------END Pop-up box ------------------------------- */
+/* ------------------------------------ Vendor Home ------------------------------------ */
+@media screen and (min-width: 548px) {
+  /* 320px + 52px + 176px */
+  .vendor-order-main {
+    margin-left: var(--sidebar-width);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .vendor-order-main .order-status-text {
+    display: inline;
+  }
+}
+
+.hover-hidden-child {
+  display: none;
+}
+
+.hover-hidden-parent:hover .hover-hidden-child {
+  display: initial;
+}
+
+.profile-picture-sm {
+  height: 64px;
+  width: 64px;
+}
+
+@media screen and (min-width: 546px) {
+  .vendor-order-main {
+    min-height: calc(100vh - 105px - 396px);
+  }
+}
+@media screen and (min-width: 640px) {
+  .vendor-order-main {
+    min-height: calc(100vh - 64px - 396px);
+  }
+}
+@media screen and (min-width: 1054px) {
+  .vendor-order-main {
+    min-height: calc(100vh - 64px - 246px);
+  }
+}
+
+.vendor-order-center-text {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vendor-order-section {
+  width: 100%;
+}
+
+.sidebar-item-selected {
+  background-color: tomato;
+}
+/* -------------------------------------- END Vendor home ---------------------- */

@@ -28,8 +28,8 @@
         Order order = repository.getOrderInfo(shopId, orderId);
         ArrayList<OrderItem> orderItems = repository.getAllOrderItemsInOrder(shopId, orderId);
     %>
-    <main class="main">
-        <section class="container invoice-main">
+    <main class="invoice-main">
+        <section class="container">
             <h4 class="text-center">Invoice</h4>
             <hr />
             <main class="l-col-group-md">
@@ -64,10 +64,6 @@
                     <div class="form-group">
                         <label class="label">Order Time:</label>
                         <input type="text" class="form-control" value="<%=Utils.printDate(order.datetime)%>" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label class="label">Promo Code:</label>
-                        <input type="text" class="form-control" value="<%=order.promo_code == 0 ? "N/A" : order.promo_code%>" disabled>
                     </div>
                 </div>
 
@@ -116,10 +112,16 @@
                             <td>Delivery Fee</td>
                             <td colspan="2"><%=Utils.toTwoDecimalPlaces(order.delivery_fee)%></td>
                         </tr>
+                        <%
+                            if (order.promo_code > 0) {
+                        %>
                         <tr class="cart-order-footer">
-                            <td>Discount</td>
+                            <td>Discount (Promo #<%=order.promo_code%>)</td>
                             <td colspan="2">(<%=Utils.toTwoDecimalPlaces(order.discount)%>)</td>
                         </tr>
+                        <%
+                            }
+                        %>
                         <tr class="cart-order-footer">
                             <td>TOTAL</td>
                             <td colspan="2"><%=Utils.toTwoDecimalPlaces(order.total)%></td>

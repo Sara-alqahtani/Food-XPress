@@ -91,4 +91,45 @@
         <servlet-name>OrderStatus</servlet-name>
         <url-pattern>/order-status</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>VendorLogin</servlet-name>
+        <jsp-file>/vendor-login.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VendorLogin</servlet-name>
+        <url-pattern>/vendor-login</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>VendorLoginServlet</servlet-name>
+        <servlet-class>foodxpress.VendorLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VendorLoginServlet</servlet-name>
+        <url-pattern>/vendor-login-servlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>VendorLogOutServlet</servlet-name>
+        <servlet-class>foodxpress.VendorLogOutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VendorLogOutServlet</servlet-name>
+        <url-pattern>/vendor-log-out-servlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>VendorHome</servlet-name>
+        <jsp-file>/vendor-home.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VendorHome</servlet-name>
+        <url-pattern>/vendor-home</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateOrderStatusServlet</servlet-name>
+        <servlet-class>foodxpress.UpdateOrderStatusServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateOrderStatusServlet</servlet-name>
+        <url-pattern>/update-order-status-servlet</url-pattern>
+    </servlet-mapping>
 </web-app>

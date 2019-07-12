@@ -15,7 +15,7 @@
             String username = user.username;
             SQLProvider provider = new SQLProvider();
             Repository repository = new Repository(provider);
-            ArrayList<Order> orderlist = repository.getAllOrdersofUsers(username);
+            ArrayList<Order> orderlist = repository.getAllOrdersofUser(username);
         %>
   	  <main class="box-order-main orderlist-box">
 
