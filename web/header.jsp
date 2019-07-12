@@ -37,8 +37,8 @@
                     <i class="fas fa-user"></i>
                 </button>
                 <ul class="navigation-vertical dropdown-content">
-                    <li><a href="view-profile.jsp">User Profile</a></li>
-                    <li><a href="change-password.jsp">Change Password</a></li>
+                    <li><a href="view-profile">User Profile</a></li>
+                    <li><a href="change-password">Change Password</a></li>
                     <li><a href="#">Log Out</a></li>
                 </ul>
             </nav>

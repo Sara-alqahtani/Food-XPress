@@ -35,7 +35,7 @@
             </form>
           </main>
           <footer class="container-footer-right">
-            <a class="link-btn" href="edit-profile.jsp">
+            <a class="link-btn" href="edit-profile">
               <i class="fas fa-user-edit"></i>
               Edit
             </a>

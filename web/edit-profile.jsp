@@ -21,7 +21,7 @@
               <img src="../images/profile.png" class="profile-picture" alt="Profile Picture">
               <button class="round-icon-btn upload-profile-picture-btn"><i class="fas fa-camera"></i></button>
             </div>
-            <form class="user-profile-form" method="post" action="edit-profile">
+            <form class="user-profile-form" method="post" action="edit-profile-servlet">
               <div class="form-group">
                 <label class="label" >User Name</label>
                 <input type="text" class="form-control" name="username" value="<%=user.username%>" disabled>
@@ -45,7 +45,7 @@
                 </div>
               </div>
               <div class="container-footer-right l-row-group-md">
-                <a class="link-btn" href="view-profile.jsp">Discard</a>
+                <a class="link-btn" href="view-profile">Discard</a>
                 <button class="btn-green" type="submit">Save</button>
               </div>
             </form>

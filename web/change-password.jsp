@@ -12,7 +12,7 @@
           <h4 class="text-center">Change Password</h4>
           <hr />
           <main>
-            <form method="post" action="change-password">
+            <form method="post" action="change-password-servlet">
               <div class="form-group">
                 <label class="label" for="current-password">Current password</label>
                 <input type="password" class="form-control" id="current-password" name="currentPassword" placeholder="Enter current password" required>
