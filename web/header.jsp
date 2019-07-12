@@ -31,15 +31,15 @@
         </nav>
         <div class="l-row-group-sm l-center">
                 <span class="header-username-text">
-                    <%=user.username!=null?user.username:"User"%>
+                    <%=user.username%>
                 </span>
             <nav class="dropdown">
                 <button type="button" class="round-icon-btn">
                     <i class="fas fa-user"></i>
                 </button>
                 <ul class="navigation-vertical dropdown-content">
-                    <li><a href="view-profile.html">User Profile</a></li>
-                    <li><a href="change-password.html">Change Password</a></li>
+                    <li><a href="view-profile.jsp">User Profile</a></li>
+                    <li><a href="change-password.jsp">Change Password</a></li>
                     <li><a href="#">Log Out</a></li>
                 </ul>
             </nav>

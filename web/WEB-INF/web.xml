@@ -75,4 +75,31 @@
         <servlet-name>OrderStatus</servlet-name>
         <url-pattern>/order-status</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateProfileServlet</servlet-name>
+        <servlet-class>foodxpress.UpdateProfileServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateProfileServlet</servlet-name>
+        <url-pattern>/edit-profile</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Profile</servlet-name>
+        <jsp-file>/view-profile.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Profile</servlet-name>
+        <url-pattern>/view-profile</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <servlet-class>foodxpress.ChangePasswordServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <url-pattern>/change-password</url-pattern>
+    </servlet-mapping>
+
 </web-app>

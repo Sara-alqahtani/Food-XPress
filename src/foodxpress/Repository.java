@@ -149,4 +149,37 @@ public class Repository {
         }
         return orderItems;
     }
+
+    public boolean updateUserInfo (String username, String mobile, String location){
+        String sql = "update users set mobile = '"+ mobile + " ',location = '"+ location +
+                "' where username = '"+ username + "';";
+        System.out.println(sql);
+        boolean isSuccess = false;
+        try {
+            Statement stm = provider.connection.createStatement();
+            stm.executeUpdate(sql);
+            isSuccess = true;
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return isSuccess;
+    }
+
+    public boolean changePassword (String username, String oldPassword, String newPassword){
+        String sql = "update users set password = '"+ newPassword +
+                "' where username = '"+ username + "'and password = '"+ oldPassword +"';";
+//        System.out.println(sql);
+        boolean isSuccess=false;
+
+        try{
+            Statement stm = provider.connection.createStatement();
+            stm.executeUpdate(sql);
+            isSuccess = true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return isSuccess;
+    }
 }
