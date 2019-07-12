@@ -1709,6 +1709,14 @@ body {
     font-size: 1rem;
   }
 }
+
+.select-option {
+  width: 64px;
+  height: 27px;
+  margin-top: 12px;
+  padding-left: 10px;
+  background-color: #F1F1F1;
+}
 /* ---------------------------- END Review Page -------------------------- */
 /* ---------------------------Pop-up box ----------------------------------*/
 

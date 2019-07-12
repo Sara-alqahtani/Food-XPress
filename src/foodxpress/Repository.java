@@ -3,7 +3,7 @@ package foodxpress;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import com.sun.org.apache.xpath.internal.operations.Or;
 
-import javax.swing.plaf.nimbus.State;
+import javax.xml.transform.Result;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -53,6 +53,42 @@ public class Repository {
             e.printStackTrace();
         }
         return user;
+    }
+
+    public boolean updateUserInfo(String username, String mobile, String location){
+        String sql = "UPDATE users SET mobile='"+ mobile + " ', location='"+ location +
+                "' WHERE username='"+ username + "';";
+        System.out.println(sql);
+        boolean isSuccess = false;
+        try {
+            Statement stm = provider.connection.createStatement();
+            stm.executeUpdate(sql);
+            isSuccess = true;
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return isSuccess;
+    }
+
+    public boolean changePassword(String username, String oldPassword, String newPassword){
+        String sql = "SELECT username FROM users WHERE username='" +
+                username + "' AND password='" +
+                oldPassword + "';";
+        boolean isSuccess = false;
+        try {
+            Statement stm = provider.connection.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            if (rs.next()) {
+                sql = "UPDATE users SET password='"+ newPassword +
+                        "' WHERE username='"+ username + "' AND password='"+ oldPassword +"';";
+//                System.out.println(sql);
+                stm.executeUpdate(sql);
+                isSuccess = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return isSuccess;
     }
 
     public ArrayList<Shop> getAllShops() {
@@ -161,7 +197,6 @@ public class Repository {
     }
 
     public ArrayList<Order> getAllOrdersofUser(String username){
-
         String sql="SELECT orders.*, shops.name AS shop_name " +
                 "FROM orders, shops " +
                 "WHERE username='"+ username+ "' AND orders.shop_id=shops.id " +
@@ -295,6 +330,27 @@ public class Repository {
             e.printStackTrace();
         }
         return vendor;
+    }
+
+    public boolean vendorChangePassword(String vendorId, String oldPassword, String newPassword){
+        String sql = "SELECT id FROM vendors WHERE id='" +
+                vendorId + "' AND password='" +
+                oldPassword + "';";
+        boolean isSuccess = false;
+        try {
+            Statement stm = provider.connection.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            if (rs.next()) {
+                sql = "UPDATE vendors SET password='"+ newPassword +
+                        "' WHERE id='"+ vendorId + "' AND password='"+ oldPassword +"';";
+//                System.out.println(sql);
+                stm.executeUpdate(sql);
+                isSuccess = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return isSuccess;
     }
 
     public ArrayList<Order> getAllOrdersOfShop(int shopId) {
