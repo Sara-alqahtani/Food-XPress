@@ -6,7 +6,7 @@
 <html lang="en" dir="ltr">
   <head>
     <%@ include file="meta.jsp" %>
-    <title>Food XPress</title>
+    <title>User Profile | Food XPress</title>
   </head>
   <body>
     <div class="wrapper">

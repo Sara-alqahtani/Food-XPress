@@ -1,7 +1,13 @@
-<%@ page import="foodxpress.User" %>
+<%@ page import="foodxpress.Vendor" %>
+<%@ page import="foodxpress.Shop" %>
+<%@ page import="foodxpress.Repository" %>
+<%@ page import="foodxpress.SQLProvider" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    User user = (User) session.getAttribute("user");
+    Vendor vendor = (Vendor) session.getAttribute("vendor");
+    SQLProvider provider = new SQLProvider();
+    Repository repository = new Repository(provider);
+    Shop shop = repository.getShopInfo(vendor.shop_id);
 %>
 <header class="header">
     <div>
@@ -11,18 +17,18 @@
         <nav>
             <ul class="navigation-horizontal">
                 <li>
-                    <a href="home">
+                    <a href="vendor-home">
                         <button type="button" class="nav-btn">
-                            <i class="fas fa-home"></i>
-                            <span>HOME</span>
+                            <i class="fas fa-clipboard-list"></i>
+                            <span>ORDER</span>
                         </button>
                     </a>
                 </li>
                 <li>
-                    <a href="order-list">
+                    <a href="#">
                         <button type="button" class="nav-btn">
-                            <i class="fas fa-clipboard-list"></i>
-                            <span>ORDER</span>
+                            <i class="fas fa-utensils"></i>
+                            <span>MENU</span>
                         </button>
                     </a>
                 </li>
@@ -30,16 +36,15 @@
         </nav>
         <div class="l-row-group-sm l-center">
                 <span class="header-username-text">
-                    <%=user.username%>
+                    <%=shop.name%>
                 </span>
             <nav class="dropdown">
                 <button type="button" class="round-icon-btn">
-                    <i class="fas fa-user"></i>
+                    <i class="fas fa-store"></i>
                 </button>
                 <ul class="navigation-vertical dropdown-content">
-                    <li><a href="view-profile">User Profile</a></li>
-                    <li><a href="change-password">Change Password</a></li>
-                    <li><a href="log-out-servlet">Log Out</a></li>
+                    <li><a href="vendor-change-password">Change Password</a></li>
+                    <li><a href="vendor-log-out-servlet">Log Out</a></li>
                 </ul>
             </nav>
         </div>

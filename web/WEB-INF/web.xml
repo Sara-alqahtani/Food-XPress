@@ -52,6 +52,14 @@
         <url-pattern>/login-servlet</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>LogOutServlet</servlet-name>
+        <servlet-class>foodxpress.LogOutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogOutServlet</servlet-name>
+        <url-pattern>/log-out-servlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>Home</servlet-name>
         <jsp-file>/home.jsp</jsp-file>
     </servlet>
@@ -93,14 +101,13 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>UpdateProfileServlet</servlet-name>
-        <servlet-class>foodxpress.UpdateProfileServlet</servlet-class>
+        <servlet-name>ViewProfile</servlet-name>
+        <jsp-file>/view-profile.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
-        <servlet-name>UpdateProfileServlet</servlet-name>
-        <url-pattern>/edit-profile-servlet</url-pattern>
+        <servlet-name>ViewProfile</servlet-name>
+        <url-pattern>/view-profile</url-pattern>
     </servlet-mapping>
-
     <servlet>
         <servlet-name>EditProfile</servlet-name>
         <jsp-file>/edit-profile.jsp</jsp-file>
@@ -109,21 +116,20 @@
         <servlet-name>EditProfile</servlet-name>
         <url-pattern>/edit-profile</url-pattern>
     </servlet-mapping>
-
     <servlet>
-        <servlet-name>Profile</servlet-name>
-        <jsp-file>/view-profile.jsp</jsp-file>
+        <servlet-name>UpdateProfileServlet</servlet-name>
+        <servlet-class>foodxpress.UpdateProfileServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Profile</servlet-name>
-        <url-pattern>/view-profile</url-pattern>
+        <servlet-name>UpdateProfileServlet</servlet-name>
+        <url-pattern>/edit-profile-servlet</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>ChangePassword</servlet-name>
+        <servlet-name>ChangePasssword</servlet-name>
         <jsp-file>/change-password.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ChangePassword</servlet-name>
+        <servlet-name>ChangePasssword</servlet-name>
         <url-pattern>/change-password</url-pattern>
     </servlet-mapping>
     <servlet>
@@ -133,6 +139,64 @@
     <servlet-mapping>
         <servlet-name>ChangePasswordServlet</servlet-name>
         <url-pattern>/change-password-servlet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>VendorLogin</servlet-name>
+        <jsp-file>/vendor-login.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VendorLogin</servlet-name>
+        <url-pattern>/vendor-login</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>VendorLoginServlet</servlet-name>
+        <servlet-class>foodxpress.VendorLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VendorLoginServlet</servlet-name>
+        <url-pattern>/vendor-login-servlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>VendorLogOutServlet</servlet-name>
+        <servlet-class>foodxpress.VendorLogOutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VendorLogOutServlet</servlet-name>
+        <url-pattern>/vendor-log-out-servlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>VendorChangePasssword</servlet-name>
+        <jsp-file>/vendor-change-password.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VendorChangePasssword</servlet-name>
+        <url-pattern>/vendor-change-password</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>VendorChangePasswordServlet</servlet-name>
+        <servlet-class>foodxpress.VendorChangePasswordServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VendorChangePasswordServlet</servlet-name>
+        <url-pattern>/vendor-change-password-servlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>VendorHome</servlet-name>
+        <jsp-file>/vendor-home.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VendorHome</servlet-name>
+        <url-pattern>/vendor-home</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateOrderStatusServlet</servlet-name>
+        <servlet-class>foodxpress.UpdateOrderStatusServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateOrderStatusServlet</servlet-name>
+        <url-pattern>/update-order-status-servlet</url-pattern>
     </servlet-mapping>
 
 </web-app>

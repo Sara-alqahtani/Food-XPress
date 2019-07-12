@@ -3,6 +3,7 @@ package foodxpress;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.EnumSet;
 
 public class Utils {
     public static String capitalize(String s) {
@@ -33,6 +34,30 @@ public class Utils {
             }
         } else if (minute > 0) {
             res += min + "min";
+        }
+        return res;
+    }
+
+    public static Integer tryParseInt(String str) {
+        Integer res = null;
+        if (str != null && !str.isEmpty()) {
+            try {
+                res = Integer.parseInt(str);
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+        return res;
+    }
+
+    public static <T extends Enum<T>> T tryParseEnum(Class<T> c, String str) {
+        T res = null;
+        if (c != null && str != null && !str.isEmpty()) {
+            try {
+                res = Enum.valueOf(c, str.toUpperCase());
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+            }
         }
         return res;
     }
