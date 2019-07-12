@@ -5,7 +5,8 @@
 <html lang="en" dir="ltr">
 <head>
     <%@ include file="meta.jsp" %>
-    <title>Food XPress</title>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/master.js" defer></script>
+    <title>All Shops | Food Xpress</title>
 </head>
 <body>
 <div class="wrapper">
@@ -59,23 +60,24 @@
                         Shop shop = shops.get(i);
                         // print card box
                 %>
-                <div class="card box">
-                    <div class="box-picture">
-                        <img src="<%=shop.image_url%>" class="box-picture" alt="shop image">
-                    </div>
-                    <div class="box-content">
-                        <div class="box-detail">
-                            <div class="box-title"><%=shop.name%></div>
-                            <div>
+                <a href="order?shop_id=<%=shop.id%>" class="link-no-decor">
+                    <div class="card box">
+                        <div class="box-picture">
+                            <img src="<%=shop.image_url%>" class="box-picture" alt="shop image">
+                        </div>
+                        <div class="box-content">
+                            <div class="box-detail">
+                                <div class="box-title"><%=shop.name%></div>
+                                <div>
                        <span class="box-info">
                          <i class="far fa-clock"></i>
                          <%=Utils.printTime(shop.operation_start_time)%> - <%=Utils.printTime(shop.operation_end_time)%>
                        </span>
-                                <span class="box-info">
+                                    <span class="box-info">
                          <i class="fas fa-hourglass-half"></i>
                          <%=Utils.printHourMinute(shop.delivery_time)%>
                        </span>
-                                <span class="box-info">
+                                    <span class="box-info">
                          <span class="rating-star">
                              <%
                                  double rating = Double.parseDouble(Utils.toOneDecimalPlaces(shop.rating));
@@ -104,13 +106,14 @@
                          </span>
                          <%=Utils.toOneDecimalPlaces(shop.rating)%>
                        </span>
+                                </div>
+                            </div>
+                            <div class="box-description">
+                                <%=shop.description%>
                             </div>
                         </div>
-                        <div class="box-description">
-                            <%=shop.description%>
-                        </div>
                     </div>
-                </div>
+                </a>
                 <%
                         i++;
                     } while (i < shops.size() && shops.get(i).location.equals(previousLocation));

@@ -737,7 +737,7 @@ body {
     opacity: 1.0;
   }
   #js-home-sidebar > .sidebar-content {
-    background-color: none;
+    background-color: transparent;
     height: auto;
     transform: translateX(var(--sidebar-width));
     transition: transform 250ms ease-in-out;
@@ -819,7 +819,7 @@ body {
     opacity: 1.0;
   }
   #js-sidebar > .sidebar-content {
-    background-color: none;
+    background-color: transparent;
     height: auto;
     transform: translateX(var(--sidebar-width));
     transition: transform 250ms ease-in-out;
@@ -1139,7 +1139,7 @@ body {
 /* ---------------------- START Order List Page --------------- */
 .box-order-main {
   padding: 48px 16px 0 16px;
-  background-color: rgba(255,255,255);
+  background-color: rgba(255,255,255, 1);
   min-height: calc(100vh - 105px - 544px);
   box-sizing: border-box;
 }
@@ -1158,9 +1158,10 @@ body {
   border: solid 3px black;
 }
 @media screen and (min-width: 320px) {
-  .orderlist-box {
-    margin: auto;
-  }
+    .orderlist-box {
+        margin: auto;
+    }
+}
 @media screen and (min-width: 768px) {
   .orderlist-box {
     margin: 96px auto;
@@ -1190,7 +1191,6 @@ body {
     width:100px;
     margin:10px 20px;
     float:right;
-
 }
 @media screen and (min-width: 320px) {
   .order-status-chart {
@@ -1655,19 +1655,12 @@ body {
 }
 /* ---------------------------- END Review Page -------------------------- */
 
-/* ---------------------------pop out box ----------------------------------*/
-.popBox {
-  margin: 12px 10px 56px 10px;
-  height: 350px;
-  display: flex;
-  justify-content: center;
-}
+/* ---------------------------Pop-up box ----------------------------------*/
 
-.popUp {
+.pop-up {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 100; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -1676,29 +1669,35 @@ body {
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   justify-content: center;
+  align-items: center;
 }
 
-.close {
+.pop-up-close-btn {
   color: #aaaaaa;
   float: right;
-  font-size: 28px;
-  font-weight: bold;
-  margin-right: 5px;
+  font-size: 2rem;
+  padding: 4px;
 }
 
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
+.pop-up-close-btn:hover,
+.pop-up-close-btn:focus {
+  color: black;
   cursor: pointer;
 }
 
-.popCard {
-  height: 350px;
+.pop-up-card {
+  /*height: 350px;*/
+  margin-top: 0;
+  cursor: default;
+}
+
+.pop-up-card:hover {
+  transform: none;
+  box-shadow: var(--card-shadow);
 }
 
 @media screen and (min-width: 450px){
-  .popBox {
+  .pop-up-card {
     width: 425px;
     /*height: 350px;
     display: flex;
@@ -1707,25 +1706,22 @@ body {
 }
 
 @media screen and (min-width: 820px){
-  .popBox {
+  .pop-up-card {
     width: 532px;
   }
 }
 
 @media screen and (min-width: 1240px){
-  .popBox {
+  .pop-up-card {
     width: 632px;
   }
 }
 
 
-.text-area {
-  width: 97%;
+.review-text-area {
+  width: 100%;
+  box-sizing: border-box;
+  resize: none;
 }
 
-.add-button{
-  float: right;
-  margin-top: 15px;
-}
-
-/*----------------------------------END pop out box -------------------------------*/
+/*----------------------------------END Pop-up box -------------------------------

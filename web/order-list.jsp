@@ -16,9 +16,7 @@
             SQLProvider provider = new SQLProvider();
             Repository repository = new Repository(provider);
             ArrayList<Order> orderlist = repository.getAllOrdersofUsers(username);
-
         %>
-
   	  <main class="box-order-main orderlist-box">
 
             <h4 class="text-center">Order</h4>
@@ -27,10 +25,7 @@
                 <h5>Recent Orders</h5>
             </div>
         <%
-
           for (Order order : orderlist) {
-            System.out.println(order);
-
         %>
 
           <a href=order-status?order_id=<%=order.id%>&shop_id=<%=order.shop_id%> >
@@ -102,12 +97,7 @@
                       Shop Name:
                     </td>
                     <td class="orderlist-box-info">
-                      <%
-                      Repository repository2 = new Repository(provider);
-                      Shop shop = repository2.getShopName(order.shop_id,order.id);
-
-                      %>
-                        <%=shop.name%>
+                        <%=order.shop_name%>
                     </td>
                   </tr>
 
@@ -122,7 +112,7 @@
 
                   <tr class="orderlist-box-detail">
                     <td class="orderlist-box-title">
-                      Order Price:
+                      Total Price:
                     </td>
                     <td class="orderlist-box-info">RM
                       <%=Utils.toTwoDecimalPlaces(order.total)%>

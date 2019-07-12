@@ -60,16 +60,32 @@
         <url-pattern>/home</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>Order</servlet-name>
+        <jsp-file>/order.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Order</servlet-name>
+        <url-pattern>/order</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>foodxpress.CartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/cart-servlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>OrderList</servlet-name>
-        <jsp-file>/orderList.jsp</jsp-file>
+        <jsp-file>/order-list.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>OrderList</servlet-name>
         <url-pattern>/order-list</url-pattern>
     </servlet-mapping>
     <servlet>
-    <servlet-name>OrderStatus</servlet-name>
-    <jsp-file>/order-status.jsp</jsp-file>
+        <servlet-name>OrderStatus</servlet-name>
+        <jsp-file>/order-status.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>OrderStatus</servlet-name>

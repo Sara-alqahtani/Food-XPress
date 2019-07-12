@@ -1,9 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
 <footer class="footer l-col-group-sm">
     <header class="l-vertical-center">
-        <img src="images/logo-icon.png" alt="Logo Icon" class="footer-logo">
-        <img src="images/logo.png" alt="Logo">
+        <img src="<%=request.getContextPath()%>/images/logo-icon.png" alt="Logo Icon" class="footer-logo">
+        <img src="<%=request.getContextPath()%>/images/logo.png" alt="Logo">
     </header>
     <main class="footer-main">
         <section class="">

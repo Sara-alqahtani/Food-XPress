@@ -12,6 +12,14 @@ public class OrderItem {
     public double subtotal;
     public String remark;
 
+    public OrderItem(int id, String name, int qty, double subtotal, String remark) {
+        food_id = id;
+        food_name = name;
+        quantity = qty;
+        this.subtotal = subtotal;
+        this.remark = remark;
+    }
+
     public OrderItem(ResultSet rs) {
         try {
             food_id = rs.getInt("food_id");

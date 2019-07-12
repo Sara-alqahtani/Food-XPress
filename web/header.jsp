@@ -3,7 +3,6 @@
 <%
     User user = (User) session.getAttribute("user");
 %>
-<!DOCTYPE html>
 <header class="header">
     <div>
         <img src="images/logo.png" alt="Logo">

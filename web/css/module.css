@@ -300,9 +300,17 @@ body {
 
 /* -------------------- END Form & Label & Form-Control & Input -------------------*/
 
+/* ----------------------------- Link --------------------------------------- */
+.link-no-decor {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* -------------------------------- END Link -------------------------------- */
+
 /* -------------------- Button -----------------*/
 .btn, .nav-btn, .link-btn,
-.round-icon-btn, .square-icon-btn,
+.round-icon-btn, .sm-round-icon-btn, .square-icon-btn,
 .btn-rect, .btn-green, .btn-welcome,
 .btn-order-delete {
   background-color: var(--primary-color);
@@ -323,7 +331,7 @@ body {
 }
 
 .btn:hover, .nav-btn:hover, .link-btn:hover,
-.round-icon-btn:hover, .square-icon-btn:hover,
+.round-icon-btn:hover, .sm-round-icon-btn:hover, .square-icon-btn:hover,
 .btn-rect:hover, .btn-green:hover, .btn-welcome:hover,
 .btn-order-delete:hover {
   opacity: 1.0;
@@ -348,11 +356,19 @@ body {
   color: var(--primary-color);
 }
 
-.round-icon-btn {
+.round-icon-btn, .sm-round-icon-btn {
   border-radius: 50%;
+  min-width: auto;
+}
+
+.round-icon-btn {
   height: 48px;
   width: 48px;
-  min-width: auto;
+}
+
+.sm-round-icon-btn {
+  height: 24px;
+  width: 24px;
 }
 
 .square-icon-btn {
@@ -645,6 +661,15 @@ body {
   }
 }
 
+.box-main-title {
+    font-weight: bold;
+    font-size: 2rem;
+    background-color: moccasin;
+    border-radius: 8px;
+    padding: 8px;
+    margin-top: 8px;
+}
+
 .box-list {
   padding: 16px 0;
 }
@@ -708,6 +733,7 @@ body {
   /* font-size: 14px; */
   font-size: 0.9rem;
   overflow: hidden;
+  text-align: justify;
 }
 /* ------------------------- END Home & foodxpress.Order Box ------------------------ */
 
@@ -833,9 +859,17 @@ body {
 @media screen and (min-width: 820px) {
   .food-box.box-main {
     padding: 0 24px;
+    position: relative;
+    padding-top: 8px;
+  }
+  .food-box .box-main-title {
+    margin-top: 0;
   }
 }
 @media screen and (min-width: 1024px){
+  .food-box .box-main-title {
+    font-size: 3rem;
+  }
   .food-box .box-content {
     display: flex;
     flex-direction: column;
@@ -1202,7 +1236,7 @@ body {
   }
 }
 
-@media screen and (min-width:768px) {
+@media screen and (min-width:514px) {
   .order-status-chart {
     float:right;
     margin:0px 30px 5px 5px;
@@ -1506,7 +1540,7 @@ body {
 	transform: skew(-40deg);
 }
 .parallelogram-inactive {
-  background-color: var(--primary-color);
+  background-color: #cccccc;
 }
 /* ------------------------- END Status Page -------------------------------- */
 
@@ -1672,3 +1706,81 @@ body {
   background-color: #F1F1F1;
 }
 /* ---------------------------- END Review Page -------------------------- */
+/* ---------------------------Pop-up box ----------------------------------*/
+
+.pop-up {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 100; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  justify-content: center;
+  align-items: center;
+}
+
+.pop-up-close-btn {
+  color: #aaaaaa;
+  float: right;
+  font-size: 2rem;
+  padding: 4px;
+}
+
+.pop-up-close-btn:hover,
+.pop-up-close-btn:focus {
+  color: black;
+  cursor: pointer;
+}
+
+.pop-up-card {
+  /*height: 350px;*/
+  margin-top: 0;
+  cursor: default;
+}
+
+.pop-up-card:hover {
+  transform: none;
+  box-shadow: var(--card-shadow);
+}
+
+@media screen and (min-width: 450px){
+  .pop-up-card {
+    width: 425px;
+    /*height: 350px;
+    display: flex;
+    justify-content: center;*/
+  }
+}
+
+@media screen and (min-width: 820px){
+  .pop-up-card {
+    width: 532px;
+  }
+}
+
+@media screen and (min-width: 1240px){
+  .pop-up-card {
+    width: 632px;
+  }
+}
+
+.review-text-area {
+  width: 100%;
+  box-sizing: border-box;
+  resize: none;
+}
+
+.quantity-btn {
+  font-size: 0.5rem;
+  padding: 0;
+}
+
+.quantity-input {
+  max-width: 48px;
+}
+
+/*----------------------------------END Pop-up box -------------------------------

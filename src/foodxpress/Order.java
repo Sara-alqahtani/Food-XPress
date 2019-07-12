@@ -16,6 +16,7 @@ public class Order {
     public double discount;
     public double total;
     public OrderStatus status;
+    public String shop_name;
 
     public Order(ResultSet rs) {
         try {
@@ -29,6 +30,7 @@ public class Order {
             discount = rs.getDouble("discount");
             total = rs.getDouble("total");
             status = OrderStatus.valueOf(rs.getString("status").toUpperCase());
+            shop_name = rs.getString("shop_name");
         } catch (SQLException e) {
             e.printStackTrace();
         }

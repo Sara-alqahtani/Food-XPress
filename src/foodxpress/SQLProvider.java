@@ -27,9 +27,5 @@ public class SQLProvider {
             System.out.println("Error getting connection: " + ex.getMessage());
             System.exit(-1);
         }
-//        catch (Exception ex) {
-//            System.out.println("Error: " + ex.getMessage());
-//            System.exit(-1);
-//        }
     }
 }

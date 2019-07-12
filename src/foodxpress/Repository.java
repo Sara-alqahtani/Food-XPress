@@ -3,12 +3,11 @@ package foodxpress;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import com.sun.org.apache.xpath.internal.operations.Or;
 
-import javax.swing.plaf.nimbus.State;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import javax.servlet.http.*;
+import java.util.HashMap;
 
 public class Repository {
     private SQLProvider provider;
@@ -75,12 +74,103 @@ public class Repository {
         return shops;
     }
 
-    public ArrayList<Order> getAllOrdersofUsers(String username){
+    public Shop getShopInfo(int shopId) {
+        String sql = "SELECT id, name, location, image, description, operation_start_time, operation_end_time, " +
+                "delivery_time, delivery_fee, (rate_sum/rate_count) as rating " +
+                "FROM shops " +
+                "WHERE id=" +
+                shopId + ";";
+        System.out.println(sql);
+        Shop shop = null;
+        try {
+            Statement stm = provider.connection.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            if (rs.next()) {
+                shop = new Shop(rs);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return shop;
+    }
 
-        String sql="SELECT orders.*,shops.name as shop_name\n" +
-                "FROM orders,shops\n" +
-                "WHERE username= '"+ username+ "' AND orders.shop_id = shops.id"+ " \n" +
-                "Order by order_datetime DESC;";
+    public ArrayList<String> getAllCategoriesInShop(int shopId) {
+        String sql = "SELECT name " +
+                "FROM category " +
+                "WHERE shop_id=" +
+                shopId + " ORDER BY name ASC;";
+        System.out.println(sql);
+        ArrayList<String> categories = new ArrayList<>();
+        try {
+            Statement stm = provider.connection.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                categories.add(rs.getString("name"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return categories;
+    }
+
+    public ArrayList<Food> getAllFoodsInShop(int shopId) {
+        String sql = "SELECT id, name, category, shop_id, price, prepare_time, image, description, " +
+                "(rate_sum/rate_count) AS rating " +
+                "FROM foods " +
+                "WHERE shop_id=" +
+                shopId + " ORDER BY category ASC;";
+        System.out.println(sql);
+        ArrayList<Food> foods = new ArrayList<>();
+        try {
+            Statement stm = provider.connection.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                foods.add(new Food(rs));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return foods;
+    }
+
+    public HashMap<Integer, Food> getFoodPriceMap(CartItemList itemList, int shopId) {
+        String sql = "SELECT id, name, price FROM foods WHERE shop_id=" +
+                shopId + " AND id IN (";
+        StringBuilder sb = new StringBuilder(sql);
+        for (int i = 0; i < itemList.cartItems.size(); i++) {
+            sb.append(itemList.cartItems.get(i).id);
+            if (i < itemList.cartItems.size() - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append(")");
+        sql = sb.toString();
+        System.out.println(sql);
+//        boolean isValid = false;
+        HashMap<Integer, Food> foodMap = new HashMap<>();
+        try {
+            Statement stm = provider.connection.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                Food food = new Food(rs.getInt("id"), rs.getString("name"), rs.getDouble("price"));
+                foodMap.put(food.id, food);
+            }
+//            rs.last();
+//            if (rs.getRow() == itemList.cartItems.size()) {
+//                isValid = true;
+//            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return foodMap;
+//        return isValid;
+    }
+
+    public ArrayList<Order> getAllOrdersofUsers(String username){
+        String sql="SELECT orders.*, shops.name AS shop_name " +
+                "FROM orders, shops " +
+                "WHERE username='"+ username+ "' AND orders.shop_id=shops.id " +
+                "ORDER BY order_datetime DESC;";
         System.out.println(sql);
         ArrayList<Order> orderlist = new ArrayList<>();
 
@@ -97,26 +187,9 @@ public class Repository {
         return orderlist;
     }
 
-    public Shop getShopName (int shopId,int orderId){
-        String sql= " SELECT name,shops.id,orders.id FROM shops,orders\n" +
-                "WHERE shops.id='"+shopId+"' AND orders.id= '"+ orderId +"' AND shops.id= orders.shop_id;";
-        System.out.println(sql);
-        Shop shopname = null;
-        try {
-            Statement stm = provider.connection.createStatement();
-            ResultSet rs = stm.executeQuery(sql);
-            if (rs.next()) {
-                shopname = new Shop(rs);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return shopname;
-    }
-
     public Order getOrderInfo(int shopId, int orderId) {
-        String sql = "SELECT * FROM orders WHERE id=" +
-                orderId + " AND shop_id=" +
+        String sql = "SELECT orders.*, shops.name AS shop_name FROM orders INNER JOIN shops WHERE orders.shop_id=shops.id AND orders.id=" +
+                orderId + " AND orders.shop_id=" +
                 shopId + ";";
         System.out.println(sql);
         Order order = null;
@@ -148,6 +221,66 @@ public class Repository {
             e.printStackTrace();
         }
         return orderItems;
+    }
+
+    public int createOrder(String username, int shopId, double subtotal, double deliveryFee, double total, ArrayList<OrderItem> orderList) {
+        int orderId = -1;
+        try {
+            provider.connection.setAutoCommit(false);       // start transaction
+            String sql = "SELECT (@new_id := next_order_id) AS new_id FROM shops WHERE id=" + shopId + ";";
+            System.out.println(sql);
+            Statement stm = provider.connection.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            if (rs.next()) {
+                orderId = rs.getInt("new_id");
+            } else {
+                throw new SQLException("New order id not returned.");
+            }
+            sql = "INSERT INTO orders (shop_id, username, subtotal, delivery_fee, discount, total, status) \n" +
+                    "VALUES (" + shopId + ", '" + username + "', " +
+                    subtotal + ", " +
+                    deliveryFee + ", 0, " +
+                    total + ", '" +
+                    OrderStatus.values()[0].toString().toLowerCase() + "');";
+            System.out.println(sql);
+            stm.executeUpdate(sql);
+            sql = "INSERT INTO order_items (order_id, shop_id, food_id, food_name, quantity, subtotal, remark) VALUES \n";
+            StringBuilder sb = new StringBuilder(sql);
+            for (int i = 0; i < orderList.size(); i++) {
+                OrderItem item = orderList.get(i);
+                sb.append("(@new_id, ");
+                sb.append(shopId);
+                sb.append(", ");
+                sb.append(item.food_id);
+                sb.append(", '");
+                sb.append(item.food_name);
+                sb.append("', ");
+                sb.append(item.quantity);
+                sb.append(", ");
+                sb.append(item.subtotal);
+                sb.append(", ");
+                sb.append(item.remark);
+                sb.append(")");
+                if (i < orderList.size() - 1) {
+                    sb.append(",\n");
+                }
+            }
+            sb.append(";\n");
+            sql = sb.toString();
+            System.out.println(sql);
+            stm.executeUpdate(sql);
+            provider.connection.commit();                   // commit transaction
+            provider.connection.setAutoCommit(true);        // end transaction
+        } catch (SQLException e) {
+            orderId = -1;
+            e.printStackTrace();
+            try {
+                provider.connection.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return orderId;
     }
 
     public boolean updateUserInfo (String username, String mobile, String location){

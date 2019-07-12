@@ -24,7 +24,6 @@ public class LoginServlet extends HttpServlet {
         } else {
             PrintWriter out = response.getWriter();
             out.println("Wrong username or password. Please try again.");
-            response.sendRedirect("login");
         }
     }
 
