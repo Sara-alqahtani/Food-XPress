@@ -5,7 +5,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -16,7 +15,7 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password").replace("\'", "");
         String confirmPassword = request.getParameter("confirm-password").replace("\'", "");
         String mobile = request.getParameter("mobile").replace("\'", "");
-        String location = request.getParameter("location").replace("\'", "");
+        PickUpLocation location = Utils.tryParseEnum(PickUpLocation.class, request.getParameter("location"));
 
         if (!password.equals(confirmPassword)) {
             PrintWriter out = response.getWriter();

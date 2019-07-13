@@ -24,9 +24,11 @@ public class UpdateOrderStatusServlet extends HttpServlet {
         if (orderId != null && orderId > 0 && status != null) {
             SQLProvider provider = new SQLProvider();
             Repository repository = new Repository(provider);
-            repository.updateOrderStatus(vendor.shop_id, orderId, status);
-            response.sendRedirect("vendor-home?order_id=" + orderId);
-            return;
+            boolean isSuccess = repository.updateOrderStatus(vendor.shop_id, orderId, status);
+            if (isSuccess) {
+                response.sendRedirect("vendor-home?order_id=" + orderId);
+                return;
+            }
         }
         PrintWriter out = response.getWriter();
         out.println("Error updating order status.");

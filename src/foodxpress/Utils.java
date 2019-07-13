@@ -3,7 +3,6 @@ package foodxpress;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.EnumSet;
 
 public class Utils {
     public static String capitalize(String s) {

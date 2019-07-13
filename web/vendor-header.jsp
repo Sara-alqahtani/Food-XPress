@@ -1,7 +1,7 @@
-<%@ page import="foodxpress.Vendor" %>
-<%@ page import="foodxpress.Shop" %>
 <%@ page import="foodxpress.Repository" %>
 <%@ page import="foodxpress.SQLProvider" %>
+<%@ page import="foodxpress.Shop" %>
+<%@ page import="foodxpress.Vendor" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     Vendor vendor = (Vendor) session.getAttribute("vendor");

@@ -1,3 +1,4 @@
+<%@ page import="foodxpress.PickUpLocation" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -30,8 +31,18 @@
                     <input type="tel" name="mobile" class="form-control" placeholder="Enter phone number" id="register-phone-number" required>
                 </div>
                 <div class="form-group">
-                    <label class="label" for="collection-location">Preferred Order Collection Location</label>
-                    <input type="text" name="location" class="form-control" placeholder="Enter preferred order collection location" id="collection-location" required>
+                    <label class="label" for="collection-location">Pick Up Location</label>
+                    <div >
+                        <select name="location" id="collection-location" class="select-option">
+                            <%
+                                for (PickUpLocation location : PickUpLocation.values()) {
+                            %>
+                            <option value="<%=location.toString()%>"> <%=location%></option>
+                            <%
+                                }
+                            %>
+                        </select>
+                    </div>
                 </div>
                 <div class="container-footer-right">
                     <button type="submit" class="btn">Register</button>
