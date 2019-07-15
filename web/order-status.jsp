@@ -129,6 +129,16 @@
                         </tfoot>
                     </table>
                 </div>
+
+                <%
+                    if ((order.status.equals(OrderStatus.ENJOY))&& (order.isReviewed == false)){
+                %>
+                <a href="review?order_id=<%=orderId%>&shop_id=<%=shopId%>"><div class="link-btn review-btn" >
+                    Rate Us
+                </div></a>
+                <%
+                    }
+                %>
             </main>
         </section>
     </main>

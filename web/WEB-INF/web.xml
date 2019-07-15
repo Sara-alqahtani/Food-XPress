@@ -140,6 +140,22 @@
         <servlet-name>ChangePasswordServlet</servlet-name>
         <url-pattern>/change-password-servlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>Review</servlet-name>
+        <jsp-file>/review.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Review</servlet-name>
+        <url-pattern>/review</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateReviewServlet</servlet-name>
+        <servlet-class>foodxpress.UpdateReviewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateReviewServlet</servlet-name>
+        <url-pattern>/review-servlet</url-pattern>
+    </servlet-mapping>
 
 
     <servlet>

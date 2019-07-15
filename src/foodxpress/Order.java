@@ -17,6 +17,7 @@ public class Order {
     public double total;
     public OrderStatus status;
     public String shop_name;
+    public boolean isReviewed;
 
     public Order(ResultSet rs) {
         try {
@@ -31,6 +32,7 @@ public class Order {
             total = rs.getDouble("total");
             status = OrderStatus.valueOf(rs.getString("status").toUpperCase());
             shop_name = rs.getString("shop_name");
+            isReviewed = rs.getBoolean("isReviewed");
         } catch (SQLException e) {
             e.printStackTrace();
         }

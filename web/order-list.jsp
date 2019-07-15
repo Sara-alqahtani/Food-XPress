@@ -82,6 +82,22 @@
                       %>
 
                 </div>
+
+
+                  <%
+                      if ((order.status.equals(OrderStatus.ENJOY))&& (order.isReviewed == false)){
+                  %>
+                  <div class="review-icon">
+                       <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                      <span title="review-hint" >Rate Us </span>
+                  </div>
+
+                  <%
+                      }
+                  %>
+
+
+
                 <table class="orderlist-box-text">
                   <tr class="orderlist-box-detail">
                     <td class="orderlist-box-title">
@@ -119,6 +135,8 @@
                     </td>
                   </tr>
                 </table>
+
+
               </div>
             </div>
 
