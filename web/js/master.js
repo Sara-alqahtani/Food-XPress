@@ -3,6 +3,7 @@ var homeSidebar;
 var sidebar;
 var cartContent;
 var cartBtn;
+var editMenuAside;
 var footer;
 
 function checkOffset() {
@@ -18,7 +19,7 @@ function checkOffset() {
                 homeSidebar.style.maxHeight = (window.innerHeight - homeSidebar.offsetTop) + 'px';
             }
         } else {
-            homeSidebar.style.maxHeight = window.innerHeight - header.offsetHeight + 'px';
+            // homeSidebar.style.maxHeight = window.innerHeight - header.offsetHeight + 'px';
         }
     }
 
@@ -34,7 +35,7 @@ function checkOffset() {
                 sidebar.style.maxHeight = (window.innerHeight - sidebar.offsetTop) + 'px';
             }
         } else {
-            sidebar.style.maxHeight = window.innerHeight - header.offsetHeight + 'px';
+            // sidebar.style.maxHeight = window.innerHeight - header.offsetHeight + 'px';
         }
     }
 
@@ -51,7 +52,24 @@ function checkOffset() {
                 cartContent.style.maxHeight = (window.innerHeight - cartContent.offsetTop) + 'px';
             }
         } else {
-            cartContent.style.maxHeight = window.innerHeight - header.offsetHeight - cartBtn.offsetHeight + 'px';
+            // cartContent.style.maxHeight = window.innerHeight - header.offsetHeight - cartBtn.offsetHeight + 'px';
+        }
+    }
+
+    if (editMenuAside) {
+        if (window.innerWidth >= 1024) {
+            if (editMenuAside.offsetTop
+                + editMenuAside.offsetHeight
+                + window.pageYOffset
+                + header.offsetHeight
+                >= footer.offsetTop) {
+                // if exceeds footer
+                editMenuAside.style.maxHeight = (footer.offsetTop - window.pageYOffset - editMenuAside.offsetTop) + 'px';
+            } else {
+                editMenuAside.style.maxHeight = (window.innerHeight - editMenuAside.offsetTop) + 'px';
+            }
+        } else {
+            // editMenuAside.style.maxHeight = window.innerHeight - header.offsetHeight + 'px';
         }
     }
 }
@@ -63,6 +81,7 @@ window.addEventListener("load",
         sidebar = document.getElementById('js-sidebar');
         cartContent = document.getElementById('js-cart-content');
         cartBtn = document.getElementsByClassName('cart-btn')[0];
+        editMenuAside = document.getElementById('js-edit-menu-aside');
         footer = document.getElementsByClassName('footer')[0];
 
         checkOffset();

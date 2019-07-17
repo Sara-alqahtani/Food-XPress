@@ -198,4 +198,20 @@
         <servlet-name>UpdateOrderStatusServlet</servlet-name>
         <url-pattern>/update-order-status-servlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ViewMenu</servlet-name>
+        <jsp-file>/view-menu.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ViewMenu</servlet-name>
+        <url-pattern>/view-menu</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>EditMenu</servlet-name>
+        <jsp-file>/edit-menu.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditMenu</servlet-name>
+        <url-pattern>/edit-menu</url-pattern>
+    </servlet-mapping>
 </web-app>

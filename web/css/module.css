@@ -323,7 +323,7 @@ body {
 /* -------------------- Button -----------------*/
 .btn, .nav-btn, .link-btn,
 .round-icon-btn, .sm-round-icon-btn, .square-icon-btn,
-.btn-rect, .btn-green, .btn-welcome,
+.btn-rect, .btn-green, .btn-black, .btn-welcome,
 .btn-order-delete {
   background-color: var(--primary-color);
   color: white;
@@ -344,7 +344,7 @@ body {
 
 .btn:hover, .nav-btn:hover, .link-btn:hover,
 .round-icon-btn:hover, .sm-round-icon-btn:hover, .square-icon-btn:hover,
-.btn-rect:hover, .btn-green:hover, .btn-welcome:hover,
+.btn-rect:hover, .btn-green:hover, .btn-black:hover, .btn-welcome:hover,
 .btn-order-delete:hover {
   opacity: 1.0;
 }
@@ -396,6 +396,10 @@ body {
 
 .btn-green {
   background-color: var(--green-color);
+}
+
+.btn-black {
+  background-color: black;
 }
 
 /* -------------------- END Button -----------------*/
@@ -691,6 +695,8 @@ body {
 }
 
 .box-main-title {
+    z-index: 1;
+    position: relative;
     font-weight: bold;
     font-size: 2rem;
     background-color: moccasin;
@@ -721,6 +727,8 @@ body {
   margin-top: 8px;
   padding: 8px;
   cursor: pointer;
+  z-index: 1;
+  position: relative;
 }
 
 .box-picture {
@@ -757,7 +765,9 @@ body {
 }
 
 .box-description {
-  height: 80px;
+  /*height: 80px;*/
+    height: fit-content;
+    max-height: 74px;
   margin-top: 8px;
   /* font-size: 14px; */
   font-size: 0.9rem;
@@ -805,10 +815,16 @@ body {
 /* Box */
 @media screen and (min-width: 548px) {
   .rest-box.box-main {
-    padding: 0 24px;
+    padding: 8px 24px 0 24px;
+  }
+  .rest-box .box-main-title {
+    margin-top: 0;
   }
 }
 @media screen and (min-width: 768px){
+  .rest-box .box-main-title {
+    font-size: 3rem;
+  }
   .rest-box .box-content {
     display: flex;
     flex-direction: column;
@@ -833,6 +849,7 @@ body {
   }
   .rest-box .box-description {
     font-size: 1rem;
+      height: 74px;
   }
 }
 @media screen and (min-width: 548px) {
@@ -887,9 +904,8 @@ body {
 /* Box */
 @media screen and (min-width: 820px) {
   .food-box.box-main {
-    padding: 0 24px;
+    padding: 8px 24px 0 24px;
     position: relative;
-    padding-top: 8px;
   }
   .food-box .box-main-title {
     margin-top: 0;
@@ -923,6 +939,7 @@ body {
   }
   .food-box .box-description {
     font-size: 1rem;
+      height: 74px;
   }
 }
 @media screen and (min-width: 640px) {
@@ -1268,7 +1285,7 @@ body {
 @media screen and (min-width:514px) {
   .order-status-chart {
     float:right;
-    margin:0px 30px 5px 5px;
+    margin:0 30px 5px 5px;
   }
 }
 
@@ -1724,6 +1741,7 @@ body {
   }
   .review-main .box-description {
     font-size: 1rem;
+      height: 74px;
   }
 }
 /* ---------------------------- END Review Page -------------------------- */
@@ -1790,9 +1808,12 @@ body {
 }
 
 .review-text-area {
+  margin-top: 8px;
   width: 100%;
   box-sizing: border-box;
-  resize: none;
+  resize: vertical;
+    max-height: 400px;
+    min-height: 50px;
 }
 
 .quantity-btn {

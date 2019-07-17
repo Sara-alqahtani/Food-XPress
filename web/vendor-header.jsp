@@ -25,7 +25,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="view-menu">
                         <button type="button" class="nav-btn">
                             <i class="fas fa-utensils"></i>
                             <span>MENU</span>

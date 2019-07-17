@@ -137,7 +137,18 @@ window.addEventListener('load', function() {
         price.innerHTML = this.getElementsByClassName('box-info')[0].innerHTML;
         time.innerHTML = this.getElementsByClassName('box-info')[1].innerHTML;
         rating.innerHTML = this.getElementsByClassName('box-info')[2].innerHTML;
-        description.innerHTML = this.getElementsByClassName('box-description')[0].innerHTML;
+        var foodDescription = this.getElementsByClassName('box-description')[0];
+        var descriptionText;
+        if (foodDescription) {
+            descriptionText = foodDescription.textContent;
+        }
+        if (foodDescription && descriptionText.length > 0) {
+            description.style.display = 'block';
+            description.textContent = descriptionText;
+        } else {
+            description.style.display = 'none';
+        }
+        remark.style = '';
         remark.value = '';
         foodPopUp.style.display = 'flex';
         quantityInput.value = 1;
