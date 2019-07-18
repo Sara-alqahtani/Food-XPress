@@ -42,11 +42,11 @@
             </ul>
         </aside>
         <aside class="edit-menu-action-bar l-col-group-md" id="js-edit-menu-aside">
-            <button class="btn">
+            <button class="btn js-new-item-btn">
                 <i class="fas fa-utensils"></i>
-                New Item
+                New Food
             </button>
-            <button class="btn">
+            <button class="btn js-new-category-btn">
                 <i class="fas fa-bars"></i>
                 New Category
             </button>
@@ -73,7 +73,7 @@
                 <div class="box-list-title hover-hidden-parent l-stack" id="category-<%=previousCategory%>">
                     <h5><%=previousCategory%></h5>
                     <span class="l-row-group-sm hover-hidden-child edit-menu-category-bar">
-                        <i class="fas fa-edit"></i>
+                        <i class="fas fa-edit js-category-pop-up-btn" data-category="<%=previousCategory%>"></i>
                         <i class="fas fa-trash-alt"></i>
                     </span>
                 </div>
@@ -83,12 +83,10 @@
                 %>
                 <div class="card box js-edit-menu-item hover-hidden-parent l-stack">
                     <span class="l-row-group-sm hover-hidden-child edit-menu-food-bar">
-                        <i class="fas fa-edit js-food-pop-up-btn" data-food_id=<%=food.id%>></i>
+                        <i class="fas fa-edit js-food-pop-up-btn" data-food_id="<%=food.id%>" data-category="<%=previousCategory%>"></i>
                         <i class="fas fa-trash-alt"></i>
                     </span>
-                    <div class="box-picture">
-                        <img src="<%=request.getContextPath()%>/images/burger.jpg" class="box-picture">
-                    </div>
+                    <img src="<%=request.getContextPath()%>/images/burger.jpg" class="box-picture">
                     <div class="box-content">
                         <div class="box-detail">
                             <div class="box-title"><%=food.name%></div>
@@ -164,53 +162,85 @@
                 </li>
                 <li>
                     <span class="fab-label">New Category</span>
-                    <div class="fab-icon-holder-red round-icon-btn l-center">
+                    <div class="fab-icon-holder-red round-icon-btn l-center js-new-category-btn">
                         <i class="fas fa-bars"></i>
                     </div>
                 </li>
                 <li>
-                    <span class="fab-label">New Item</span>
-                    <div class="fab-icon-holder-red round-icon-btn l-center">
+                    <span class="fab-label">New Food</span>
+                    <div class="fab-icon-holder-red round-icon-btn l-center js-new-item-btn">
                         <i class="fas fa-utensils"></i>
                     </div>
                 </li>
             </ul>
         </div>
-        <div id="js-food-pop-up" class="pop-up" data-shop_id=<%=shopId%>>
+        <div id="js-category-pop-up" class="pop-up">
             <div class="card box pop-up-card">
-                <div class="box-picture">
-                    <img src="<%=request.getContextPath()%>/images/burger.jpg" class="box-picture">
+                <div class="form-group">
+                    <label class="label" for="js-category-name" style="min-width: 100px;">Category:</label>
+                    <input class="form-control" type="text" id="js-category-name" placeholder="Enter category name.">
                 </div>
+                <div class="container-footer-right l-row-group-sm">
+                    <button class="round-icon-btn btn-green">
+                        <i class="fas fa-check"></i>
+                    </button>
+                    <button class="round-icon-btn" id="js-category-pop-up-close-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="js-food-pop-up" class="pop-up">
+            <div class="card box pop-up-card">
                 <div id="js-food-pop-up-close-btn" class="pop-up-close-btn">
                     <i class="fas fa-times"></i>
                 </div>
-                <div class="box-content">
-                    <div class="box-detail">
-                        <div class="box-title">Food Name</div>
-                        <div class="">
-                            <span class="box-info">RM 0.00</span>
-                            <span class="box-info">
-                   <i class="fas fa-hourglass-half"></i>
-                   0h 0min
-                 </span>
-                            <span class="box-info">
-                   <span class="rating-star">
-                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                   </span>
-                   5.0
-                 </span>
+                <form>
+                    <div class="pop-up-picture-container">
+                        <div class="l-stack pop-up-picture">
+                            <img src="<%=request.getContextPath()%>/images/default-food.svg" class="pop-up-picture" id="js-pop-up-picture" alt="food image">
+                            <label class="round-icon-btn upload-food-picture-btn l-center" for="js-upload-image">
+                                <i class="fas fa-camera"></i>
+                            </label>
                         </div>
                     </div>
-                    <%--                    <div>--%>
-                    <%--                        Remark:--%>
-                    <div class="edit-menu-description">
-                        Description:
-                        <textarea class="review-text-area" rows="5" placeholder="Write description."></textarea>
+                    <input type="file" accept="image/*" id="js-upload-image" name="image" hidden>
+                    <div class="form-group">
+                        <label class="label" for="food-category">Category:</label>
+                        <select id="food-category">
+                            <%
+                                for (String category: categories) {
+                            %>
+                            <option value="<%=category%>"> <%=category%></option>
+                            <%
+                                }
+                            %>
+                        </select>
                     </div>
-                    <%--                    </div>--%>
-                    <div class="container-footer-right l-vertical-center l-row-group-md">
-                        <button class="btn" type="button" id="js-add-order-item-btn">Confirm</button>
+                    <div class="form-group">
+                        <label class="label" for="food-name">Name:</label>
+                        <input type="text" class="form-control" id="food-name" placeholder="Enter food name.">
                     </div>
+                    <div class="l-flex-wrap">
+                        <div class="form-group">
+                            <label class="label" for="food-price">Price:</label>
+                            <pre>RM </pre>
+                            <input type="number" class="form-control" id="food-price" placeholder="0.00">
+                        </div>
+                        <div class="form-group">
+                            <label class="label" for="preparation-time">Time:</label>
+                            <input type="number" class="form-control" id="preparation-time" placeholder="0">
+                            <pre> minute(s)</pre>
+                        </div>
+                    </div>
+
+                </form>
+                <div class="edit-menu-description">
+                    <label class="label">Description:</label>
+                    <textarea class="review-text-area" rows="5" placeholder="Write description."></textarea>
+                </div>
+                <div class="container-footer-right l-row-group-md">
+                    <button class="btn" type="button">Confirm</button>
                 </div>
             </div>
         </div>

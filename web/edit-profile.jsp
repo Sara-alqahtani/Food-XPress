@@ -18,7 +18,7 @@
           <h4 class="text-center">Edit Profile</h4>
           <hr />
           <main class="l-flex-wrap l-center">
-            <div class="l-stack">
+            <div class="l-stack profile-picture">
               <img src="images/user-profile/<%=user.image_url%>" class="profile-picture" id="js-edit-profile-picture" alt="profile image">
               <label class="round-icon-btn upload-profile-picture-btn l-center" for="js-upload-image">
                 <i class="fas fa-camera"></i>

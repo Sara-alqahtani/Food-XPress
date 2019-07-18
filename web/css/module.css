@@ -716,8 +716,10 @@ body {
 }
 
 .box-list-title::before {
-  margin-top: -160px;
-  padding-top: 160px;
+  /*margin-top: -160px;*/
+  /*padding-top: 160px;*/
+    margin-top: -136px;
+    padding-top: 136px;
   content: "";
   display: block;
 }
@@ -1764,9 +1766,11 @@ body {
 
 .pop-up-close-btn {
   color: #aaaaaa;
-  float: right;
+  /*float: right;*/
   font-size: 2rem;
   padding: 4px;
+    position: absolute;
+    right: 8px;
 }
 
 .pop-up-close-btn:hover,
@@ -1777,6 +1781,7 @@ body {
 
 .pop-up-card {
   /*height: 350px;*/
+    width: 100vw;
   margin-top: 0;
   cursor: default;
 }
@@ -1789,6 +1794,8 @@ body {
 @media screen and (min-width: 450px){
   .pop-up-card {
     width: 425px;
+      border-radius: 32px;
+      padding: 8px 16px;
     /*height: 350px;
     display: flex;
     justify-content: center;*/
@@ -1884,3 +1891,27 @@ body {
   background-color: tomato;
 }
 /* -------------------------------------- END Vendor home ---------------------- */
+
+
+
+/* ---------------------------------- UI CHANGE --------------------------- */
+.pop-up-picture-container {
+    display: flex;
+    justify-content: center;
+}
+
+.pop-up-picture {
+    width: 160px;
+    height: 160px;
+}
+
+.pop-up-food-name {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 8px;
+}
+
+.pop-up-info {
+    text-align: center;
+    margin-top: 4px;
+}

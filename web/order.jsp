@@ -203,29 +203,31 @@
 
         <div id="js-food-pop-up" class="pop-up" data-shop_id=<%=shopId%>>
             <div class="card box pop-up-card">
-                <div class="box-picture">
-                    <img src="<%=request.getContextPath()%>/images/burger.jpg" class="box-picture">
-                </div>
                 <div id="js-food-pop-up-close-btn" class="pop-up-close-btn">
                     <i class="fas fa-times"></i>
                 </div>
-                <div class="box-content">
-                    <div class="box-detail">
-                        <div class="box-title">Food Name</div>
-                        <div class="">
-                            <span class="box-info">RM 0.00</span>
-                            <span class="box-info">
+                <div class="pop-up-picture-container">
+                    <img src="<%=request.getContextPath()%>/images/burger.jpg" class="pop-up-picture">
+                </div>
+                <div class="box-title pop-up-food-name">Food Name</div>
+                <div class="pop-up-info">
+                    <span class="box-info">RM 0.00</span>
+                    <span class="box-info">
                    <i class="fas fa-hourglass-half"></i>
                    0h 0min
                  </span>
-                            <span class="box-info">
+                    <span class="box-info">
                    <span class="rating-star">
                      <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                    </span>
                    5.0
                  </span>
-                        </div>
-                    </div>
+                </div>
+                <div class="box-content">
+
+<%--                    <div class="box-detail">--%>
+<%--                        --%>
+<%--                    </div>--%>
                     <div class="box-description">Description</div>
 <%--                    <div>--%>
 <%--                        Remark:--%>

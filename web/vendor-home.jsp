@@ -81,6 +81,7 @@
                 </div>
                 <hr />
                 <main class="l-col-group-md">
+                    <h6><%=Utils.printDate(order.datetime)%></h6>
                     <div class="invoice-table">
                         <table class="invoice-order-table">
                             <thead>

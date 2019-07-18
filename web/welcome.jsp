@@ -11,7 +11,7 @@
     <main class="welcome-main">
         <div class="welcome-container welcome-box">
             <h4 class="welcome-header-text">
-                Order. Relax. Delivered. Enjoy.
+                Order·<wbr/>Relax·<wbr/>Delivered·<wbr/>Enjoy
             </h4>
             <hr />
             <p class="paragraph-welcome">

@@ -16,7 +16,7 @@
           <h4 class="text-center">User Profile</h4>
           <hr />
           <main class="l-flex-wrap l-center">
-            <div>
+            <div class="profile-picture">
               <img src="images/user-profile/<%=user.image_url%>" class="profile-picture" alt="profile image">
             </div>
             <form class="user-profile-form">

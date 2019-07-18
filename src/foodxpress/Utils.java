@@ -23,18 +23,19 @@ public class Utils {
         return new SimpleDateFormat("hh:mma").format(time);
     }
     public static String printHourMinute(int minute) {
-        int min = minute % 60;
-        int h = (minute - min) / 60;
-        String res = "";
-        if (h > 0) {
-            res += h + "h";
-            if (minute > 0) {
-                res += " " + min + "min";
-            }
-        } else if (minute > 0) {
-            res += min + "min";
-        }
-        return res;
+//        int min = minute % 60;
+//        int h = (minute - min) / 60;
+//        String res = "";
+//        if (h > 0) {
+//            res += h + "h";
+//            if (minute > 0) {
+//                res += " " + min + "min";
+//            }
+//        } else if (minute > 0) {
+//            res += min + "min";
+//        }
+//        return res;
+        return minute + "min";
     }
 
     public static Integer tryParseInt(String str) {
