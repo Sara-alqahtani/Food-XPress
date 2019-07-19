@@ -408,7 +408,7 @@ public class Repository {
     }
 
     public ArrayList<Food> getReviewFoodList(int shopId, int orderId) {
-        String sql= "SELECT foods.*\n" +
+        String sql= "SELECT foods.id,foods.name,foods.category,foods.shop_id,foods.price,foods.prepare_time,foods.image,foods.description,(foods.rate_sum/foods.rate_count) as rating\n" +
                 "FROM foods, order_items\n" +
                 "WHERE order_items.shop_id=foods.shop_id AND order_items.food_id = foods.id AND order_items.order_id=" + orderId+
                 " AND order_items.shop_id=" + shopId + ";";
@@ -445,10 +445,10 @@ public class Repository {
         return isReviewed;
     }
 
-    public boolean updateFoodRating(int shopId,int orderId, int rating){
+    public boolean updateFoodRating(int shopId,int foodId, int rating){
         String sql="UPDATE foods\n" +
                 "SET rate_sum = rate_sum +" + rating + " , rate_count = rate_count + 1\n" +
-                "WHERE id = " + orderId + " AND shop_id = " + shopId + ";";
+                "WHERE id = " + foodId + " AND shop_id = " + shopId + ";";
         System.out.println(sql);
         boolean isSuccess = false;
 

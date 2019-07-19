@@ -36,9 +36,10 @@
               for (Food food : reviewItems) {
                 System.out.println(food);
 
+
             %>
 
-            <form class="review-form" method="post" action="review-servlet?order_id=<%=orderId%>&shop_id=<%=shopId%>">
+            <form class="review-form" method="post" action="review-servlet?order_id=<%=orderId%>&shop_id=<%=shopId%>&food_id=<%=food.id%>">
             <div class="box">
               <div class="box-picture">
                 <img src="<%=food.image_url%>" class="box-picture">
@@ -53,18 +54,20 @@
                       <%=Utils.printHourMinute(food.prepare_time)%>
                     </span>
                     <div class="review-star">
-                      <fieldset class="starability-grow">
-                        <input type="radio" id="F<%=food.id%>-star5" name="rating" value="5"/>
-                        <label for="F<%=food.id%>-star5" title="Amazing"></label>
-                        <input type="radio" id="F<%=food.id%>-star4" name="rating" value="4"/>
-                        <label for="F<%=food.id%>-star4" title="Very good"></label>
-                        <input type="radio" id="F<%=food.id%>-star3" name="rating" value="3"/>
-                        <label for="F<%=food.id%>-star3" title="Average"></label>
-                        <input type="radio" id="F<%=food.id%>-star2" name="rating" value="2"/>
-                        <label for="F<%=food.id%>-star2" title="Not good"></label>
-                        <input type="radio" id="F<%=food.id%>-star1" name="rating" value="1"/>
-                        <label for="F<%=food.id%>-star1" title="Terrible"></label>
-                      </fieldset>
+                        <form >
+                            <fieldset class="starability-grow">
+                            <input type="radio" id="F<%=food.id%>-star5" name="rating" value="5"/>
+                            <label for="F<%=food.id%>-star5" title="Amazing"></label>
+                            <input type="radio"  id="F<%=food.id%>-star4" name="rating" value="4"/>
+                            <label for="F<%=food.id%>-star4" title="Very good"></label>
+                            <input type="radio"  id="F<%=food.id%>-star3" name="rating" value="3"/>
+                            <label for="F<%=food.id%>-star3" title="Average"></label>
+                            <input type="radio"  id="F<%=food.id%>-star2" name="rating" value="2"/>
+                            <label for="F<%=food.id%>-star2" title="Not good"></label>
+                            <input type="radio"  id="F<%=food.id%>-star1" name="rating" value="1"/>
+                            <label for="F<%=food.id%>-star1" title="Terrible"></label>
+                             </fieldset>
+                        </form>
                     </div>
                   </div>
                 </div>
@@ -77,24 +80,27 @@
               <div class="rate-shop">
                 <span class="review-text-shop">Rate for delivery service:</span>
                 <span class="review-star-shop">
+
                   <fieldset class="starability-grow">
-                    <input type="radio" id="S-star5" name="rating2" value="5"/>
+                    <input type="radio" id="S-star5" name="ratingShop" value="5" />
                     <label for="S-star5" title="Amazing"></label>
-                    <input type="radio" id="S-star4" name="rating2" value="4"/>
+                    <input type="radio" id="S-star4" name="ratingShop" value="4" />
                     <label for="S-star4" title="Very good"></label>
-                    <input type="radio" id="S-star3" name="rating2" value="3"/>
+                    <input type="radio" id="S-star3" name="ratingShop" value="3" />
                     <label for="S-star3" title="Average"></label>
-                    <input type="radio" id="S-star2" name="rating2" value="2"/>
+                    <input type="radio" id="S-star2" name="ratingShop" value="2" />
                     <label for="S-star2" title="Not good"></label>
-                    <input type="radio" id="S-star1" name="rating2" value="1"/>
+                    <input type="radio" id="S-star1" name="ratingShop" value="1" />
                     <label for="S-star1" title="Terrible"></label>
                   </fieldset>
                 </span>
               </div>
-              <div class=" container-footer-right">
-                <button class="btn" type="submit" >Submit</button>
+
+              <div class="container-footer-right">
+                  <button class="btn" type="submit">Submit</button>
               </div>
             </form>
+
   	    	</main>
         </section>
       </main>

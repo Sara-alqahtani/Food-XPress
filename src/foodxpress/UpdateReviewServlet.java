@@ -12,29 +12,39 @@ import java.io.PrintWriter;
 @WebServlet(name = "foodxpress.UpdateReviewServlet")
 public class UpdateReviewServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Integer orderId = Utils.tryParseInt(request.getParameter("order_id"));
-        Integer shopId = Utils.tryParseInt(request.getParameter("shop_id"));
-        Integer rating = Integer.valueOf(request.getParameter("rating"));
-        Integer shop_rating = Integer.valueOf(request.getParameter("rating2"));
-        System.out.print("rating:" + rating);
 
-        SQLProvider provider = new SQLProvider();
-        Repository repository = new Repository(provider);
+
+        String oid = request.getParameter("order_id");
+        String sid = request.getParameter("shop_id");
+
         boolean isReviewed = false;
         boolean isFoodRatingSuccess = false ;
         boolean isShopRatingSuccess = false;
-        HttpSession session = request.getSession();
+        if ((oid!= null)&& (sid !=null)){
+            try {
+                Integer orderId = Integer.parseInt(request.getParameter("order_id"));
+                Integer shopId = Integer.parseInt(request.getParameter("shop_id"));
+                Integer foodId = Integer.parseInt( request.getParameter("food_id"));
+                Integer rating = Integer.valueOf(request.getParameter("rating"));
+                Integer shop_rating = Integer.valueOf(request.getParameter("ratingShop"));
 
-        if (orderId != null && orderId > 0 && shopId != null) {
+                SQLProvider provider = new SQLProvider();
+                Repository repository = new Repository(provider);
 
-            isReviewed= repository.updateReviewStatus(shopId, orderId, isReviewed);
-            isFoodRatingSuccess = repository.updateFoodRating(shopId, orderId, rating);
-            isShopRatingSuccess= repository.updateShopRating(shopId,shop_rating);
+
+                isReviewed = repository.updateReviewStatus(shopId, orderId, isReviewed);
+                isFoodRatingSuccess = repository.updateFoodRating(shopId, foodId, rating);
+                isShopRatingSuccess = repository.updateShopRating(shopId, shop_rating);
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
         }
 
-        if (isReviewed && isFoodRatingSuccess & isShopRatingSuccess){
+
+        if (isReviewed && isFoodRatingSuccess && isShopRatingSuccess){
             response.sendRedirect("order-list");
-            return;
+            return ;
         }
 
     }
