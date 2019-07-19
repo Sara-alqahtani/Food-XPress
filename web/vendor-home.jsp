@@ -77,7 +77,7 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <span class="hover-hidden-child"><%=user.location%></span>
                     </h6>
-                    <img src="<%=user.image_url%>" class="profile-picture-sm" alt="user image"/>
+                    <img src="images/user-profile/<%=user.image_url%>" class="profile-picture-sm" alt="user image"/>
                 </div>
                 <hr />
                 <main class="l-col-group-md">

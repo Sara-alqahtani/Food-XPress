@@ -17,7 +17,7 @@
           <hr />
           <main class="l-flex-wrap l-center">
             <div>
-              <img src="../images/profile.png" class="profile-picture" alt="Profile Picture">
+              <img src="images/user-profile/<%=user.image_url%>" class="profile-picture" alt="profile image">
             </div>
             <form class="user-profile-form">
               <div class="form-group">
@@ -29,17 +29,17 @@
                 <input type="tel" class="form-control" value="<%=user.mobile%>" disabled>
               </div>
               <div class="form-group">
-                <label class="label" >Preferred Order Collection Location</label>
+                <label class="label" >Pick Up Location</label>
                 <input type="text" class="form-control" value="<%=user.location%>" disabled>
+              </div>
+              <div class="container-footer-right">
+                <a class="link-btn" href="edit-profile">
+                  <i class="fas fa-user-edit"></i>
+                  Edit
+                </a>
               </div>
             </form>
           </main>
-          <footer class="container-footer-right">
-            <a class="link-btn" href="edit-profile">
-              <i class="fas fa-user-edit"></i>
-              Edit
-            </a>
-          </footer>
         </section>
       </main>
       <%@ include file="footer.jsp" %>

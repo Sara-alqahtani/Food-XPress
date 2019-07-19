@@ -552,18 +552,35 @@ body {
   width: 64px;
   font-size: 1.75rem;
 }
+.remove-profile-picture-btn {
+  position: absolute;
+  height: 32px;
+  width: 32px;
+  padding: 8px;
+  top: 16px;
+  left: 16px;
+  font-size: 1rem;
+}
 .user-profile-form {
   margin-top: 16px;
 }
-@media screen and (min-width: 892px) {
+@media screen and (min-width: 720px) {
   .user-profile-form {
     margin-top: 0;
     margin-left: 32px;
   }
   .user-profile-box {
-    max-width: 892px;
+    max-width: 720px;
     margin: 96px auto;
   }
+}
+
+.select-option {
+  width: 64px;
+  height: 27px;
+  margin-top: 12px;
+  padding-left: 10px;
+  background-color: #F1F1F1;
 }
 /* --------------------------- END View & Edit Profile -----------------------*/
 
@@ -1477,7 +1494,6 @@ body {
 
 .review-icon{
   float:right;
-
 }
 
 .review-hint{
@@ -1723,14 +1739,6 @@ body {
   .review-main .box-description {
     font-size: 1rem;
   }
-}
-
-.select-option {
-  width: 64px;
-  height: 27px;
-  margin-top: 12px;
-  padding-left: 10px;
-  background-color: #F1F1F1;
 }
 
 .review-submit-but{

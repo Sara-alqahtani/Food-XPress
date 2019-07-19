@@ -1,30 +1,25 @@
 package foodxpress;
 
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
-import com.sun.org.apache.xpath.internal.operations.Or;
 
-import javax.xml.transform.Result;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static java.lang.Boolean.TRUE;
-
 public class Repository {
     private SQLProvider provider;
-
     public Repository(SQLProvider provider) {
         this.provider = provider;
     }
 
-    public boolean register(String username, String password, String mobile, String location) {
+    public boolean register(String username, String password, String mobile, PickUpLocation location) {
         String sql = "INSERT INTO users (username, password, mobile, location) VALUES('" +
                 username + "','" +
                 password + "','" +
                 mobile + "' ,'" +
-                location + "'); ";
+                location.toString() + "'); ";
 //        System.out.println(sql);
         boolean isSuccess = false;
         try {
@@ -58,16 +53,19 @@ public class Repository {
         return user;
     }
 
-    public boolean updateUserInfo(String username, String mobile, String location) {
-        String sql = "UPDATE users SET mobile='" + mobile + " ', location='" + location +
-                "' WHERE username='" + username + "';";
+    public boolean updateUserInfo(String username, String mobile, PickUpLocation location, String imageUrl){
+        String sql = "UPDATE users SET mobile='"
+                + mobile + "', location='"
+                + location.toString() + "', image='"
+                + imageUrl + "' WHERE username='"
+                + username + "';";
         System.out.println(sql);
         boolean isSuccess = false;
         try {
             Statement stm = provider.connection.createStatement();
             stm.executeUpdate(sql);
             isSuccess = true;
-        } catch (SQLException e) {
+        }catch (SQLException e) {
             e.printStackTrace();
         }
         return isSuccess;
