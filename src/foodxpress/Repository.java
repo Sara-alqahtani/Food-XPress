@@ -5,6 +5,7 @@ import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExceptio
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -405,6 +406,29 @@ public class Repository {
             e.printStackTrace();
         }
         return user;
+    }
+
+    public boolean updateShopInfo(String name, ShopLocation location, String imageUrl, String description,
+                                  String start, String end, int deliveryTime, double deliveryFee){
+        String sql = "UPDATE shops SET location='"
+                + location.toString().replace("_","#") + "', image='"
+                + imageUrl + "', description='"
+                + description + "', operation_start_time='"
+                + start + "', operation_end_time='"
+                + end + "', delivery_time="
+                + deliveryTime + ", delivery_fee="
+                + deliveryFee + " WHERE name='"
+                + name + "';";
+        System.out.println(sql);
+        boolean isSuccess = false;
+        try {
+            Statement stm = provider.connection.createStatement();
+            stm.executeUpdate(sql);
+            isSuccess = true;
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return isSuccess;
     }
 
     public ArrayList<Food> getReviewFoodList(int shopId, int orderId) {

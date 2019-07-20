@@ -1,6 +1,7 @@
 package foodxpress;
 
 import java.sql.Time;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -59,5 +60,19 @@ public class Utils {
             }
         }
         return res;
+    }
+
+    public static Time tryParseTime (String str){
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        long ms = 0;
+        Time t = null;
+        try {
+            ms = sdf.parse(str).getTime();
+            t = new Time(ms);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return t;
     }
 }

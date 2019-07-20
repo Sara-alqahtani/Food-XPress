@@ -1899,3 +1899,55 @@ body {
   background-color: tomato;
 }
 /* -------------------------------------- END Vendor home ---------------------- */
+/* -----------------------------------Vendor Profile -----------------------------*/
+.vendor-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.big-rating-star {
+  margin-right: 16px;
+  font-size: 1.25rem;
+  color: #f5bd24;
+}
+
+.big-rating-star-text {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #f5bd24;
+}
+
+.shop-rating-display {
+  margin: 15px;
+}
+
+.shop-profile-box {
+  margin: auto;
+  max-width: 480px;
+}
+
+@media screen and (min-width: 750px) {
+
+  .shop-profile-box {
+    max-width: 750px;
+    margin: 96px auto;
+  }
+}
+
+@media screen and (min-width: 720px){
+  .vendor-profile {
+    align-items: flex-start;
+  }
+}
+/* ---------------------------------END Vendor Profile -----------------------------*/
+/* ---------------------------------Edit Shop Profile ----------------------*/
+
+.shop-select-option {
+  width: 84px;
+  height: 27px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  padding-left: 10px;
+  background-color: #F1F1F1;
+}
