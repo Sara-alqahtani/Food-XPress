@@ -79,7 +79,7 @@ function createOrderItem(id, name, quantity, unitPrice, remark) {
         '</tr>' +
         '<tr class="cart-order-remark">' +
         '<td colspan="3">';
-    if (remark.length > 0) {
+    if (remark.trim().length > 0) {
         item +=
             '<i class="fas fa-angle-right"></i>' +
             '<span>' +

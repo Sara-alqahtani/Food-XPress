@@ -31,7 +31,7 @@ public class CartServlet extends HttpServlet {
         String cartXml = request.getParameter("cart");
         System.out.println(cartXml);
         Cart cart = null;
-        response.setStatus(400);
+        response.setStatus(400);                    // return 400 Bad Request to client
         PrintWriter out = response.getWriter();
         try {
             JAXBContext ctx = JAXBContext.newInstance(Cart.class);
@@ -92,11 +92,10 @@ public class CartServlet extends HttpServlet {
         repository = new Repository(new SQLProvider());
         int orderId = repository.createOrder(user.username, cart.shop_id, subtotal, deliveryFee, total, orderList);
         if (orderId < 1) {
-            response.setStatus(400);
             out.println("Error checking out cart. Please try again.");
             return;
         }
-        response.setStatus(200);
+        response.setStatus(200);                    // return 200 OK to client
         out.println("order-status?order_id=" + orderId + "&shop_id=" + cart.shop_id);
     }
 

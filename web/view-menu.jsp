@@ -8,7 +8,7 @@
     Vendor vendor = (Vendor) session.getAttribute("vendor");
     int shopId = vendor.shop_id;
     Shop shop = repository.getShopInfo(shopId);
-    ArrayList<String> categories = repository.getAllCategoriesInShop(shopId);
+    ArrayList<String> categories = repository.getCategoriesWithFoodsInShop(shopId);
     ArrayList<Food> foods = repository.getAllFoodsInShop(shopId);
 %>
 <!DOCTYPE html>
@@ -66,7 +66,7 @@
                 %>
                 <div class="card box">
                     <div class="box-picture">
-                        <img src="<%=request.getContextPath()%>/images/burger.jpg" class="box-picture">
+                        <img src="images/foods/<%=shopId%>/<%=food.image_url%>" class="box-picture" alt="food image">
                     </div>
                     <div class="box-content">
                         <div class="box-detail">

@@ -14,6 +14,21 @@ public class Food {
     public String description;
     public double rating;
 
+    public Food(int id, String name, String category, int shop_id, double price,
+                int prepare_time, String image_url, String description, double rating) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.shop_id = shop_id;
+        this.price = price;
+        this.prepare_time = prepare_time;
+        this.image_url = image_url;
+        this.description = (description != null && !description.trim().isEmpty()
+                ? description
+                : null);
+        this.rating = rating;
+    }
+
     public Food(int id, String name, double price) {
         this.id = id;
         this.name = name;

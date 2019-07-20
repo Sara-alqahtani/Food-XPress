@@ -1,5 +1,7 @@
 package foodxpress;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -43,6 +45,30 @@ public class Utils {
         if (str != null && !str.isEmpty()) {
             try {
                 res = Integer.parseInt(str);
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+        return res;
+    }
+
+    public static Double tryParseDouble(String str) {
+        Double res = null;
+        if (str != null && !str.isEmpty()) {
+            try {
+                res = Double.parseDouble(str);
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+        return res;
+    }
+
+    public static Double tryParseDouble(String str, int places) {
+        Double res = null;
+        if (str != null && !str.isEmpty() && places >= 0) {
+            try {
+                res = new BigDecimal(Double.parseDouble(str)).setScale(places, RoundingMode.HALF_UP).doubleValue();
             } catch (NumberFormatException e) {
                 e.printStackTrace();
             }

@@ -14,7 +14,7 @@
         return;
     }
     Shop shop = repository.getShopInfo(shopId);
-    ArrayList<String> categories = repository.getAllCategoriesInShop(shopId);
+    ArrayList<String> categories = repository.getCategoriesWithFoodsInShop(shopId);
     ArrayList<Food> foods = repository.getAllFoodsInShop(shopId);
 %>
 <!DOCTYPE html>

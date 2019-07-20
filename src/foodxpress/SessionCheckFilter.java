@@ -32,7 +32,8 @@ public class SessionCheckFilter implements Filter {
                     || path.endsWith("vendor-change-password-servlet")
                     || path.endsWith("vendor-log-out-servlet")
                     || path.endsWith("view-menu")
-                    || path.endsWith("edit-menu")) {
+                    || path.endsWith("edit-menu")
+                    || path.endsWith("edit-menu-servlet")) {
                 if (req.getSession().getAttribute("vendor") == null) {
                     res.sendRedirect("vendor-login");
                     return;

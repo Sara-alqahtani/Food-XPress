@@ -150,6 +150,27 @@ public class Repository {
         return categories;
     }
 
+    public ArrayList<String> getCategoriesWithFoodsInShop(int shopId) {
+        String sql = "SELECT name " +
+                "FROM category " +
+                "WHERE shop_id=" +
+                shopId + " AND name IN (SELECT DISTINCT category FROM foods WHERE shop_id=" +
+                shopId +
+                ") ORDER BY name ASC;";
+        System.out.println(sql);
+        ArrayList<String> categories = new ArrayList<>();
+        try {
+            Statement stm = provider.connection.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                categories.add(rs.getString("name"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return categories;
+    }
+
     public ArrayList<Food> getAllFoodsInShop(int shopId) {
         String sql = "SELECT id, name, category, shop_id, price, prepare_time, image, description, " +
                 "(rate_sum/rate_count) AS rating " +
@@ -291,7 +312,13 @@ public class Repository {
                 sb.append(", ");
                 sb.append(item.subtotal);
                 sb.append(", ");
-                sb.append(item.remark);
+                if (item.remark != null) {
+                    sb.append("'");
+                    sb.append(item.remark);
+                    sb.append("'");
+                } else {
+                    sb.append("null");
+                }
                 sb.append(")");
                 if (i < orderList.size() - 1) {
                     sb.append(",\n");
@@ -405,5 +432,60 @@ public class Repository {
             e.printStackTrace();
         }
         return user;
+    }
+
+    public Integer getNextFoodIdOfShop(int shopId) {
+        String sql = "SELECT next_food_id FROM shops WHERE id=" + shopId + ";";
+        System.out.println(sql);
+        Integer nextFoodId = null;
+        try {
+            Statement stm = provider.connection.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            if (rs.next()) {
+                nextFoodId = rs.getInt("next_food_id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return nextFoodId;
+    }
+
+    public boolean updateMenu(int shopId, ArrayList<String> categories, ArrayList<Food> foods) {
+        boolean isSuccess = false;
+        try {
+            provider.connection.setAutoCommit(false);       // start transaction
+            String sql = "DELETE FROM foods WHERE shop_id=" + shopId + ";";
+            Statement stm = provider.connection.createStatement();
+            stm.executeUpdate(sql);
+            System.out.println(sql);
+            sql = "DELETE FROM category WHERE shop_id=" + shopId + ";";
+            System.out.println(sql);
+            stm.executeUpdate(sql);
+            for (String category : categories) {
+                sql = "INSERT INTO category (name, shop_id) VALUES ('" +
+                        category + "', " + shopId + ");";
+                System.out.println(sql);
+                stm.executeUpdate(sql);
+            }
+
+            for (Food food : foods) {
+                sql = "INSERT INTO foods (id, name, category, shop_id, price, prepare_time, image, description) VALUES (" +
+                        food.id + ", '" + food.name + "', '" + food.category + "', " + food.shop_id + ", " + food.price +
+                        ", " + food.prepare_time + ", '" + food.image_url + "', '" + food.description + "');";
+                System.out.println(sql);
+                stm.executeUpdate(sql);
+            }
+            provider.connection.commit();
+            provider.connection.setAutoCommit(true);        // end transaction
+            isSuccess = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            try {
+                provider.connection.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return isSuccess;
     }
 }

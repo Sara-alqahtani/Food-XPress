@@ -17,7 +17,9 @@ public class OrderItem {
         food_name = name;
         quantity = qty;
         this.subtotal = subtotal;
-        this.remark = remark;
+        this.remark = (remark != null && !remark.trim().isEmpty()
+                ? remark
+                : null);
     }
 
     public OrderItem(ResultSet rs) {

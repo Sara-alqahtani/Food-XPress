@@ -214,4 +214,12 @@
         <servlet-name>EditMenu</servlet-name>
         <url-pattern>/edit-menu</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>EditMenuServlet</servlet-name>
+        <servlet-class>foodxpress.EditMenuServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditMenuServlet</servlet-name>
+        <url-pattern>/edit-menu-servlet</url-pattern>
+    </servlet-mapping>
 </web-app>
