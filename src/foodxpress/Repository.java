@@ -5,6 +5,7 @@ import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExceptio
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -71,7 +72,7 @@ public class Repository {
         return isSuccess;
     }
 
-    public boolean changePassword(String username, String oldPassword, String newPassword){
+    public boolean changePassword(String username, String oldPassword, String newPassword) {
         String sql = "SELECT username FROM users WHERE username='" +
                 username + "' AND password='" +
                 oldPassword + "';";
@@ -80,8 +81,8 @@ public class Repository {
             Statement stm = provider.connection.createStatement();
             ResultSet rs = stm.executeQuery(sql);
             if (rs.next()) {
-                sql = "UPDATE users SET password='"+ newPassword +
-                        "' WHERE username='"+ username + "' AND password='"+ oldPassword +"';";
+                sql = "UPDATE users SET password='" + newPassword +
+                        "' WHERE username='" + username + "' AND password='" + oldPassword + "';";
 //                System.out.println(sql);
                 stm.executeUpdate(sql);
                 isSuccess = true;
@@ -218,10 +219,10 @@ public class Repository {
         return foodMap;
     }
 
-    public ArrayList<Order> getAllOrdersofUser(String username){
-        String sql="SELECT orders.*, shops.name AS shop_name " +
+    public ArrayList<Order> getAllOrdersofUser(String username) {
+        String sql = "SELECT orders.*, shops.name AS shop_name " +
                 "FROM orders, shops " +
-                "WHERE username='"+ username+ "' AND orders.shop_id=shops.id " +
+                "WHERE username='" + username + "' AND orders.shop_id=shops.id " +
                 "ORDER BY order_datetime DESC;";
         System.out.println(sql);
         ArrayList<Order> orderlist = new ArrayList<>();
@@ -360,7 +361,7 @@ public class Repository {
         return vendor;
     }
 
-    public boolean vendorChangePassword(String vendorId, String oldPassword, String newPassword){
+    public boolean vendorChangePassword(String vendorId, String oldPassword, String newPassword) {
         String sql = "SELECT id FROM vendors WHERE id='" +
                 vendorId + "' AND password='" +
                 oldPassword + "';";
@@ -369,8 +370,8 @@ public class Repository {
             Statement stm = provider.connection.createStatement();
             ResultSet rs = stm.executeQuery(sql);
             if (rs.next()) {
-                sql = "UPDATE vendors SET password='"+ newPassword +
-                        "' WHERE id='"+ vendorId + "' AND password='"+ oldPassword +"';";
+                sql = "UPDATE vendors SET password='" + newPassword +
+                        "' WHERE id='" + vendorId + "' AND password='" + oldPassword + "';";
 //                System.out.println(sql);
                 stm.executeUpdate(sql);
                 isSuccess = true;
@@ -432,6 +433,105 @@ public class Repository {
             e.printStackTrace();
         }
         return user;
+    }
+
+    public boolean updateShopInfo(String name, ShopLocation location, String imageUrl, String description,
+                                  String start, String end, int deliveryTime, double deliveryFee){
+        String sql = "UPDATE shops SET location='"
+                + location.toString().replace("_","#") + "', image='"
+                + imageUrl + "', description='"
+                + description + "', operation_start_time='"
+                + start + "', operation_end_time='"
+                + end + "', delivery_time="
+                + deliveryTime + ", delivery_fee="
+                + deliveryFee + " WHERE name='"
+                + name + "';";
+        System.out.println(sql);
+        boolean isSuccess = false;
+        try {
+            Statement stm = provider.connection.createStatement();
+            stm.executeUpdate(sql);
+            isSuccess = true;
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return isSuccess;
+    }
+
+    public ArrayList<Food> getReviewFoodList(int shopId, int orderId) {
+        String sql= "SELECT foods.id,foods.name,foods.category,foods.shop_id,foods.price,foods.prepare_time,foods.image,foods.description,(foods.rate_sum/foods.rate_count) as rating\n" +
+                "FROM foods, order_items\n" +
+                "WHERE order_items.shop_id=foods.shop_id AND order_items.food_id = foods.id AND order_items.order_id=" + orderId+
+                " AND order_items.shop_id=" + shopId + ";";
+        System.out.println(sql);
+        ArrayList<Food> review = new ArrayList<>();
+        try {
+            Statement stm = provider.connection.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                review.add(new Food(rs));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return review;
+    }
+
+    public boolean updateReviewStatus(int shopId, int orderId, boolean isReviewed) {
+        String sql = "UPDATE orders\n" +
+                "SET orders.isReviewed = TRUE\n" +
+                "WHERE id = "+ orderId +" AND shop_id =" + shopId + " ;";
+        System.out.println(sql);
+
+        try {
+            Statement stm = provider.connection.createStatement();
+            int rs=  stm.executeUpdate(sql);
+            if( rs==1){
+                isReviewed = true;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return isReviewed;
+    }
+
+    public boolean updateFoodRating(int shopId,int foodId, int rating){
+        String sql="UPDATE foods\n" +
+                "SET rate_sum = rate_sum +" + rating + " , rate_count = rate_count + 1\n" +
+                "WHERE id = " + foodId + " AND shop_id = " + shopId + ";";
+        System.out.println(sql);
+        boolean isSuccess = false;
+
+        try {
+            Statement stm = provider.connection.createStatement();
+            stm.executeUpdate(sql);
+            isSuccess = true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return isSuccess;
+
+    }
+
+    public boolean updateShopRating(int shopId,int rating){
+        String sql="UPDATE shops\n" +
+                "SET rate_sum = rate_sum +" + rating + " , rate_count = rate_count + 1\n" +
+                "WHERE id = " + shopId + ";";
+        System.out.println(sql);
+        boolean isSuccess = false;
+
+        try {
+            Statement stm = provider.connection.createStatement();
+            stm.executeUpdate(sql);
+            isSuccess = true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return isSuccess;
+
     }
 
     public Integer getNextFoodIdOfShop(int shopId) {

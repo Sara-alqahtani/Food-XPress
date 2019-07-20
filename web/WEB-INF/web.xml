@@ -140,6 +140,23 @@
         <servlet-name>ChangePasswordServlet</servlet-name>
         <url-pattern>/change-password-servlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>Review</servlet-name>
+        <jsp-file>/review.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Review</servlet-name>
+        <url-pattern>/review</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateReviewServlet</servlet-name>
+        <servlet-class>foodxpress.UpdateReviewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateReviewServlet</servlet-name>
+        <url-pattern>/review-servlet</url-pattern>
+    </servlet-mapping>
+
 
 
     <servlet>
@@ -222,4 +239,30 @@
         <servlet-name>EditMenuServlet</servlet-name>
         <url-pattern>/edit-menu-servlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ShopProfile</servlet-name>
+        <jsp-file>/shop-profile.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShopProfile</servlet-name>
+        <url-pattern>/shop-profile</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ShopEditProfile</servlet-name>
+        <jsp-file>/shop-edit-profile.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShopEditProfile</servlet-name>
+        <url-pattern>/shop-edit-profile</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>VendorUpdateProfileServlet</servlet-name>
+        <servlet-class>foodxpress.VendorUpdateProfileServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VendorUpdateProfileServlet</servlet-name>
+        <url-pattern>/vendor-update-profile-servlet</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>

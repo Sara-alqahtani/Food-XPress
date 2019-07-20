@@ -31,6 +31,9 @@ public class SessionCheckFilter implements Filter {
                     || path.endsWith("vendor-change-password")
                     || path.endsWith("vendor-change-password-servlet")
                     || path.endsWith("vendor-log-out-servlet")
+                    || path.endsWith("shop-profile")
+                    || path.endsWith("shop-edit-profile")
+                    || path.endsWith("vendor-update-profile-servlet")
                     || path.endsWith("view-menu")
                     || path.endsWith("edit-menu")
                     || path.endsWith("edit-menu-servlet")) {

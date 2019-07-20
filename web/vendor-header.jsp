@@ -42,7 +42,8 @@
                 <button type="button" class="round-icon-btn">
                     <i class="fas fa-store"></i>
                 </button>
-                <ul class="navigation-vertical dropdown-content">
+                <ul class="navigation-vertical dropdown-content" >
+                    <li><a href="shop-profile">Shop Profile</a></li>
                     <li><a href="vendor-change-password">Change Password</a></li>
                     <li><a href="vendor-log-out-servlet">Log Out</a></li>
                 </ul>

@@ -1512,6 +1512,13 @@ body {
   color: black;
 }
 
+.review-icon{
+  float:right;
+}
+
+.review-hint{
+  color:red;
+}
 
 /* ---------------------- END foodxpress.Order List Page --------------- */
 
@@ -1591,21 +1598,27 @@ body {
 .parallelogram-inactive {
   background-color: #cccccc;
 }
+
+.review-btn{
+   margin:3px auto;
+   max-width: 150px;
+}
 /* ------------------------- END Status Page -------------------------------- */
 
 /* ------------------------- Review Page -------------------------------- */
 .review-star {
-  margin-top: 8px;
+  /*margin-top: 8px;*/
   font-size: 1.4rem;
   width: 100%;
-  float: right;
-  display: inline-block;
+  margin: 20px 150px;
+  /*float: right;*/
+  /*display: inline-block;*/
 }
 
 @media screen and (min-width: 521px) {
   .review-star {
     width: auto;
-    margin-top: 0;
+    /*margin-top: 0;*/
   }
 }
 
@@ -1704,8 +1717,9 @@ body {
 }
 
 .review-main {
-  margin: 0 auto;
+  margin: 96px auto;
   max-width: 1080px;
+  width:700px;
 }
 
 .review-main .box {
@@ -1747,6 +1761,28 @@ body {
       height: 74px;
   }
 }
+
+.review-submit-but{
+  margin: 20px auto;
+  max-width: 150px;
+}
+
+.rate-shop{
+  margin-top: 10px;
+}
+
+.review-text-shop{
+  font-size: 1.4em;
+  margin-top: 20px;
+  margin-right:10px;
+
+}
+.review-star-shop{
+  display: inline-block;
+  margin-left:53px;
+}
+
+
 /* ---------------------------- END Review Page -------------------------- */
 /* ---------------------------Pop-up box ----------------------------------*/
 
@@ -1892,6 +1928,58 @@ body {
   background-color: tomato;
 }
 /* -------------------------------------- END Vendor home ---------------------- */
+/* -----------------------------------Vendor Profile -----------------------------*/
+.vendor-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.big-rating-star {
+  margin-right: 16px;
+  font-size: 1.25rem;
+  color: #f5bd24;
+}
+
+.big-rating-star-text {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #f5bd24;
+}
+
+.shop-rating-display {
+  margin: 15px;
+}
+
+.shop-profile-box {
+  margin: auto;
+  max-width: 480px;
+}
+
+@media screen and (min-width: 750px) {
+
+  .shop-profile-box {
+    max-width: 750px;
+    margin: 96px auto;
+  }
+}
+
+@media screen and (min-width: 720px){
+  .vendor-profile {
+    align-items: flex-start;
+  }
+}
+/* ---------------------------------END Vendor Profile -----------------------------*/
+/* ---------------------------------Edit Shop Profile ----------------------*/
+
+.shop-select-option {
+  width: 84px;
+  height: 27px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  padding-left: 10px;
+  background-color: #F1F1F1;
+}
 
 
 
