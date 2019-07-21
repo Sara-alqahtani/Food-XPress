@@ -17,13 +17,17 @@ public class LoginServlet extends HttpServlet {
         SQLProvider provider = new SQLProvider();
         Repository repository = new Repository(provider);
         User user = repository.login(username, password);
+
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             response.sendRedirect("home");
         } else {
             PrintWriter out = response.getWriter();
-            out.println("Wrong username or password. Please try again.");
+            out.println("<script type=\"text/javascript\">");
+            out.println("window.location.replace('login');");
+            out.println("alert('Wrong username or password. Please try again.');");
+            out.println("</script>");
         }
     }
 

@@ -24,6 +24,16 @@
             <div class="order-list-title">
                 <h5>Recent Orders</h5>
             </div>
+          <%
+              if (orderlist.isEmpty()) {
+          %>
+          <h5 class="text-center text-itallic">
+              No order yet.<br /><br />
+              Place your order now!
+          </h5>
+          <%
+              }
+          %>
         <%
           for (Order order : orderlist) {
         %>
@@ -35,7 +45,6 @@
                 <div class="order-status-chart">
                   <%
                       if (order.status.equals(OrderStatus.ORDERING)){
-
                   %>
                   <div class="c100 p25 green ">
                     <span><%=order.status%></span>
@@ -85,7 +94,7 @@
 
 
                   <%
-                      if ((order.status.equals(OrderStatus.ENJOY))&& (order.isReviewed == false)){
+                      if ((order.status.equals(OrderStatus.ENJOY))&& (!order.is_reviewed)){
                   %>
                   <div class="review-icon">
                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
@@ -104,16 +113,7 @@
                       Order No.:
                     </td>
                     <td class="orderlist-box-info">
-                      <%=order.id%>
-                    </td>
-                  </tr>
-
-                  <tr class="orderlist-box-detail">
-                    <td class="orderlist-box-title">
-                      Shop Name:
-                    </td>
-                    <td class="orderlist-box-info">
-                        <%=order.shop_name%>
+                        <%=order.shop_name%> #<%=order.id%>
                     </td>
                   </tr>
 
@@ -123,6 +123,15 @@
                     </td>
                     <td class="orderlist-box-info">
                       <%=Utils.printDate(order.datetime)%>
+                    </td>
+                  </tr>
+
+                  <tr class="orderlist-box-detail">
+                    <td class="orderlist-box-title">
+                        Pick Up At:
+                    </td>
+                    <td class="orderlist-box-info">
+                        <%=order.pick_up_location.toString()%>
                     </td>
                   </tr>
 

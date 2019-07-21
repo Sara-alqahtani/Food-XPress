@@ -25,6 +25,7 @@
             response.sendRedirect("order-list");
             return;
         }
+        System.out.println("Order status order id:" + orderId);
         Order order = repository.getOrderInfo(shopId, orderId);
         ArrayList<OrderItem> orderItems = repository.getAllOrderItemsInOrder(shopId, orderId);
     %>
@@ -64,6 +65,10 @@
                     <div class="form-group">
                         <label class="label">Order Time:</label>
                         <input type="text" class="form-control" value="<%=Utils.printDate(order.datetime)%>" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label class="label">Pick Up At:</label>
+                        <input type="text" class="form-control" value="<%=order.pick_up_location.toString()%>" disabled>
                     </div>
                 </div>
 
@@ -131,11 +136,13 @@
                 </div>
 
                 <%
-                    if ((order.status.equals(OrderStatus.ENJOY))&& (order.isReviewed == false)){
+                    if ((order.status.equals(OrderStatus.ENJOY))&& (!order.is_reviewed)){
                 %>
-                <a href="review?order_id=<%=orderId%>&shop_id=<%=shopId%>"><div class="link-btn review-btn" >
-                    Rate Us
-                </div></a>
+                <a href="review?order_id=<%=orderId%>&shop_id=<%=shopId%>">
+                    <div class="link-btn review-btn">
+                        Rate Us
+                    </div>
+                </a>
                 <%
                     }
                 %>

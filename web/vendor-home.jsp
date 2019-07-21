@@ -24,6 +24,7 @@
 <html>
 <head>
     <%@ include file="meta.jsp"%>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/master.js" defer></script>
     <title>Order List | <%=shop.name%> | Food Xpress</title>
 </head>
 <body>
@@ -75,7 +76,7 @@
                     </h6>
                     <h6>
                         <i class="fas fa-map-marker-alt"></i>
-                        <span class="hover-hidden-child"><%=user.location%></span>
+                        <span class="hover-hidden-child"><%=order.pick_up_location.toString()%></span>
                     </h6>
                     <img src="images/user-profile/<%=user.image_url%>" class="profile-picture-sm" alt="user image"/>
                 </div>

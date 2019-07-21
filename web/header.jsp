@@ -4,9 +4,9 @@
     User user = (User) session.getAttribute("user");
 %>
 <header class="header">
-    <div>
+    <a href="home">
         <img src="images/logo.png" alt="Logo">
-    </div>
+    </a>
     <div class="header-navigation">
         <nav>
             <ul class="navigation-horizontal">
@@ -33,9 +33,11 @@
                     <%=user.username%>
                 </span>
             <nav class="dropdown">
-                <button type="button" class="round-icon-btn">
-                    <i class="fas fa-user"></i>
-                </button>
+                <a href="view-profile">
+                    <button type="button" class="round-icon-btn">
+                        <i class="fas fa-user"></i>
+                    </button>
+                </a>
                 <ul class="navigation-vertical dropdown-content">
                     <li><a href="view-profile">User Profile</a></li>
                     <li><a href="change-password">Change Password</a></li>

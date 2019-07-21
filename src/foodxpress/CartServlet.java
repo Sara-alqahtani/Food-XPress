@@ -48,6 +48,8 @@ public class CartServlet extends HttpServlet {
 //        for (CartItem item : cart.itemList.cartItems) {
 //            System.out.println(item.id);
 //        }
+        System.out.println(cart.location);
+        PickUpLocation location = Utils.tryParseEnum(PickUpLocation.class, cart.location);
 
         if (cart.shop_id < 1) {
             out.println("Invalid shop id.");
@@ -55,6 +57,10 @@ public class CartServlet extends HttpServlet {
         }
         if (cart.itemList.cartItems.isEmpty()) {
             out.println("Cart must contain at least one item in order to checkout.");
+            return;
+        }
+        if (location == null) {
+            out.println("Invalid pick up location.");
             return;
         }
         for (CartItem item : cart.itemList.cartItems) {
@@ -90,7 +96,7 @@ public class CartServlet extends HttpServlet {
 
         // start a new DB connection to perform transaction
         repository = new Repository(new SQLProvider());
-        int orderId = repository.createOrder(user.username, cart.shop_id, subtotal, deliveryFee, total, orderList);
+        int orderId = repository.createOrder(user.username, cart.shop_id, subtotal, deliveryFee, total, orderList, location);
         if (orderId < 1) {
             out.println("Error checking out cart. Please try again.");
             return;

@@ -1,4 +1,5 @@
 <%@ page import="foodxpress.*" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
   Vendor vendor= (Vendor) session.getAttribute("vendor");
   SQLProvider provider = new SQLProvider();
@@ -21,7 +22,9 @@
           <hr />
           <main class="l-flex-wrap vendor-profile">
             <div>
-              <img src="images/shop-image/<%=shop.image_url%>" class="profile-picture" alt="profile image">
+                <div class="profile-picture">
+                    <img src="images/shop-image/<%=shop.image_url%>?shop_id=<%=shop.id%>" class="profile-picture" alt="profile image">
+                </div>
               <div class="l-center shop-rating-display ">
                 <span class="big-rating-star">
                   <%

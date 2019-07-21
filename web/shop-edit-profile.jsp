@@ -1,4 +1,5 @@
 <%@ page import="foodxpress.*" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
   Vendor vendor= (Vendor) session.getAttribute("vendor");
   SQLProvider provider = new SQLProvider();
@@ -20,7 +21,7 @@
           <h4 class="text-center">Edit Shop Profile</h4>
           <hr />
           <main class="l-flex-wrap vendor-profile">
-            <div class="l-stack">
+            <div class="l-stack profile-picture">
               <img src="images/shop-image/<%=shop.image_url%>" class="profile-picture" id="js-edit-profile-picture" alt="profile image">
               <label class="round-icon-btn upload-profile-picture-btn l-center" for="js-upload-image">
                 <i class="fas fa-camera"></i>
@@ -50,7 +51,7 @@
                 </div>
                 <div class="form-group">
                   <label class="label" for="description">Description</label>
-                  <textarea rows="5" name="description" class="form-control review-text-area" id="description" required><%=shop.description%></textarea>
+                  <textarea rows="5" name="description" class="form-control review-text-area" placeholder="Write shop description." id="description" required><%=shop.description%></textarea>
                 </div>
                 <div class="form-group">
                   <label class="label" for="operating-time">Operating Time</label>
@@ -62,11 +63,11 @@
                 </div>
                 <div class="form-group">
                   <label class="label" for="delivery-time">Delivery Time (min)</label>
-                  <input type="text" name="deliveryTime" class="form-control" id="delivery-time" value="<%=shop.delivery_time%>" required>
+                  <input type="text" name="deliveryTime" class="form-control" id="delivery-time" placeholder="0" value="<%=shop.delivery_time%>" required>
                 </div>
                 <div class="form-group">
                   <label class="label" for="delivery-fee">Delivery Fee (RM)</label>
-                  <input type="text" name="deliveryFee" class="form-control" id="delivery-fee" value="<%=Utils.toTwoDecimalPlaces(shop.delivery_fee)%>" required>
+                  <input type="text" name="deliveryFee" class="form-control" id="delivery-fee" placeholder="0.00" value="<%=Utils.toTwoDecimalPlaces(shop.delivery_fee)%>" required>
                 </div>
               </div>
               <div class="container-footer-right l-row-group-md">

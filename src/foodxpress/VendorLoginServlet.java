@@ -17,14 +17,17 @@ public class VendorLoginServlet extends HttpServlet {
         SQLProvider provider = new SQLProvider();
         Repository repository = new Repository(provider);
         Vendor vendor = repository.vendorLogin(vendorId, password);
-        PrintWriter out = response.getWriter();
+
         if (vendor != null) {
             HttpSession session = request.getSession();
             session.setAttribute("vendor", vendor);
-//            out.println("Vendor " + vendor.id + " login successfully!");
             response.sendRedirect("vendor-home");
         } else {
-            out.println("Wrong username or password. Please try again.");
+            PrintWriter out = response.getWriter();
+            out.println("<script type=\"text/javascript\">");
+            out.println("window.location.replace('vendor-login');");
+            out.println("alert('Wrong vendor id or password. Please try again.');");
+            out.println("</script>");
         }
     }
 

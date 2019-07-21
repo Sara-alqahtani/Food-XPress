@@ -4,6 +4,7 @@ var cartFooter;
 var cartSubtotal;
 var cartDeliveryFee;
 var cartTotal;
+var pickUpLocation;
 
 function populateTable(cart) {
     var items = '';
@@ -95,6 +96,7 @@ function createOrderItem(id, name, quantity, unitPrice, remark) {
 }
 
 window.addEventListener('load', function() {
+    pickUpLocation = document.getElementById('js-pick-up-location');
     cartTable = document.getElementsByClassName('cart-order-table')[0];
     cartHeader = document.getElementById('js-cart-order-table-header');
     cartFooter = document.getElementById('js-cart-order-table-footer');
@@ -118,6 +120,7 @@ window.addEventListener('load', function() {
     var description = foodPopUp.getElementsByClassName('box-description')[0];
     var remark = foodPopUp.getElementsByClassName('review-text-area')[0];
     var shopId = foodPopUp.getAttribute('data-shop_id');
+    var image = document.getElementById('js-pop-up-picture');
 
     // get cart from session
     var cart = JSON.parse(sessionStorage.getItem('cart'));
@@ -137,6 +140,8 @@ window.addEventListener('load', function() {
         price.innerHTML = this.getElementsByClassName('box-info')[0].innerHTML;
         time.innerHTML = this.getElementsByClassName('box-info')[1].innerHTML;
         rating.innerHTML = this.getElementsByClassName('box-info')[2].innerHTML;
+        image.src = this.getElementsByClassName('box-picture')[0].src;
+
         var foodDescription = this.getElementsByClassName('box-description')[0];
         var descriptionText;
         if (foodDescription) {
@@ -212,12 +217,16 @@ window.addEventListener('load', function() {
     };
 
     checkoutBtn.onclick = function () {
+        if (!confirm('Confirm checkout?')) {
+            return;
+        }
         var xhttp = new XMLHttpRequest();
         xhttp.open('POST', 'cart-servlet', true);
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhttp.onreadystatechange = function() {
             if (this.readyState === 4 && this.status === 200) {
                 if (this.responseText) {
+                    sessionStorage.clear();
                     window.location.href = this.responseText;
                 }
             } else if (this.readyState === 4 && this.status === 400) {
@@ -227,8 +236,12 @@ window.addEventListener('load', function() {
             }
         };
 
+        var location = pickUpLocation.options[pickUpLocation.selectedIndex].value;
+        console.log('Location:' + location);
+
         var xml = '<cart>';
         xml += '<shop_id>' + cart.shop_id + '</shop_id>';
+        xml += '<location>' + location + '</location>';
         xml += '<cart_item_list>';
         Object.keys(cart.foods).forEach(function (key) {
             xml += '<cart_item>';

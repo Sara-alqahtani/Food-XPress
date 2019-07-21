@@ -15,6 +15,9 @@ public class SessionCheckFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
 
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
         String path = req.getServletPath();
         if (path.endsWith("welcome")
                 || path.endsWith("login")

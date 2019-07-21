@@ -111,7 +111,7 @@
                         <i class="fas fa-edit js-food-pop-up-btn" data-food_id="<%=food.id%>" data-category="<%=food.category%>"></i>
                         <i class="fas fa-trash-alt js-food-delete-btn" data-food_id="<%=food.id%>"></i>
                     </span>
-                    <img src="images/foods/<%=shopId%>/<%=food.image_url%>" class="box-picture" alt="food image">
+                    <img src="images/foods/<%=shopId%>/<%=food.image_url%>?food_id=<%=food.id%>" class="box-picture" alt="food image">
                     <div class="box-content">
                         <div class="box-detail">
                             <div class="box-title"><%=food.name%></div>
@@ -152,7 +152,7 @@
                    </span>
                             </div>
                         </div>
-                        <p class="box-description"><%=food.description%></p>
+                        <p class="box-description"><%=food.description != null ? food.description : ""%></p>
                     </div>
                 </div>
             <%

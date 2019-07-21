@@ -63,7 +63,7 @@
                 <a href="order?shop_id=<%=shop.id%>" class="link-no-decor">
                     <div class="card box">
                         <div class="box-picture">
-                            <img src="<%=shop.image_url%>" class="box-picture" alt="shop image">
+                            <img src="images/shop-image/<%=shop.image_url%>" class="box-picture" alt="shop image">
                         </div>
                         <div class="box-content">
                             <div class="box-detail">

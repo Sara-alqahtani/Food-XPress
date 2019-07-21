@@ -10,9 +10,9 @@
     Shop shop = repository.getShopInfo(vendor.shop_id);
 %>
 <header class="header">
-    <div>
+    <a href="vendor-home">
         <img src="images/logo.png" alt="Logo">
-    </div>
+    </a>
     <div class="header-navigation">
         <nav>
             <ul class="navigation-horizontal">
@@ -39,9 +39,11 @@
                     <%=shop.name%>
                 </span>
             <nav class="dropdown">
-                <button type="button" class="round-icon-btn">
-                    <i class="fas fa-store"></i>
-                </button>
+                <a href="shop-profile">
+                    <button type="button" class="round-icon-btn">
+                        <i class="fas fa-store"></i>
+                    </button>
+                </a>
                 <ul class="navigation-vertical dropdown-content" >
                     <li><a href="shop-profile">Shop Profile</a></li>
                     <li><a href="vendor-change-password">Change Password</a></li>

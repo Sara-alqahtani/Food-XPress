@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Repository {
     private SQLProvider provider;
@@ -16,11 +17,11 @@ public class Repository {
     }
 
     public boolean register(String username, String password, String mobile, PickUpLocation location) {
-        String sql = "INSERT INTO users (username, password, mobile, location) VALUES('" +
+        String sql = "INSERT INTO users (username, password, mobile, location, image) VALUES('" +
                 username + "','" +
                 password + "','" +
                 mobile + "' ,'" +
-                location.toString() + "'); ";
+                location.toString() + "', 'default.png'); ";
 //        System.out.println(sql);
         boolean isSuccess = false;
         try {
@@ -277,7 +278,7 @@ public class Repository {
         return orderItems;
     }
 
-    public int createOrder(String username, int shopId, double subtotal, double deliveryFee, double total, ArrayList<OrderItem> orderList) {
+    public int createOrder(String username, int shopId, double subtotal, double deliveryFee, double total, ArrayList<OrderItem> orderList, PickUpLocation location) {
         int orderId;
         try {
             provider.connection.setAutoCommit(false);       // start transaction
@@ -290,12 +291,13 @@ public class Repository {
             } else {
                 throw new SQLException("New order id not returned.");
             }
-            sql = "INSERT INTO orders (shop_id, username, subtotal, delivery_fee, discount, total, status) \n" +
+            sql = "INSERT INTO orders (shop_id, username, subtotal, delivery_fee, discount, total, status, pick_up_location) \n" +
                     "VALUES (" + shopId + ", '" + username + "', " +
                     subtotal + ", " +
                     deliveryFee + ", 0, " +
                     total + ", '" +
-                    OrderStatus.values()[0].toString().toLowerCase() + "');";
+                    OrderStatus.values()[0].toString().toLowerCase() + "', '" +
+                    location.toString() + "');";
             System.out.println(sql);
             stm.executeUpdate(sql);
             sql = "INSERT INTO order_items (order_id, shop_id, food_id, food_name, quantity, subtotal, remark) VALUES \n";
@@ -496,43 +498,77 @@ public class Repository {
         return isReviewed;
     }
 
-    public boolean updateFoodRating(int shopId,int foodId, int rating){
-        String sql="UPDATE foods\n" +
-                "SET rate_sum = rate_sum +" + rating + " , rate_count = rate_count + 1\n" +
-                "WHERE id = " + foodId + " AND shop_id = " + shopId + ";";
-        System.out.println(sql);
+    public boolean updateRating(int orderId, int shopId, int shopRating, HashMap<Integer, Integer> ratingMap) {
         boolean isSuccess = false;
-
         try {
+            provider.connection.setAutoCommit(false);
             Statement stm = provider.connection.createStatement();
-            stm.executeUpdate(sql);
-            isSuccess = true;
 
+            String sql = "UPDATE shops SET rate_sum=rate_sum+" + shopRating + ", rate_count=rate_count+1 " +
+                    "WHERE id=" + shopId + ";";
+            System.out.println(sql);
+            stm.executeUpdate(sql);
+            for (Map.Entry<Integer, Integer> entry : ratingMap.entrySet()) {
+                sql = "UPDATE foods SET rate_sum=rate_sum+" + entry.getValue() + ", rate_count=rate_count+1 WHERE id=" +
+                        entry.getKey() + " AND shop_id=" + shopId + ";";
+                System.out.println(sql);
+                stm.executeUpdate(sql);
+            }
+            sql = "UPDATE orders SET is_reviewed=TRUE WHERE id=" +
+                    orderId + " AND shop_id=" + shopId + ";";
+            System.out.println(sql);
+            stm.executeUpdate(sql);
+            provider.connection.commit();
+            provider.connection.setAutoCommit(true);
+            isSuccess = true;
         } catch (SQLException e) {
             e.printStackTrace();
+            try {
+                provider.connection.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
         }
         return isSuccess;
-
     }
 
-    public boolean updateShopRating(int shopId,int rating){
-        String sql="UPDATE shops\n" +
-                "SET rate_sum = rate_sum +" + rating + " , rate_count = rate_count + 1\n" +
-                "WHERE id = " + shopId + ";";
-        System.out.println(sql);
-        boolean isSuccess = false;
-
-        try {
-            Statement stm = provider.connection.createStatement();
-            stm.executeUpdate(sql);
-            isSuccess = true;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return isSuccess;
-
-    }
+//    public boolean updateRating(int shopId,int foodId, int rating){
+//        String sql="UPDATE foods\n" +
+//                "SET rate_sum = rate_sum +" + rating + " , rate_count = rate_count + 1\n" +
+//                "WHERE id = " + foodId + " AND shop_id = " + shopId + ";";
+//        System.out.println(sql);
+//        boolean isSuccess = false;
+//
+//        try {
+//            Statement stm = provider.connection.createStatement();
+//            stm.executeUpdate(sql);
+//            isSuccess = true;
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return isSuccess;
+//
+//    }
+//
+//    public boolean updateShopRating(int shopId,int rating){
+//        String sql="UPDATE shops\n" +
+//                "SET rate_sum = rate_sum +" + rating + " , rate_count = rate_count + 1\n" +
+//                "WHERE id = " + shopId + ";";
+//        System.out.println(sql);
+//        boolean isSuccess = false;
+//
+//        try {
+//            Statement stm = provider.connection.createStatement();
+//            stm.executeUpdate(sql);
+//            isSuccess = true;
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return isSuccess;
+//
+//    }
 
     public Integer getNextFoodIdOfShop(int shopId) {
         String sql = "SELECT next_food_id FROM shops WHERE id=" + shopId + ";";
@@ -550,7 +586,7 @@ public class Repository {
         return nextFoodId;
     }
 
-    public boolean updateMenu(int shopId, ArrayList<String> categories, ArrayList<Food> foods) {
+    public boolean updateMenu(int shopId, ArrayList<String> categories, ArrayList<Food> foods, int nextFoodId) {
         boolean isSuccess = false;
         try {
             provider.connection.setAutoCommit(false);       // start transaction
@@ -571,10 +607,21 @@ public class Repository {
             for (Food food : foods) {
                 sql = "INSERT INTO foods (id, name, category, shop_id, price, prepare_time, image, description) VALUES (" +
                         food.id + ", '" + food.name + "', '" + food.category + "', " + food.shop_id + ", " + food.price +
-                        ", " + food.prepare_time + ", '" + food.image_url + "', '" + food.description + "');";
+                        ", " + food.prepare_time + ", '" + food.image_url + "', ";
+                if (food.description != null) {
+                    sql += "'" + food.description + "'";
+                } else {
+                    sql += null;
+                }
+                sql += ");";
+
                 System.out.println(sql);
                 stm.executeUpdate(sql);
             }
+            sql = "UPDATE shops SET next_food_id=" +
+                    nextFoodId + " WHERE id=" + shopId + ";";
+            System.out.println(sql);
+            stm.executeUpdate(sql);
             provider.connection.commit();
             provider.connection.setAutoCommit(true);        // end transaction
             isSuccess = true;

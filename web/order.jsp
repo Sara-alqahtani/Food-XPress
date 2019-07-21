@@ -2,6 +2,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
+    User user = (User) session.getAttribute("user");
+
     SQLProvider provider = new SQLProvider();
     Repository repository = new Repository(provider);
 
@@ -111,6 +113,18 @@
                     <input class="form-control" type="text" placeholder="Promo Code">
                     <button type="button" class="btn-rect">APPLY</button>
                 </div>
+                <div class="form-group">
+                    <label class="label" for="js-pick-up-location">Pick Up Location: </label>
+                    <select name="location" id="js-pick-up-location" class="select-option">
+                        <%
+                            for (PickUpLocation location : PickUpLocation.values()) {
+                        %>
+                        <option value="<%=location.toString()%>" <%=location.equals(user.location)?"selected":""%> > <%=location%></option>
+                        <%
+                            }
+                        %>
+                    </select>
+                </div>
                 <div class="cart-checkout-btn-container">
                     <button type="button" class="btn" id="js-checkout-btn">CHECKOUT</button>
                 </div>
@@ -135,8 +149,8 @@
                         Food food = foods.get(i);
                 %>
                 <div class="card box js-food-pop-up-btn" data-food_id=<%=food.id%>>
-                    <div class="box-picture">
-                        <img src="<%=request.getContextPath()%>/images/burger.jpg" class="box-picture">
+                    <div>
+                        <img src="images/foods/<%=shopId%>/<%=food.image_url%>" class="box-picture">
                     </div>
                     <div class="box-content">
                         <div class="box-detail">
@@ -207,7 +221,7 @@
                     <i class="fas fa-times"></i>
                 </div>
                 <div class="pop-up-picture-container">
-                    <img src="<%=request.getContextPath()%>/images/burger.jpg" class="pop-up-picture">
+                    <img src="" class="pop-up-picture" id="js-pop-up-picture">
                 </div>
                 <div class="box-title pop-up-food-name">Food Name</div>
                 <div class="pop-up-info">

@@ -44,6 +44,9 @@
                         </select>
                     </div>
                 </div>
+                <div class="login-register-link">
+                    <a class="internal-link" href="login">Already have an account? Login now!</a>
+                </div>
                 <div class="container-footer-right">
                     <button type="submit" class="btn">Register</button>
                 </div>

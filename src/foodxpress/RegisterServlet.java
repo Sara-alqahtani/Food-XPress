@@ -19,7 +19,10 @@ public class RegisterServlet extends HttpServlet {
 
         if (!password.equals(confirmPassword)) {
             PrintWriter out = response.getWriter();
-            out.println("The password is different from the confirmed password. Please confirm your password.");
+            out.println("<script type=\"text/javascript\">");
+            out.println("window.location.replace('register');");
+            out.println("alert('The password is different from the confirmed password. Please confirm your password.');");
+            out.println("</script>");
             return;
         }
 
@@ -27,10 +30,14 @@ public class RegisterServlet extends HttpServlet {
         Repository repository = new Repository(provider);
         boolean isSuccess = repository.register(username, password, mobile, location);
         if (isSuccess) {
+            request.getSession().setAttribute("new_user_username", username);
             response.sendRedirect("login");
         } else {
             PrintWriter out = response.getWriter();
-            out.println("Username is taken. Please try another username.");
+            out.println("<script type=\"text/javascript\">");
+            out.println("window.location.replace('register');");
+            out.println("alert('Username is taken. Please try another username.');");
+            out.println("</script>");
         }
     }
 

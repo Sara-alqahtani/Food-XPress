@@ -175,7 +175,11 @@ function insertFoodInMenuList(food, category_index, index_in_category) {
         '</span>' +
         '</div>' +
         '</div>' +
-        '<p class="box-description">' + food.description + '</p>' +
+        '<p class="box-description">';
+        if (food.description && food.description.trim().length > 0) {
+            res += food.description.trim()
+        }
+        res += '</p>' +
         '</div>' +
         '</div>';
     console.log(res);
@@ -200,7 +204,7 @@ function replaceFoodInMenuList(food, prev_index, category_index, index_in_catego
         '<i class="fas fa-edit js-food-pop-up-btn" data-food_id="'+ food.id + '" data-category="' + food.category + '"></i>' +
         '<i class="fas fa-trash-alt js-food-delete-btn" data-food_id="' + food.id + '"></i>' +
         '</span>' +
-        '<img src="images/foods/' + food.shop_id + '/' + food.image_url + '" class="box-picture" alt="food image">' +
+        '<img src="images/foods/' + food.shop_id + '/' + food.image_url + '?' + (new Date).getTime() + '" class="box-picture" alt="food image">' +
         '<div class="box-content">' +
         '<div class="box-detail">' +
         '<div class="box-title">' + food.name + '</div>' +
@@ -245,6 +249,9 @@ window.addEventListener('click', function(ev) {
     }
     // delete on click for category bar
     if (ev.target.className.includes('js-category-delete-btn')) {
+        if (!confirm("Confirm delete category? All foods in the category will also be deleted.")) {
+            return;
+        }
         var dataCategory = ev.target.getAttribute('data-category');
         ajaxCall('action=delete-category&category=' + dataCategory,
             function (response) {
@@ -277,6 +284,9 @@ window.addEventListener('click', function(ev) {
 
     // delete on click for food item
     if (ev.target.className.includes('js-food-delete-btn')) {
+        if (!confirm("Confirm delete food?")) {
+            return;
+        }
         var foodId = ev.target.getAttribute('data-food_id');
         ajaxCall('action=delete-food&food_id=' + foodId,
             function (response) {
@@ -369,7 +379,14 @@ window.addEventListener('load', function () {
         formData.append('name', title.value);
         formData.append('price', price.value);
         formData.append('time', time.value);
-        formData.append('description', description.value);
+        console.log('Description: ' + description);
+        console.log('Description value: ' + description.value);
+        if (description.value.trim().length > 0) {
+            console.log('NANI!');
+            console.log(description.value);
+            formData.append('description', description.value.trim());
+        }
+
 
         formData.append('image', file, file.name);
         console.log(formData);
@@ -418,15 +435,19 @@ window.addEventListener('load', function () {
     }
 
     function discardChanges() {
-        ajaxCall('action=discard', function(response) {
-            window.location.href = response;
-        })
+        if (confirm("Confirm discard unsaved changes?")) {
+            ajaxCall('action=discard', function(response) {
+                window.location.href = response;
+            })
+        }
     }
 
     function confirmChanges() {
-        ajaxCall('action=confirm', function(response) {
-            window.location.href = response;
-        })
+        if (confirm("Confirm saving changes?")) {
+            ajaxCall('action=confirm', function(response) {
+                window.location.href = response;
+            })
+        }
     }
 
     var i = 0;

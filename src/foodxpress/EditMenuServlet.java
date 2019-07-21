@@ -22,7 +22,7 @@ public class EditMenuServlet extends HttpServlet {
         System.out.println("WORLDDD");
         HttpSession session = request.getSession();
         GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
+        Gson gson = builder.serializeNulls().create();
 
         ArrayList<String> categories = null;
         ArrayList<Food> foods = null;
@@ -118,6 +118,7 @@ public class EditMenuServlet extends HttpServlet {
             Double price = Utils.tryParseDouble(request.getParameter("price"), 2);
             Integer time = Utils.tryParseInt(request.getParameter("time"));
             String description = request.getParameter("description");
+            System.out.println("Description: "+ description);
 
             Part image = request.getPart("image");
             System.out.println("Image: " + image);
@@ -152,7 +153,7 @@ public class EditMenuServlet extends HttpServlet {
             System.out.println("Reached HERRREERERERER");
             if (category != null && name != null
                     && price != null && time != null
-                    && description != null && imageUrl != null) {
+                    && imageUrl != null) {
                 System.out.println("NO NULL PARAMETER");
                 Food food = new Food(nextFoodId, name, category, shopId,
                         price, time, imageUrl, description, 5.0);
@@ -291,10 +292,11 @@ public class EditMenuServlet extends HttpServlet {
             out.println("view-menu");
             return;
         } else if (action.equals("confirm")) {
+            int nextFoodId = (Integer) session.getAttribute("next_food_id");
             int shopId = ((Vendor) session.getAttribute("vendor")).shop_id;
             SQLProvider provider = new SQLProvider();
             Repository repository = new Repository(provider);
-            boolean isSuccess = repository.updateMenu(shopId, categories, foods);
+            boolean isSuccess = repository.updateMenu(shopId, categories, foods, nextFoodId);
             if (isSuccess) {
                 session.removeAttribute("categories");
                 session.removeAttribute("foods");

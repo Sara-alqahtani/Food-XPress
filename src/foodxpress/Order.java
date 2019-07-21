@@ -16,7 +16,8 @@ public class Order {
     public double total;
     public OrderStatus status;
     public String shop_name;
-    public boolean isReviewed;
+    public boolean is_reviewed;
+    public PickUpLocation pick_up_location;
 
     public Order(ResultSet rs) {
         try {
@@ -31,7 +32,8 @@ public class Order {
             total = rs.getDouble("total");
             status = OrderStatus.valueOf(rs.getString("status").toUpperCase());
             shop_name = rs.getString("shop_name");
-            isReviewed = rs.getBoolean("isReviewed");
+            is_reviewed = rs.getBoolean("is_reviewed");
+            pick_up_location = Utils.tryParseEnum(PickUpLocation.class, rs.getString("pick_up_location"));
         } catch (SQLException e) {
             e.printStackTrace();
         }

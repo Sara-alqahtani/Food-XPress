@@ -4,6 +4,7 @@ window.addEventListener('load', function() {
         removeBtn.onclick = function() {
             var output = document.getElementById('js-edit-profile-picture');
             output.src = 'images/user-profile/default.png';
+            imageInput.value = '';
         };
     }
 

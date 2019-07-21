@@ -7,6 +7,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Cart {
     @XmlElement
     public int shop_id;
+    @XmlElement
+    public String location;
     @XmlElement(name="cart_item_list")
     public CartItemList itemList;
 }

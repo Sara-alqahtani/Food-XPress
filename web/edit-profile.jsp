@@ -1,5 +1,6 @@
 <%@ page import="foodxpress.PickUpLocation" %>
 <%@ page import="foodxpress.User" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
   User user = (User) session.getAttribute("user");
 %>
@@ -19,7 +20,7 @@
           <hr />
           <main class="l-flex-wrap l-center">
             <div class="l-stack profile-picture">
-              <img src="images/user-profile/<%=user.image_url%>" class="profile-picture" id="js-edit-profile-picture" alt="profile image">
+              <img src="images/user-profile/<%=user.image_url%>?username=<%=user.image_url%>" class="profile-picture" id="js-edit-profile-picture" alt="profile image">
               <label class="round-icon-btn upload-profile-picture-btn l-center" for="js-upload-image">
                 <i class="fas fa-camera"></i>
               </label>
