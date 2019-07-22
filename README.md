@@ -13,8 +13,10 @@ Project Name: Food Xpress
 
 Team Member:
 
-Heng Jun Xi	SWE1704023
+(Name)  (Student Id)  (Github Account)
 
-Loh Shu Yi	SWE1704010
+Heng Jun Xi	SWE1704023  HengJunXi
 
-Lim Carol	SWE1704205
+Loh Shu Yi	SWE1704010  Loh-Shuyi
+
+Lim Carol	SWE1704205  carol8888
