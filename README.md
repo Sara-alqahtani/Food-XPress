@@ -20,3 +20,10 @@ Heng Jun Xi	SWE1704023  HengJunXi
 Loh Shu Yi	SWE1704010  Loh-Shuyi
 
 Lim Carol	SWE1704205  carol8888
+
+<br />
+
+Home Page
+<br />
+
+![](/screenshots/home.png)
