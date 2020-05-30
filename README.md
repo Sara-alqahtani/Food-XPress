@@ -47,5 +47,8 @@ Steps to run the project:
 
 ### Website (Customer interface)
 
+Welcome Page
+![](/screenshots/welcome.png)
+
 Home Page
 ![](/screenshots/home.png)
