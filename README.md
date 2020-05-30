@@ -45,10 +45,55 @@ Steps to run the project:
 
 ## Screenshots
 
-### Website (Customer interface)
+### Ordering Website (Customer interface)
 
 Welcome Page
 ![](/screenshots/welcome.png)
 
+Footer
+![](/screenshots/footer.png)
+
 Home Page
 ![](/screenshots/home.png)
+
+Order Page
+![](/screenshots/order.png)
+![](/screenshots/order2.png)
+
+Invoice Page
+![](/screenshots/invoice.png)
+
+Order List Page
+![](/screenshots/order-list.png)
+
+Review Page
+![](/screenshots/review.png)
+
+User Profile
+![](/screenshots/user-profile.png)
+
+Edit User Profile
+![](/screenshots/edit-user-profile.png)
+
+<br />
+
+### Vendor Website (for canteen vendor)
+
+Vendor Home
+![](/screenshots/vendor-home.png)
+
+Vendor View Menu
+![](/screenshots/vendor-view-menu.png)
+
+Vendor Edit Menu
+![](/screenshots/vendor-edit-menu.png)
+![](/screenshots/vendor-edit-menu2.png)
+
+Vendor Add New Food
+![](/screenshots/vendor-add-new-food.png)
+
+Vendor Shop Profile
+![](/screenshots/vendor-shop-profile.png)
+
+Vendor Edit Shop Profile
+![](/screenshots/vendor-edit-shop-profile.png)
